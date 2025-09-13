@@ -487,9 +487,9 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.15);
     z-index: 1;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(2px);
 }
 
 .hero__content {
@@ -950,20 +950,9 @@ body {
     text-align: left;
 }
 
-.service-card__features li {
-    padding: 0.5rem 0;
-    padding-left: 1.5rem;
-    position: relative;
-    color: var(--text-gray);
-}
+/* Old style removed - now using enhanced flexbox version below */
 
-.service-card__features li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--primary-green);
-    font-weight: bold;
-}
+/* Removed old ::before icon style - now using <i> tags */
 
 /* Enhanced Service Card Styles */
 .service-card__icon {
@@ -1024,7 +1013,7 @@ body {
     padding: 0.5rem 0;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
     color: var(--text-gray);
     font-size: 0.85rem;
     transition: var(--transition-fast);
