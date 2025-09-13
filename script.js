@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeForms();
     initializeSlideBackgrounds();
     initializeExcellenceGallery();
+    initializeTestimonialsSlider();
     
 });
 
@@ -588,6 +589,129 @@ function initializeExcellenceGallery() {
                 }, 8000);
             }, 2000);
         });
+    }
+}
+
+/* Testimonials Slider Functionality */
+function initializeTestimonialsSlider() {
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    const prevBtn = document.querySelector('.testimonials__prev');
+    const nextBtn = document.querySelector('.testimonials__next');
+    const dots = document.querySelectorAll('.testimonials__dots .dot');
+    
+    if (testimonialCards.length === 0) return;
+    
+    let currentTestimonial = 0;
+    let testimonialInterval;
+    
+    // Initialize slider
+    showTestimonial(currentTestimonial);
+    startAutoTestimonial();
+    
+    // Previous button
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            stopAutoTestimonial();
+            currentTestimonial = currentTestimonial === 0 ? testimonialCards.length - 1 : currentTestimonial - 1;
+            showTestimonial(currentTestimonial);
+            startAutoTestimonial();
+        });
+    }
+    
+    // Next button
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            stopAutoTestimonial();
+            nextTestimonial();
+            startAutoTestimonial();
+        });
+    }
+    
+    // Dots navigation
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            stopAutoTestimonial();
+            currentTestimonial = index;
+            showTestimonial(currentTestimonial);
+            startAutoTestimonial();
+        });
+    });
+    
+    function showTestimonial(index) {
+        // Hide all testimonials
+        testimonialCards.forEach((card, i) => {
+            card.classList.remove('active', 'prev');
+            if (i === index) {
+                card.classList.add('active');
+            } else if (i < index) {
+                card.classList.add('prev');
+            }
+        });
+        
+        // Update dots
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+    }
+    
+    function nextTestimonial() {
+        currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
+        showTestimonial(currentTestimonial);
+    }
+    
+    function startAutoTestimonial() {
+        testimonialInterval = setInterval(nextTestimonial, 6000); // Change every 6 seconds
+    }
+    
+    function stopAutoTestimonial() {
+        if (testimonialInterval) {
+            clearInterval(testimonialInterval);
+        }
+    }
+    
+    // Pause auto-slide on hover
+    const testimonialsSection = document.querySelector('.testimonials');
+    if (testimonialsSection) {
+        testimonialsSection.addEventListener('mouseenter', stopAutoTestimonial);
+        testimonialsSection.addEventListener('mouseleave', startAutoTestimonial);
+    }
+    
+    // Touch/swipe support for mobile
+    let startX = 0;
+    let endX = 0;
+    
+    const slider = document.querySelector('.testimonials__slider');
+    if (slider) {
+        slider.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+        
+        slider.addEventListener('touchmove', (e) => {
+            e.preventDefault(); // Prevent scrolling
+        });
+        
+        slider.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const threshold = 50;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > threshold) {
+                stopAutoTestimonial();
+                if (diff > 0) {
+                    // Swipe left - next
+                    nextTestimonial();
+                } else {
+                    // Swipe right - previous
+                    currentTestimonial = currentTestimonial === 0 ? testimonialCards.length - 1 : currentTestimonial - 1;
+                    showTestimonial(currentTestimonial);
+                }
+                startAutoTestimonial();
+            }
+        }
     }
 }
 
