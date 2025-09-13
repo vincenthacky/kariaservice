@@ -351,7 +351,21 @@ function typeWriter(element, html, speed = 50) {
     
     function type() {
         if (i < text.length) {
-            element.innerHTML = html.substring(0, i + 1);
+            // Pour le HTML, on prend le texte caractère par caractère mais on preserve les balises
+            let displayText = '';
+            let textIndex = 0;
+            let inTag = false;
+            
+            for (let j = 0; j < html.length && textIndex <= i; j++) {
+                const char = html[j];
+                displayText += char;
+                
+                if (char === '<') inTag = true;
+                else if (char === '>') inTag = false;
+                else if (!inTag) textIndex++;
+            }
+            
+            element.innerHTML = displayText;
             i++;
             setTimeout(type, speed);
         }
@@ -359,6 +373,9 @@ function typeWriter(element, html, speed = 50) {
     
     type();
 }
+
+// Exposer la fonction globalement pour lang.js
+window.typeWriter = typeWriter;
 
 /* Form Handling */
 function initializeForms() {

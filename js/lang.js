@@ -227,7 +227,15 @@ class LanguageManager {
     
     updateHero(hero) {
         const heroTitle = document.querySelector('.hero__title');
-        if (heroTitle) heroTitle.innerHTML = hero.title;
+        if (heroTitle) {
+            heroTitle.innerHTML = hero.title;
+            // Redéclencher l'animation typewriter si elle existe
+            if (window.typeWriter && typeof window.typeWriter === 'function') {
+                setTimeout(() => {
+                    window.typeWriter(heroTitle, hero.title);
+                }, 100);
+            }
+        }
         
         const heroDescription = document.querySelector('.hero__description');
         if (heroDescription) heroDescription.textContent = hero.description;
@@ -285,7 +293,11 @@ class LanguageManager {
                 
                 cardFeatures.forEach((feature, featureIndex) => {
                     if (service.features[featureIndex]) {
+                        const icon = feature.querySelector('i');
                         feature.textContent = service.features[featureIndex];
+                        if (icon) {
+                            feature.insertBefore(icon, feature.firstChild);
+                        }
                     }
                 });
             }
@@ -337,8 +349,11 @@ class LanguageManager {
                 
                 galleryFeatures.forEach((feature, featureIndex) => {
                     if (tabData.features[featureIndex]) {
-                        const text = feature.querySelector('text') || feature;
-                        if (text) text.lastChild.textContent = ` ${tabData.features[featureIndex]}`;
+                        const icon = feature.querySelector('i');
+                        feature.textContent = tabData.features[featureIndex];
+                        if (icon) {
+                            feature.insertBefore(icon, feature.firstChild);
+                        }
                     }
                 });
             }
