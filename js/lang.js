@@ -17,6 +17,7 @@ class LanguageManager {
         this.createLanguageSelector();
         this.updateContent();
         this.bindEvents();
+        this.initializeResponsiveNavigation();
     }
     
     async loadTranslations() {
@@ -132,6 +133,13 @@ class LanguageManager {
         }));
     }
     
+    initializeResponsiveNavigation() {
+        // Update navigation on window resize
+        window.addEventListener('resize', debounce(() => {
+            this.updateContent();
+        }, 250));
+    }
+    
     updateContent() {
         const translations = this.translations[this.currentLang];
         if (!translations) return;
@@ -168,24 +176,53 @@ class LanguageManager {
     }
     
     updateNavigation(nav) {
+        // Check if we need to use short versions based on screen width
+        const useShortNames = this.shouldUseShortNames();
+        
         const navLinks = {
             'a[href="#accueil"]': nav.home,
-            'a[href="#apropos"]': nav.about,
+            'a[href="#apropos"]': useShortNames && nav.about_short ? nav.about_short : nav.about,
             'a[href="#services"]': nav.services,
-            'a[href="#excellence"]': nav.excellence,
+            'a[href="#excellence"]': useShortNames && nav.excellence_short ? nav.excellence_short : nav.excellence,
             'a[href="#immobilier"]': nav.real_estate,
             'a[href="#logistique"]': nav.logistics,
             'a[href="#mine-petrole"]': nav.mining,
             'a[href="#realisations"]': nav.projects,
-            'a[href="#testimonials"]': nav.testimonials,
+            'a[href="#testimonials"]': useShortNames && nav.testimonials_short ? nav.testimonials_short : nav.testimonials,
             'a[href="#contact"]': nav.contact,
-            'a[href="#devis"]': nav.quote
+            'a[href="#devis"]': useShortNames && nav.quote_short ? nav.quote_short : nav.quote
         };
         
         Object.entries(navLinks).forEach(([selector, text]) => {
             const element = document.querySelector(selector);
             if (element) element.textContent = text;
         });
+    }
+    
+    shouldUseShortNames() {
+        const screenWidth = window.innerWidth;
+        const nav = document.querySelector('.nav');
+        
+        // Use short names for screens smaller than 1200px when in French
+        if (this.currentLang === 'fr' && screenWidth <= 1200) return true;
+        
+        // Always use short names for tablets and smaller
+        if (screenWidth <= 1024) return true;
+        
+        // Check if navigation would overflow
+        if (nav) {
+            const navMenu = nav.querySelector('.nav__menu');
+            const navActions = nav.querySelector('.nav__actions');
+            
+            if (navMenu && navActions) {
+                const availableWidth = nav.offsetWidth - 350; // Reserve space for logo and actions
+                const menuWidth = navMenu.scrollWidth;
+                
+                return menuWidth > availableWidth;
+            }
+        }
+        
+        return false;
     }
     
     updateHero(hero) {

@@ -2,15 +2,19 @@
   "navigation": {
     "home": "Accueil",
     "about": "À propos de nous",
+    "about_short": "À propos", 
     "services": "Services",
     "excellence": "Notre Excellence",
+    "excellence_short": "Excellence",
     "real_estate": "Immobilier",
     "logistics": "Logistique",
     "mining": "Mine et Pétrole",
     "projects": "Réalisations",
     "testimonials": "Témoignages",
+    "testimonials_short": "Témoins",
     "contact": "Contact",
-    "quote": "Demande un devis"
+    "quote": "Demande un devis",
+    "quote_short": "Devis"
   },
   "hero": {
     "title": "Excellence et Innovation dans nos <span class=\"text-gradient\">Services Premium</span>",
