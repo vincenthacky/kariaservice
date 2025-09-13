@@ -267,6 +267,26 @@ function initializeScrollEffects() {
 
 /* Animation Effects */
 function initializeAnimations() {
+    // Enhanced service cards animation
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    const serviceCardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const delay = entry.target.dataset.delay || '0s';
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, parseFloat(delay) * 1000);
+                serviceCardObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    serviceCards.forEach(card => {
+        serviceCardObserver.observe(card);
+    });
+    
     // Counter animation for statistics
     const counters = document.querySelectorAll('.stat__number');
     
