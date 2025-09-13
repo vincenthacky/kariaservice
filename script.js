@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSlideBackgrounds();
     initializeExcellenceGallery();
     initializeTestimonialsSlider();
+    initializeWhatsAppButton();
     
 });
 
@@ -343,6 +344,7 @@ function initializeAnimations() {
 }
 
 function typeWriter(element, html, speed = 50) {
+    element.classList.add('typing');
     element.innerHTML = '';
     let i = 0;
     const tempDiv = document.createElement('div');
@@ -368,6 +370,8 @@ function typeWriter(element, html, speed = 50) {
             element.innerHTML = displayText;
             i++;
             setTimeout(type, speed);
+        } else {
+            element.classList.remove('typing');
         }
     }
     
@@ -839,6 +843,53 @@ if ('IntersectionObserver' in window) {
         img.classList.add('lazy');
         imageObserver.observe(img);
     });
+}
+
+/* WhatsApp Button Functionality */
+function initializeWhatsAppButton() {
+    // Fonction pour ouvrir WhatsApp
+    window.openWhatsAppChat = function() {
+        const phoneNumber = "2250566013534";
+        const message = encodeURIComponent("Bonjour, j'ai besoin d'aide !");
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+        window.open(whatsappURL, '_blank');
+    };
+
+    // Animation d'entrée du bouton
+    const widget = document.querySelector('.whatsapp-widget');
+    if (widget) {
+        setTimeout(() => {
+            widget.style.opacity = '1';
+        }, 500);
+    }
+
+    // Fermeture du chat
+    const chatClose = document.querySelector('.chat-close');
+    if (chatClose) {
+        chatClose.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const chat = document.querySelector('.whatsapp-chat');
+            if (chat) {
+                chat.style.opacity = '0';
+                chat.style.visibility = 'hidden';
+                chat.style.transform = 'translateY(20px) scale(0.8)';
+                
+                setTimeout(() => {
+                    chat.style.opacity = '';
+                    chat.style.visibility = '';
+                    chat.style.transform = '';
+                }, 300);
+            }
+        });
+    }
+
+    // Gestion du clic sur le bouton principal
+    const whatsappButton = document.querySelector('.whatsapp-button');
+    if (whatsappButton) {
+        whatsappButton.addEventListener('click', function() {
+            openWhatsAppChat();
+        });
+    }
 }
 
 console.log('🎉 Kariaservice website loaded successfully!');
