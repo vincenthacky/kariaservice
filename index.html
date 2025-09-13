@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kariaservice - Services Premium en Immobilier, Logistique, Mine et Pétrole</title>
+    <meta name="description" content="Kariaservice offre des services personnalisés haut de gamme en immobilier, logistique, mine et pétrole. Solutions professionnelles et fiables.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__logo">
+                <img src="img/logo.jpeg" alt="Kariaservice Logo" class="logo-img">
+                <span class="logo-text">Kariaservice</span>
+            </div>
+            
+            <ul class="nav__menu" id="nav-menu">
+                <li class="nav__item">
+                    <a href="#accueil" class="nav__link active">Accueil</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#apropos" class="nav__link">À propos de nous</a>
+                </li>
+                <li class="nav__item dropdown">
+                    <a href="#services" class="nav__link">Services <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#excellence">Notre Excellence</a></li>
+                        <li><a href="#immobilier">Immobilier</a></li>
+                        <li><a href="#logistique">Logistique</a></li>
+                        <li><a href="#mine-petrole">Mine et Pétrole</a></li>
+                    </ul>
+                </li>
+                <li class="nav__item">
+                    <a href="#realisations" class="nav__link">Réalisations</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#contact" class="nav__link">Contact</a>
+                </li>
+            </ul>
+            
+            <div class="nav__actions">
+                <a href="#devis" class="btn btn--primary">Demande un devis</a>
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="accueil" class="hero">
+            <div class="hero__slider">
+                <div class="slide active" data-bg="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1973&q=80">
+                    <div class="slide__content">
+                        <h2>Solutions Immobilières Premium</h2>
+                        <p>Des projets résidentiels et commerciaux d'exception</p>
+                    </div>
+                </div>
+                <div class="slide" data-bg="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80">
+                    <div class="slide__content">
+                        <h2>Logistique Internationale</h2>
+                        <p>Transport et chaîne d'approvisionnement optimisés</p>
+                    </div>
+                </div>
+                <div class="slide" data-bg="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2025&q=80">
+                    <div class="slide__content">
+                        <h2>Mine et Pétrole</h2>
+                        <p>Expertise dans l'extraction et l'énergie</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero__content container">
+                <div class="hero__text">
+                    <h1 class="hero__title font-display">Excellence et Innovation dans nos <span class="text-gradient">Services Premium</span></h1>
+                    <p class="hero__description">
+                        Kariaservice vous accompagne avec des solutions personnalisées et haut de gamme dans l'immobilier, 
+                        la logistique, et les secteurs miniers et pétroliers. Notre expertise garantit des résultats exceptionnels.
+                    </p>
+                    <div class="hero__buttons">
+                        <a href="#services" class="btn btn--primary btn--large">Découvrir nos services</a>
+                        <a href="#contact" class="btn btn--secondary btn--large">Nous contacter</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero__controls">
+                <button class="hero__prev"><i class="fas fa-chevron-left"></i></button>
+                <div class="hero__dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="hero__next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services section">
+            <div class="container">
+                <div class="section__header">
+                    <span class="section__subtitle">Nos Expertises</span>
+                    <h2 class="section__title font-display">Services Personnalisés de Haute Qualité</h2>
+                    <p class="section__description">
+                        Nous offrons des solutions sur mesure dans trois domaines clés, 
+                        garantissant excellence et fiabilité à chaque projet.
+                    </p>
+                </div>
+                
+                <div class="services__grid">
+                    <div class="service-card">
+                        <div class="service-card__icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="service-card__content">
+                            <h3 class="service-card__title">Immobilier</h3>
+                            <p class="service-card__description">
+                                Développement de projets résidentiels et commerciaux premium, 
+                                gestion patrimoniale et conseil en investissement immobilier.
+                            </p>
+                            <ul class="service-card__features">
+                                <li>Projets résidentiels de luxe</li>
+                                <li>Complexes commerciaux</li>
+                                <li>Conseil en investissement</li>
+                                <li>Gestion patrimoniale</li>
+                            </ul>
+                            <a href="#immobilier" class="btn btn--outline">En savoir plus</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-card__icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="service-card__content">
+                            <h3 class="service-card__title">Logistique</h3>
+                            <p class="service-card__description">
+                                Solutions logistiques intégrées, transport international et 
+                                optimisation de la chaîne d'approvisionnement.
+                            </p>
+                            <ul class="service-card__features">
+                                <li>Transport international</li>
+                                <li>Entreposage sécurisé</li>
+                                <li>Gestion des stocks</li>
+                                <li>Optimisation des flux</li>
+                            </ul>
+                            <a href="#logistique" class="btn btn--outline">En savoir plus</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-card__icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <div class="service-card__content">
+                            <h3 class="service-card__title">Mine et Pétrole</h3>
+                            <p class="service-card__description">
+                                Expertise technique dans l'extraction minière et pétrolière, 
+                                consultation stratégique et gestion de projets industriels.
+                            </p>
+                            <ul class="service-card__features">
+                                <li>Exploration et extraction</li>
+                                <li>Consultation technique</li>
+                                <li>Gestion de projets</li>
+                                <li>Optimisation des processus</li>
+                            </ul>
+                            <a href="#mine-petrole" class="btn btn--outline">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Excellence Section -->
+        <section id="excellence" class="excellence section">
+            <div class="container">
+                <div class="section__header">
+                    <span class="section__subtitle">Notre Excellence</span>
+                    <h2 class="section__title font-display">L'Art du Service Personnalisé</h2>
+                    <p class="section__description">
+                        Découvrez comment nous transformons chaque projet en réussite exceptionnelle 
+                        grâce à notre approche sur mesure et notre expertise reconnue.
+                    </p>
+                </div>
+                
+                <div class="excellence__content">
+                    <div class="excellence__tabs">
+                        <div class="tab-item active" data-tab="immobilier-tab">
+                            <div class="tab-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="tab-content">
+                                <h3>Immobilier Premium</h3>
+                                <p>Projets résidentiels et commerciaux d'exception</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-item" data-tab="logistique-tab">
+                            <div class="tab-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div class="tab-content">
+                                <h3>Logistique Avancée</h3>
+                                <p>Solutions intégrées et optimisées</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-item" data-tab="energie-tab">
+                            <div class="tab-icon">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <div class="tab-content">
+                                <h3>Énergie & Mines</h3>
+                                <p>Expertise technique et innovation durable</p>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-item" data-tab="conseil-tab">
+                            <div class="tab-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="tab-content">
+                                <h3>Conseil Stratégique</h3>
+                                <p>Accompagnement personnalisé et vision d'excellence</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="excellence__gallery">
+                        <div id="immobilier-tab" class="gallery-item active" data-bg="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80">
+                            <div class="gallery-overlay">
+                                <div class="gallery-content">
+                                    <h4>Immobilier Premium</h4>
+                                    <p>Nous développons des projets immobiliers d'exception qui allient luxe, durabilité et innovation. Chaque réalisation reflète notre engagement envers l'excellence architecturale.</p>
+                                    <ul class="gallery-features">
+                                        <li><i class="fas fa-check"></i> Architecture de prestige</li>
+                                        <li><i class="fas fa-check"></i> Technologies durables</li>
+                                        <li><i class="fas fa-check"></i> Services premium intégrés</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="logistique-tab" class="gallery-item" data-bg="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80">
+                            <div class="gallery-overlay">
+                                <div class="gallery-content">
+                                    <h4>Logistique Avancée</h4>
+                                    <p>Notre expertise logistique couvre l'ensemble de la chaîne d'approvisionnement avec des solutions technologiques de pointe et un réseau international étendu.</p>
+                                    <ul class="gallery-features">
+                                        <li><i class="fas fa-check"></i> Réseau global optimisé</li>
+                                        <li><i class="fas fa-check"></i> Technologies IoT avancées</li>
+                                        <li><i class="fas fa-check"></i> Traçabilité complète</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="energie-tab" class="gallery-item" data-bg="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80">
+                            <div class="gallery-overlay">
+                                <div class="gallery-content">
+                                    <h4>Énergie & Mines</h4>
+                                    <p>Nous combinons expertise technique traditionnelle et innovations vertes pour une approche responsable de l'extraction et de la production énergétique.</p>
+                                    <ul class="gallery-features">
+                                        <li><i class="fas fa-check"></i> Technologies vertes</li>
+                                        <li><i class="fas fa-check"></i> Exploitation responsable</li>
+                                        <li><i class="fas fa-check"></i> Impact environnemental minimal</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="conseil-tab" class="gallery-item" data-bg="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80">
+                            <div class="gallery-overlay">
+                                <div class="gallery-content">
+                                    <h4>Conseil Stratégique</h4>
+                                    <p>Notre approche conseil privilégie l'écoute, l'analyse approfondie et la co-construction de solutions adaptées aux enjeux spécifiques de chaque client.</p>
+                                    <ul class="gallery-features">
+                                        <li><i class="fas fa-check"></i> Analyse personnalisée</li>
+                                        <li><i class="fas fa-check"></i> Vision stratégique long terme</li>
+                                        <li><i class="fas fa-check"></i> Accompagnement continu</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="apropos" class="about section section--alt">
+            <div class="container">
+                <div class="about__content">
+                    <div class="about__text">
+                        <span class="section__subtitle">À propos de Kariaservice</span>
+                        <h2 class="section__title font-display">Excellence et Fiabilité depuis Notre Création</h2>
+                        <p class="about__description">
+                            Fondée sur des valeurs d'excellence et d'innovation, Kariaservice s'est imposée 
+                            comme un acteur majeur dans trois secteurs stratégiques. Notre approche personnalisée 
+                            et notre expertise technique nous permettent de réaliser des projets d'envergure 
+                            internationale.
+                        </p>
+                        
+                        <div class="about__stats">
+                            <div class="stat">
+                                <h3 class="stat__number">150+</h3>
+                                <p class="stat__label">Projets réalisés</p>
+                            </div>
+                            <div class="stat">
+                                <h3 class="stat__number">25+</h3>
+                                <p class="stat__label">Pays d'intervention</p>
+                            </div>
+                            <div class="stat">
+                                <h3 class="stat__number">98%</h3>
+                                <p class="stat__label">Clients satisfaits</p>
+                            </div>
+                        </div>
+                        
+                        <a href="#realisations" class="btn btn--primary">Voir nos réalisations</a>
+                    </div>
+                    
+                    <div class="about__image">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Équipe Kariaservice" class="about__img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section supperrr -->
+        <section id="realisations" class="projects section">
+            <div class="container">
+                <div class="section__header">
+                    <span class="section__subtitle">Nos Réalisations</span>
+                    <h2 class="section__title font-display">Projets d'Exception</h2>
+                    <p class="section__description">
+                        Découvrez nos projets les plus marquants dans nos trois domaines d'expertise.
+                    </p>
+                </div>
+                
+                <div class="projects__grid">
+                    <div class="project-card">
+                        <div class="project-card__image">
+                            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Projet Immobilier Premium">
+                            <div class="project-card__overlay">
+                                <span class="project-card__category">Immobilier</span>
+                            </div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Résidence Luxury Gardens</h3>
+                            <p class="project-card__description">
+                                Complexe résidentiel haut de gamme avec 200 unités, espaces verts et services premium.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-card__image">
+                            <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Centre Logistique">
+                            <div class="project-card__overlay">
+                                <span class="project-card__category">Logistique</span>
+                            </div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Hub Logistique International</h3>
+                            <p class="project-card__description">
+                                Centre de distribution de 50,000 m² avec systèmes automatisés de pointe.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-card__image">
+                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Site Minier">
+                            <div class="project-card__overlay">
+                                <span class="project-card__category">Mine & Pétrole</span>
+                            </div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Exploitation Minière Responsable</h3>
+                            <p class="project-card__description">
+                                Projet d'extraction avec technologies vertes et impact environnemental minimal.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section section--alt">
+            <div class="container">
+                <div class="contact__content">
+                    <div class="contact__info">
+                        <span class="section__subtitle">Contactez-nous</span>
+                        <h2 class="section__title font-display">Parlons de Votre Projet</h2>
+                        <p class="contact__description">
+                            Notre équipe d'experts est à votre disposition pour étudier vos besoins 
+                            et vous proposer des solutions personnalisées.
+                        </p>
+                        
+                        <div class="contact__items">
+                            <div class="contact__item">
+                                <div class="contact__item-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact__item-content">
+                                    <h4>Adresse</h4>
+                                    <p>123 Boulevard des Affaires<br>Casablanca, Maroc</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact__item">
+                                <div class="contact__item-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact__item-content">
+                                    <h4>Téléphone</h4>
+                                    <p>+212 5XX XX XX XX</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact__item">
+                                <div class="contact__item-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact__item-content">
+                                    <h4>Email</h4>
+                                    <p>contact@kariaservice.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact__form-container">
+                        <form class="contact__form" id="contact-form">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" required>
+                                <label for="name">Nom complet *</label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" required>
+                                <label for="email">Email *</label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <select id="service" name="service" required>
+                                    <option value="">Choisir un service</option>
+                                    <option value="immobilier">Immobilier</option>
+                                    <option value="logistique">Logistique</option>
+                                    <option value="mine-petrole">Mine et Pétrole</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                                <label for="service">Service d'intérêt *</label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                                <label for="message">Message *</label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn--primary btn--full">
+                                <span>Envoyer le message</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section id="devis" class="quote section">
+            <div class="container">
+                <div class="quote__content">
+                    <div class="quote__text">
+                        <h2 class="quote__title font-display">Prêt à Démarrer Votre Projet ?</h2>
+                        <p class="quote__description">
+                            Obtenez un devis personnalisé pour votre projet. Notre équipe vous répondra 
+                            dans les 24 heures avec une proposition adaptée à vos besoins.
+                        </p>
+                    </div>
+                    <div class="quote__actions">
+                        <a href="#contact" class="btn btn--secondary btn--large">Demander un devis gratuit</a>
+                        <span class="quote__phone">
+                            <i class="fas fa-phone"></i>
+                            Ou appelez-nous : +212 5XX XX XX XX
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <div class="footer__logo">
+                        <img src="img/logo.jpeg" alt="Kariaservice Logo" class="footer__logo-img">
+                        <span class="footer__logo-text">Kariaservice</span>
+                    </div>
+                    <p class="footer__description">
+                        Excellence et innovation dans nos services premium. 
+                        Votre partenaire de confiance pour vos projets d'envergure.
+                    </p>
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="footer__social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="footer__social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Services</h3>
+                    <ul class="footer__links">
+                        <li><a href="#immobilier">Immobilier</a></li>
+                        <li><a href="#logistique">Logistique</a></li>
+                        <li><a href="#mine-petrole">Mine et Pétrole</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Entreprise</h3>
+                    <ul class="footer__links">
+                        <li><a href="#apropos">À propos</a></li>
+                        <li><a href="#realisations">Réalisations</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#devis">Demander un devis</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Contact</h3>
+                    <div class="footer__contact">
+                        <p><i class="fas fa-map-marker-alt"></i> Casablanca, Maroc</p>
+                        <p><i class="fas fa-phone"></i> +212 5XX XX XX XX</p>
+                        <p><i class="fas fa-envelope"></i> contact@kariaservice.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p class="footer__copyright">
+                    &copy; 2024 Kariaservice. Tous droits réservés.
+                </p>
+                <div class="footer__legal">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
