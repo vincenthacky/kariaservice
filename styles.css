@@ -890,14 +890,19 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+.testimonial__main {
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
 }
 
 .testimonial__quote {
-    flex: 1;
+    flex: 2;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 .testimonial__quote i {
@@ -916,12 +921,14 @@ body {
 }
 
 .testimonial__author {
+    flex: 1;
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 2px solid var(--bg-light);
+    padding: 2rem;
+    background: rgba(0, 150, 63, 0.05);
+    border-radius: var(--border-radius);
+    border-left: 4px solid #00963f;
 }
 
 .author__avatar {
@@ -1012,54 +1019,6 @@ body {
     transform: scale(1.2);
 }
 
-.testimonials__stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    margin-top: 4rem;
-}
-
-.stat-item {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 2rem;
-    background: var(--bg-white);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition);
-}
-
-.stat-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-md);
-}
-
-.stat-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: var(--gradient-secondary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-light);
-    font-size: 1.5rem;
-    flex-shrink: 0;
-}
-
-.stat-info h3 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #00963f;
-    margin-bottom: 0.25rem;
-}
-
-.stat-info p {
-    color: var(--text-gray);
-    font-size: 0.95rem;
-    font-weight: 500;
-}
 
 /* Projects Section */
 .projects__grid {
@@ -1543,8 +1502,13 @@ body {
         height: 60px;
     }
     
-    .testimonials__stats {
-        grid-template-columns: repeat(2, 1fr);
+    .testimonial__main {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .testimonial__author {
+        padding: 1.5rem;
     }
 }
 
@@ -1585,15 +1549,9 @@ body {
         font-size: 1rem;
     }
     
-    .testimonials__stats {
-        grid-template-columns: 1fr;
-    }
-    
-    .stat-item {
-        padding: 1.5rem;
-        text-align: center;
+    .testimonial__main {
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
     }
 }
 
