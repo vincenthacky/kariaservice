@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeHeroSlider();
     initializeScrollEffects();
     initializeAnimations();
+    initializeIconAnimations();
+    initializeCardEffects();
     initializeForms();
     initializeSlideBackgrounds();
     initializeExcellenceGallery();
@@ -224,19 +226,30 @@ function initializeScrollEffects() {
                 entry.target.classList.add('visible');
                 
                 // Add staggered animation for grid items
-                if (entry.target.parentElement.classList.contains('services__grid') ||
-                    entry.target.parentElement.classList.contains('projects__grid')) {
-                    const siblings = Array.from(entry.target.parentElement.children);
-                    const index = siblings.indexOf(entry.target);
-                    entry.target.style.animationDelay = `${index * 0.1}s`;
+                if (entry.target.classList.contains('fade-in-stagger')) {
+                    const parent = entry.target.parentElement;
+                    if (parent.classList.contains('services__grid') || parent.classList.contains('projects__grid')) {
+                        const siblings = Array.from(parent.children);
+                        const index = siblings.indexOf(entry.target);
+                        entry.target.style.transitionDelay = `${index * 0.15}s`;
+                    }
+                }
+                
+                // Add special effects for icons
+                if (entry.target.querySelector('.icon-float, .icon-pulse')) {
+                    setTimeout(() => {
+                        const icons = entry.target.querySelectorAll('.icon-float, .icon-pulse');
+                        icons.forEach(icon => {
+                            icon.style.animationPlayState = 'running';
+                        });
+                    }, 300);
                 }
             }
         });
     }, observerOptions);
     
-    // Observe all fade-in elements
-    document.querySelectorAll('.fade-in, .service-card, .project-card, .about__text, .about__image, .contact__info, .contact__form-container').forEach(el => {
-        el.classList.add('fade-in');
+    // Observe all animated elements
+    document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in, .rotate-in, .fade-in-stagger, .service-card, .project-card, .about__text, .about__image, .contact__info, .contact__form-container').forEach(el => {
         observer.observe(el);
     });
     
@@ -496,6 +509,44 @@ function removeNotification(notification) {
             notification.parentNode.removeChild(notification);
         }
     }, 300);
+}
+
+/* Icon Animations */
+function initializeIconAnimations() {
+    // Initially pause all icon animations
+    const iconElements = document.querySelectorAll('.icon-float, .icon-pulse');
+    iconElements.forEach(icon => {
+        icon.style.animationPlayState = 'paused';
+    });
+}
+
+/* Enhanced Card Interactions */
+function initializeCardEffects() {
+    const cards = document.querySelectorAll('.service-card, .project-card');
+    
+    cards.forEach(card => {
+        // Add magnetic effect for cards
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const deltaX = (x - centerX) / centerX;
+            const deltaY = (y - centerY) / centerY;
+            
+            const rotateX = deltaY * 5;
+            const rotateY = deltaX * -5;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
+    });
 }
 
 /* Utility Functions */
