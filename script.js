@@ -389,13 +389,14 @@ function handleFormSubmit(e) {
     if (isValid) {
         // Show loading state
         const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+        const loadingText = window.langManager ? window.langManager.t('messages.form_sending') : 'Envoi en cours...';
+        submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${loadingText}`;
         submitBtn.disabled = true;
         
         // Simulate form submission (replace with actual submission logic)
         setTimeout(() => {
             // Show success message
-            showNotification('Merci ! Votre message a été envoyé avec succès. Nous vous contacterons bientôt.', 'success');
+            showNotification('messages.form_success', 'success');
             
             // Reset form
             form.reset();
@@ -411,11 +412,16 @@ function handleFormSubmit(e) {
         }, 2000);
         
     } else {
-        showNotification('Veuillez remplir tous les champs obligatoires.', 'error');
+        showNotification('messages.form_error', 'error');
     }
 }
 
 function showNotification(message, type = 'info') {
+    // Use translated messages if language manager is available
+    if (window.langManager && typeof message === 'string' && message.startsWith('messages.')) {
+        const key = message.replace('messages.', '');
+        message = window.langManager.t(`messages.${key}`);
+    }
     // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification notification--${type}`;

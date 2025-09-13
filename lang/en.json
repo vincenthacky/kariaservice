@@ -1,0 +1,220 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "excellence": "Our Excellence",
+    "real_estate": "Real Estate",
+    "logistics": "Logistics",
+    "mining": "Mining & Oil",
+    "projects": "Projects",
+    "testimonials": "Testimonials",
+    "contact": "Contact",
+    "quote": "Get Quote"
+  },
+  "hero": {
+    "title": "Excellence and Innovation in our <span class=\"text-gradient\">Premium Services</span>",
+    "description": "Kariaservice accompanies you with personalized and high-end solutions in real estate, logistics, and mining & oil sectors. Our expertise guarantees exceptional results.",
+    "btn_services": "Discover our services",
+    "btn_contact": "Contact us",
+    "slide1_title": "Premium Real Estate Solutions",
+    "slide1_desc": "Exceptional residential and commercial projects",
+    "slide2_title": "International Logistics",
+    "slide2_desc": "Optimized transport and supply chain",
+    "slide3_title": "Mining & Oil",
+    "slide3_desc": "Expertise in extraction and energy"
+  },
+  "services": {
+    "subtitle": "Our Expertise",
+    "title": "Personalized High-Quality Services",
+    "description": "We offer tailor-made solutions in three key areas, guaranteeing excellence and reliability for every project.",
+    "real_estate": {
+      "title": "Real Estate",
+      "description": "Development of premium residential and commercial projects, asset management and real estate investment consulting.",
+      "features": [
+        "Luxury residential projects",
+        "Commercial complexes",
+        "Investment consulting",
+        "Asset management"
+      ],
+      "btn": "Learn more"
+    },
+    "logistics": {
+      "title": "Logistics",
+      "description": "Integrated logistics solutions, international transport and supply chain optimization.",
+      "features": [
+        "International transport",
+        "Secure warehousing",
+        "Inventory management",
+        "Flow optimization"
+      ],
+      "btn": "Learn more"
+    },
+    "mining": {
+      "title": "Mining & Oil",
+      "description": "Technical expertise in mining and oil extraction, strategic consulting and industrial project management.",
+      "features": [
+        "Exploration and extraction",
+        "Technical consulting",
+        "Project management",
+        "Process optimization"
+      ],
+      "btn": "Learn more"
+    }
+  },
+  "excellence": {
+    "subtitle": "Our Excellence",
+    "title": "The Art of Personalized Service",
+    "description": "Discover how we transform every project into exceptional success through our tailor-made approach and recognized expertise.",
+    "tabs": {
+      "real_estate": {
+        "title": "Premium Real Estate",
+        "subtitle": "Exceptional residential and commercial projects",
+        "description": "We develop exceptional real estate projects that combine luxury, sustainability and innovation. Each achievement reflects our commitment to architectural excellence.",
+        "features": [
+          "Prestigious architecture",
+          "Sustainable technologies",
+          "Integrated premium services"
+        ]
+      },
+      "logistics": {
+        "title": "Advanced Logistics",
+        "subtitle": "Integrated and optimized solutions",
+        "description": "Our logistics expertise covers the entire supply chain with cutting-edge technological solutions and an extensive international network.",
+        "features": [
+          "Optimized global network",
+          "Advanced IoT technologies",
+          "Complete traceability"
+        ]
+      },
+      "energy": {
+        "title": "Energy & Mining",
+        "subtitle": "Technical expertise and sustainable innovation",
+        "description": "We combine traditional technical expertise and green innovations for a responsible approach to extraction and energy production.",
+        "features": [
+          "Green technologies",
+          "Responsible exploitation",
+          "Minimal environmental impact"
+        ]
+      },
+      "consulting": {
+        "title": "Strategic Consulting",
+        "subtitle": "Personalized support and vision of excellence",
+        "description": "Our consulting approach focuses on listening, thorough analysis and co-construction of solutions adapted to each client's specific challenges.",
+        "features": [
+          "Personalized analysis",
+          "Long-term strategic vision",
+          "Continuous support"
+        ]
+      }
+    }
+  },
+  "about": {
+    "subtitle": "About Kariaservice",
+    "title": "Excellence and Reliability Since Our Creation",
+    "description": "Founded on values of excellence and innovation, Kariaservice has established itself as a major player in three strategic sectors. Our personalized approach and technical expertise enable us to carry out international projects.",
+    "stats": {
+      "projects": "Projects completed",
+      "countries": "Countries of intervention", 
+      "satisfaction": "Satisfied clients"
+    },
+    "btn": "View our achievements"
+  },
+  "projects": {
+    "subtitle": "Our Achievements",
+    "title": "Exceptional Projects",
+    "description": "Discover our most remarkable projects in our three areas of expertise.",
+    "project1": {
+      "title": "Luxury Gardens Residence",
+      "description": "High-end residential complex with 200 units, green spaces and premium services.",
+      "category": "Real Estate"
+    },
+    "project2": {
+      "title": "International Logistics Hub",
+      "description": "50,000 m² distribution center with state-of-the-art automated systems.",
+      "category": "Logistics"
+    },
+    "project3": {
+      "title": "Responsible Mining Operation",
+      "description": "Extraction project with green technologies and minimal environmental impact.",
+      "category": "Mining & Oil"
+    }
+  },
+  "testimonials": {
+    "subtitle": "Client Testimonials",
+    "title": "They Trust Us",
+    "description": "Discover feedback from our satisfied clients who testify to the quality of our services and our commitment.",
+    "testimonial1": {
+      "quote": "Kariaservice transformed our real estate project into a real success. Their expertise and personalized support exceeded all our expectations. A professional and attentive team.",
+      "name": "Ahmed Benali",
+      "position": "CEO, Atlas Development"
+    },
+    "testimonial2": {
+      "quote": "For our complex logistics needs, Kariaservice was able to offer us innovative and efficient solutions. Their international network allowed us to significantly optimize our costs.",
+      "name": "Sarah Dubois",
+      "position": "Supply Chain Director, LogiCorp"
+    },
+    "testimonial3": {
+      "quote": "Kariaservice's expertise in the mining sector is remarkable. Their environmentally friendly approach and technical mastery were decisive for the success of our operation.",
+      "name": "Jean-Pierre Martin",
+      "position": "Technical Director, MineralCorp"
+    },
+    "testimonial4": {
+      "quote": "Kariaservice has been supporting us for 3 years in our energy projects. Their strategic vision and ability to adapt to market challenges make them an indispensable partner.",
+      "name": "Fatima El Khoury",
+      "position": "CEO, Energy Solutions MENA"
+    }
+  },
+  "contact": {
+    "subtitle": "Contact Us",
+    "title": "Let's Talk About Your Project",
+    "description": "Our team of experts is at your disposal to study your needs and offer you personalized solutions.",
+    "address": {
+      "title": "Address",
+      "value": "123 Business Boulevard<br>Casablanca, Morocco"
+    },
+    "phone": {
+      "title": "Phone",
+      "value": "+212 5XX XX XX XX"
+    },
+    "email": {
+      "title": "Email",
+      "value": "contact@kariaservice.com"
+    },
+    "form": {
+      "name": "Full Name *",
+      "email": "Email *",
+      "service": "Service of Interest *",
+      "service_options": {
+        "placeholder": "Choose a service",
+        "real_estate": "Real Estate",
+        "logistics": "Logistics",
+        "mining": "Mining & Oil",
+        "other": "Other"
+      },
+      "message": "Message *",
+      "submit": "Send Message"
+    }
+  },
+  "quote": {
+    "title": "Ready to Start Your Project?",
+    "description": "Get a personalized quote for your project. Our team will respond within 24 hours with a proposal adapted to your needs.",
+    "btn": "Request free quote",
+    "phone": "Or call us: +212 5XX XX XX XX"
+  },
+  "footer": {
+    "description": "Excellence and innovation in our premium services. Your trusted partner for your major projects.",
+    "services_title": "Services",
+    "company_title": "Company",
+    "contact_title": "Contact",
+    "copyright": "© 2024 Kariaservice. All rights reserved.",
+    "legal": "Legal Notice",
+    "privacy": "Privacy Policy",
+    "location": "Casablanca, Morocco"
+  },
+  "messages": {
+    "form_success": "Thank you! Your message has been sent successfully. We will contact you soon.",
+    "form_error": "Please fill in all required fields.",
+    "form_sending": "Sending..."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "defaultLanguage": "fr",
+  "fallbackLanguage": "fr",
+  "availableLanguages": {
+    "fr": {
+      "name": "Français",
+      "nativeName": "Français",
+      "flag": "🇫🇷",
+      "rtl": false
+    },
+    "en": {
+      "name": "English",
+      "nativeName": "English", 
+      "flag": "🇬🇧",
+      "rtl": false
+    }
+  },
+  "dateFormats": {
+    "fr": "dd/mm/yyyy",
+    "en": "mm/dd/yyyy"
+  },
+  "numberFormats": {
+    "fr": {
+      "decimal": ",",
+      "thousands": " "
+    },
+    "en": {
+      "decimal": ".",
+      "thousands": ","
+    }
+  }
+}
