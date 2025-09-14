@@ -1,0 +1,224 @@
+{
+  "navigation": {
+    "home": "首页",
+    "about": "关于我们",
+    "about_short": "关于",
+    "services": "服务",
+    "excellence": "我们的卓越",
+    "excellence_short": "卓越",
+    "real_estate": "房地产",
+    "logistics": "物流",
+    "mining": "矿业石油",
+    "projects": "项目案例",
+    "testimonials": "客户推荐",
+    "testimonials_short": "推荐",
+    "contact": "联系",
+    "quote": "获取报价",
+    "quote_short": "报价"
+  },
+  "hero": {
+    "title": "我们<span class=\"text-gradient\">优质服务</span>中的卓越与创新",
+    "description": "Kariaservice为您提供房地产、物流以及矿业和石油领域的个性化高端解决方案。我们的专业知识保证卓越的成果。",
+    "btn_services": "了解我们的服务",
+    "btn_contact": "联系我们",
+    "slide1_title": "优质房地产解决方案",
+    "slide1_desc": "卓越的住宅和商业项目",
+    "slide2_title": "国际物流",
+    "slide2_desc": "优化的运输和供应链",
+    "slide3_title": "矿业石油",
+    "slide3_desc": "采掘和能源领域的专业知识"
+  },
+  "services": {
+    "subtitle": "我们的专业领域",
+    "title": "个性化高品质服务",
+    "description": "我们在三个关键领域提供量身定制的解决方案，确保每个项目的卓越性和可靠性。",
+    "real_estate": {
+      "title": "房地产",
+      "description": "高端住宅和商业项目开发、资产管理和房地产投资咨询。",
+      "features": [
+        "豪华住宅项目",
+        "商业综合体",
+        "投资咨询",
+        "资产管理"
+      ],
+      "btn": "了解更多"
+    },
+    "logistics": {
+      "title": "物流",
+      "description": "综合物流解决方案、国际运输和供应链优化。",
+      "features": [
+        "国际运输",
+        "安全仓储",
+        "库存管理",
+        "流程优化"
+      ],
+      "btn": "了解更多"
+    },
+    "mining": {
+      "title": "矿业石油",
+      "description": "矿业和石油开采技术专长、战略咨询和工业项目管理。",
+      "features": [
+        "勘探开采",
+        "技术咨询",
+        "项目管理",
+        "流程优化"
+      ],
+      "btn": "了解更多"
+    }
+  },
+  "excellence": {
+    "subtitle": "我们的卓越",
+    "title": "卓越运营与创新",
+    "description": "了解我们如何通过量身定制的方法和公认的专业知识，将每个项目转化为卓越的成功。",
+    "tabs": {
+      "real_estate": {
+        "title": "优质房地产",
+        "subtitle": "卓越的住宅和商业项目",
+        "description": "我们开发融合奢华、可持续性和创新的卓越房地产项目。每一项成就都体现了我们对建筑卓越的承诺。",
+        "features": [
+          "声望建筑",
+          "可持续技术",
+          "综合优质服务"
+        ]
+      },
+      "logistics": {
+        "title": "先进物流",
+        "subtitle": "综合优化解决方案",
+        "description": "我们的物流专长涵盖整个供应链，采用尖端技术解决方案和广泛的国际网络。",
+        "features": [
+          "全球优化网络",
+          "先进物联网技术",
+          "完整可追溯性"
+        ]
+      },
+      "energy": {
+        "title": "能源矿业",
+        "subtitle": "技术专长与可持续创新",
+        "description": "我们结合传统技术专长和绿色创新，以负责任的方式进行开采和能源生产。",
+        "features": [
+          "绿色技术",
+          "负责任开采",
+          "最小环境影响"
+        ]
+      },
+      "consulting": {
+        "title": "战略咨询",
+        "subtitle": "个性化指导与卓越愿景",
+        "description": "我们的咨询方法注重倾听、深入分析和共同构建适合每个客户特定挑战的解决方案。",
+        "features": [
+          "个性化分析",
+          "长期战略愿景",
+          "持续陪伴"
+        ]
+      }
+    }
+  },
+  "about": {
+    "subtitle": "关于Kariaservice",
+    "title": "自成立以来的卓越与可靠",
+    "description": "建立在卓越和创新价值观基础上，Kariaservice已在三个战略领域确立了主要参与者地位。我们的个性化方法和技术专长使我们能够实现国际规模的项目。",
+    "stats": {
+      "projects": "已完成项目",
+      "countries": "服务国家",
+      "satisfaction": "满意客户"
+    },
+    "btn": "查看我们的成就"
+  },
+  "projects": {
+    "subtitle": "我们的成就",
+    "title": "卓越项目",
+    "description": "在我们的三个专业领域中，了解我们最引人注目的项目。",
+    "project1": {
+      "title": "豪华花园住宅",
+      "description": "高端住宅综合体，拥有200套单元、绿化空间和优质服务。",
+      "category": "房地产"
+    },
+    "project2": {
+      "title": "国际物流中心",
+      "description": "50,000平方米配备尖端自动化系统的配送中心。",
+      "category": "物流"
+    },
+    "project3": {
+      "title": "负责任矿业开采",
+      "description": "采用绿色技术和最小环境影响的开采项目。",
+      "category": "矿业石油"
+    }
+  },
+  "testimonials": {
+    "subtitle": "客户推荐",
+    "title": "他们信任我们",
+    "description": "了解我们满意客户的反馈，他们证明了我们服务的质量和我们的承诺。",
+    "testimonial1": {
+      "quote": "Kariaservice将我们的房地产项目转化为真正的成功。他们的专业知识和个性化陪伴超出了我们的所有期望。一个专业且善于倾听的团队。",
+      "name": "Ahmed Benali",
+      "position": "CEO，Atlas发展公司"
+    },
+    "testimonial2": {
+      "quote": "对于我们复杂的物流需求，Kariaservice为我们提出了创新高效的解决方案。他们的国际网络让我们大大优化了成本。",
+      "name": "Sarah Dubois",
+      "position": "供应链总监，LogiCorp"
+    },
+    "testimonial3": {
+      "quote": "Kariaservice在矿业领域的专业知识令人瞩目。他们对环境的尊重方法和技术掌握对我们开采的成功起到了决定性作用。",
+      "name": "Jean-Pierre Martin",
+      "position": "技术总监，MineralCorp"
+    },
+    "testimonial4": {
+      "quote": "Kariaservice在我们的能源项目中陪伴我们3年。他们的战略愿景和适应市场挑战的能力使他们成为不可或缺的合作伙伴。",
+      "name": "Fatima El Khoury",
+      "position": "CEO，能源解决方案中东北非"
+    }
+  },
+  "contact": {
+    "subtitle": "联系我们",
+    "title": "让我们谈谈您的项目",
+    "description": "我们的专家团队随时为您研究您的需求并为您提供个性化解决方案。",
+    "address": {
+      "title": "地址",
+      "value": "商业大道123号<br>卡萨布兰卡，摩洛哥"
+    },
+    "phone": {
+      "title": "电话",
+      "value": "+212 5XX XX XX XX"
+    },
+    "email": {
+      "title": "邮箱",
+      "value": "contact@kariaservice.com"
+    },
+    "form": {
+      "name": "全名 *",
+      "email": "邮箱 *",
+      "service": "感兴趣的服务 *",
+      "service_options": {
+        "placeholder": "选择服务",
+        "real_estate": "房地产",
+        "logistics": "物流",
+        "mining": "矿业石油",
+        "other": "其他"
+      },
+      "message": "信息 *",
+      "submit": "发送信息"
+    }
+  },
+  "quote": {
+    "title": "准备开始您的项目了吗？",
+    "description": "获取您项目的个性化报价。我们的团队将在24小时内回复您，并提供适合您需求的建议。",
+    "btn": "获取免费报价",
+    "phone": "或致电我们：+212 5XX XX XX XX"
+  },
+  "footer": {
+    "description": "我们优质服务中的卓越与创新。您大型项目的可信赖合作伙伴。",
+    "services_title": "服务",
+    "company_title": "公司",
+    "contact_title": "联系",
+    "copyright": "© 2024 Kariaservice. 版权所有。",
+    "legal": "法律声明",
+    "privacy": "隐私政策",
+    "location": "卡萨布兰卡，摩洛哥"
+  },
+  "messages": {
+    "form_success": "谢谢！您的信息已成功发送。我们会尽快联系您。",
+    "form_error": "请填写所有必填字段。",
+    "form_sending": "发送中..."
+  }
+}

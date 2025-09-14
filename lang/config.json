@@ -10,14 +10,21 @@
     },
     "en": {
       "name": "English",
-      "nativeName": "English", 
+      "nativeName": "English",
       "flag": "🇬🇧",
+      "rtl": false
+    },
+    "zh": {
+      "name": "Chinese",
+      "nativeName": "中文",
+      "flag": "🇨🇳",
       "rtl": false
     }
   },
   "dateFormats": {
     "fr": "dd/mm/yyyy",
-    "en": "mm/dd/yyyy"
+    "en": "mm/dd/yyyy",
+    "zh": "yyyy年mm月dd日"
   },
   "numberFormats": {
     "fr": {
@@ -25,6 +32,10 @@
       "thousands": " "
     },
     "en": {
+      "decimal": ".",
+      "thousands": ","
+    },
+    "zh": {
       "decimal": ".",
       "thousands": ","
     }

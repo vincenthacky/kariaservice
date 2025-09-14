@@ -4,9 +4,10 @@ class LanguageManager {
     constructor() {
         this.currentLang = localStorage.getItem('kariaservice-lang') || 'fr';
         this.translations = {};
-        this.availableLanguages = {
+       this.availableLanguages = {
             'fr': 'Français',
-            'en': 'English'
+            'en': 'English',
+            'zh': '中文'
         };
         
         this.init();
@@ -63,9 +64,10 @@ class LanguageManager {
     }
     
     getFlagEmoji(langCode) {
-        const flags = {
+       const flags = {
             'fr': '🇫🇷',
-            'en': '🇬🇧'
+            'en': '🇬🇧',
+            'zh': '🇨🇳'
         };
         return flags[langCode] || '🌐';
     }
