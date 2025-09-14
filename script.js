@@ -835,18 +835,39 @@ function enhanceMobileNavigation() {
     const navLinks = document.querySelectorAll('.nav__link');
     const dropdowns = document.querySelectorAll('.dropdown');
     
+    console.log('Navigation elements:', { navToggle, navMenu, navLinks: navLinks.length, dropdowns: dropdowns.length });
+    
     if (navToggle && navMenu) {
-        // Toggle menu principal
+        // Toggle menu principal - Version simplifiée
         navToggle.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
             
+            console.log('Toggle clicked!');
+            
             const isActive = navMenu.classList.contains('active');
+            console.log('Current state:', isActive);
             
             if (isActive) {
-                closeMenu();
+                console.log('Closing menu...');
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                document.body.style.overflow = '';
             } else {
-                openMenu();
+                console.log('Opening menu...');
+                navMenu.classList.add('active');
+                navToggle.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                // Debug: Vérifier les styles appliqués
+                console.log('Menu classes:', navMenu.classList.toString());
+                console.log('Menu computed styles:', {
+                    position: getComputedStyle(navMenu).position,
+                    left: getComputedStyle(navMenu).left,
+                    display: getComputedStyle(navMenu).display,
+                    zIndex: getComputedStyle(navMenu).zIndex,
+                    background: getComputedStyle(navMenu).background
+                });
             }
         });
         

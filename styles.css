@@ -219,6 +219,17 @@ body {
     align-items: center;
 }
 
+/* Force mobile menu visibility */
+@media (max-width: 768px) {
+    .nav__menu {
+        display: none !important;
+    }
+    
+    .nav__menu.active {
+        display: flex !important;
+    }
+}
+
 .nav__item {
     position: relative;
 }
@@ -1973,36 +1984,40 @@ body {
         transform: rotate(-45deg) translate(6px, -6px);
     }
     
-    /* Menu mobile intelligent */
+    /* Menu mobile intelligent - Debug Version */
     .nav__menu {
-        position: fixed;
-        top: 60px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 60px);
-        background: linear-gradient(135deg, rgba(15, 113, 184, 0.98) 0%, rgba(15, 113, 184, 0.95) 100%);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: stretch;
-        padding: 1.5rem 0;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        z-index: 1001;
+        position: fixed !important;
+        top: 60px !important;
+        left: -100% !important;
+        width: 100% !important;
+        height: calc(100vh - 60px) !important;
+        background: #ff0000 !important; /* Rouge pour debug */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: stretch !important;
+        padding: 1.5rem 0 2rem 0 !important;
+        transition: left 0.4s ease !important;
+        z-index: 9999 !important;
+        list-style: none !important;
+        margin: 0 !important;
+        gap: 0 !important;
+        border: 5px solid yellow !important; /* Bordure jaune pour debug */
     }
     
     .nav__menu.active {
-        left: 0;
+        left: 0 !important;
+        background: #ff0000 !important; /* Rouge vif pour être sûr */
     }
     
     /* Items de navigation */
     .nav__item {
-        width: 100%;
+        width: 100% !important;
         margin-bottom: 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: block !important;
+        position: relative;
+        list-style: none;
     }
     
     .nav__item:last-child {
@@ -2010,17 +2025,20 @@ body {
     }
     
     .nav__link {
-        display: flex;
+        display: flex !important;
         align-items: center;
         justify-content: space-between;
         width: 100%;
         padding: 1rem 1.5rem;
-        font-size: 1rem;
+        font-size: 1rem !important;
         font-weight: 500;
-        color: var(--text-light);
+        color: white !important;
         text-decoration: none;
         transition: all 0.3s ease;
         border-left: 4px solid transparent;
+        border-radius: 0;
+        background: rgba(255, 255, 255, 0.1) !important;
+        margin-bottom: 2px !important;
     }
     
     .nav__link:hover {

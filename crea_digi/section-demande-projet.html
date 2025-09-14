@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demande de Devis et Projets d'Exception</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Section Demande de Devis */
+        .devis-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .devis-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .devis-form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .devis-form h2 {
+            color: #2196F3;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .devis-form p {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2196F3;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #999;
+        }
+
+        .file-upload-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            cursor: pointer;
+            background: #f8f9fa;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .file-upload:hover {
+            border-color: #2196F3;
+            background: #f0f8ff;
+        }
+
+        .file-upload input[type=file] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .file-upload-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .submit-btn {
+            background: #ff8c00;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #e67e00;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
+        }
+
+        /* Section Statistiques */
+        .stats-section {
+            color: white;
+        }
+
+        .stats-label {
+            color: #ff8c00;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .stats-title {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 40px;
+            line-height: 1.2;
+        }
+
+        .stats-grid {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: #e1e1e1;
+        }
+
+        .stat-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .stat-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-icon.green { color: #4CAF50; }
+        .stat-icon.blue { color: #2196F3; }
+        .stat-icon.orange { color: #ff8c00; }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .stat-label-text {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* Section Projets d'Exception */
+        .projets-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .projets-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .projets-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .projets-header h2 {
+            color: #2196F3;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .projets-header p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .projets-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .projet-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .projet-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .projet-image {
+            height: 250px;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .projet-tag {
+            background: #2196F3;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            align-self: flex-start;
+        }
+
+        .projet-content {
+            color: white;
+        }
+
+        .projet-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .projet-description {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .projet-btn {
+            background: #ff8c00;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            align-self: flex-start;
+        }
+
+        .projet-btn:hover {
+            background: #e67e00;
+            transform: translateY(-2px);
+        }
+
+        /* Pagination dots */
+        .pagination-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: #2196F3;
+        }
+
+        .dot:hover {
+            background: #2196F3;
+            transform: scale(1.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .devis-container {
+                gap: 60px;
+            }
+            
+            .projets-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .devis-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .file-upload-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .stat-item::after {
+                display: none;
+            }
+            
+            .projets-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .projets-header h2 {
+                font-size: 2rem;
+            }
+            
+            .stats-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .devis-form-container {
+                padding: 25px;
+            }
+            
+            .devis-section {
+                padding: 40px 0;
+            }
+            
+            .projets-section {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Section Demande de Devis -->
+    <section class="devis-section">utiliser /img/7img.jpg pour le fond
+        <div class="devis-container">
+            <!-- Formulaire de Devis -->
+            <div class="devis-form-container">
+                <form class="devis-form">
+                    <h2>Demandez un devis sans stress</h2>
+                    <p>Notre service client au garage automobile est dédié à offrir une expérience exceptionnelle à chaque client.</p>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" placeholder="Votre Nom" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Numéro de téléphone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea placeholder="Description de la panne" required></textarea>
+                    </div>
+                    
+                    <div class="file-upload-row">
+                        <label class="file-upload">
+                            <input type="file" accept="image/*">
+                            <div class="file-upload-text">Aucun fichier</div>
+                        </label>
+                        <label class="file-upload">
+                            <input type="file" accept="image/*">
+                            <div class="file-upload-text">Joindre un fichier</div>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Demandez un devis</button>
+                </form>
+            </div>
+            
+            <!-- Section Statistiques -->
+            <div class="stats-section">
+                <div class="stats-label">QUELQUES STATISTIQUES QUE VOUS DEVEZ SAVOIR</div>
+                <h2 class="stats-title">Excellence Opérationnelle & Innovation</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">
+                            <div class="stat-icon green">📊</div>
+                            <span class="stat-value">120</span>
+                        </div>
+                        <div class="stat-label-text">Projets Terminés</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-number">
+                            <div class="stat-icon blue">👍</div>
+                            <span class="stat-value">40</span>
+                        </div>
+                        <div class="stat-label-text">Projets En Cours</div>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <div class="stat-number">
+                            <div class="stat-icon orange">🌍</div>
+                            <span class="stat-value">30</span>
+                        </div>
+                        <div class="stat-label-text">Projets Internationaux</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Projets d'Exception -->
+    <section class="projets-section">
+        <div class="projets-container">
+            <div class="projets-header">
+                <h2>Projets d'Exception</h2>
+                <p>Découvrez nos projets les plus marquants dans nos trois domaines d'expertise.</p>
+            </div>
+            
+            <div class="projets-grid">
+                <div class="projet-card">use img/8img
+                    <div class="projet-image">
+                        <div class="projet-tag">Logistique</div>
+                        <div class="projet-content">
+                            <h3 class="projet-title">ACTUALITÉ SUR LA LOGISTIQUE E</h3>
+                            <p class="projet-description">Ces années antérieures nous ont permis d'acquérir une bonne maîtrise des flux physiques, voire leur bonne gestion afin de procurer une satisfaction effective à notre humble clientèle.</p>
+                            <button class="projet-btn">Lire plus</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="projet-card">use img/8img
+                    <div class="projet-image">
+                        <div class="projet-tag">Logistique</div>
+                        <div class="projet-content">
+                            <h3 class="projet-title">ACTUALITÉ SUR LA LOGISTIQUE E</h3>
+                            <p class="projet-description">Ces années antérieures nous ont permis d'acquérir une bonne maîtrise des flux physiques, voire leur bonne gestion afin de procurer une satisfaction effective à notre humble clientèle.</p>
+                            <button class="projet-btn">Lire plus</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="projet-card">use img/8img
+                    <div class="projet-image">
+                        <div class="projet-tag">Logistique</div>
+                        <div class="projet-content">
+                            <h3 class="projet-title">ACTUALITÉ SUR LA LOGISTIQUE E</h3>
+                            <p class="projet-description">Ces années antérieures nous ont permis d'acquérir une bonne maîtrise des flux physiques, voire leur bonne gestion afin de procurer une satisfaction effective à notre humble clientèle.</p>
+                            <button class="projet-btn">Lire plus</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pagination-dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Gestion du formulaire de devis
+        document.querySelector('.devis-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validation des champs
+            const inputs = this.querySelectorAll('input[required], textarea[required]');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    input.style.borderColor = '#f44336';
+                    isValid = false;
+                } else {
+                    input.style.borderColor = '#e1e1e1';
+                }
+            });
+            
+            if (isValid) {
+                // Simuler l'envoi du formulaire
+                const btn = this.querySelector('.submit-btn');
+                const originalText = btn.textContent;
+                
+                btn.textContent = 'Envoi en cours...';
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    alert('Votre demande de devis a été envoyée avec succès !');
+                    this.reset();
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                    
+                    // Réinitialiser les labels des fichiers
+                    document.querySelectorAll('.file-upload-text').forEach(label => {
+                        label.textContent = 'Aucun fichier';
+                    });
+                }, 2000);
+            } else {
+                alert('Veuillez remplir tous les champs obligatoires.');
+            }
+        });
+
+        // Gestion de l'upload de fichiers
+        document.querySelectorAll('.file-upload input[type="file"]').forEach(input => {
+            input.addEventListener('change', function() {
+                const label = this.parentNode.querySelector('.file-upload-text');
+                if (this.files.length > 0) {
+                    label.textContent = this.files[0].name;
+                    this.parentNode.style.borderColor = '#4CAF50';
+                    this.parentNode.style.background = '#f0fff0';
+                } else {
+                    label.textContent = 'Aucun fichier';
+                    this.parentNode.style.borderColor = '#ddd';
+                    this.parentNode.style.background = '#f8f9fa';
+                }
+            });
+        });
+
+        // Animation des statistiques
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-value');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent);
+                const increment = target / 50;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Observer pour déclencher l'animation des compteurs
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statsObserver.observe(document.querySelector('.stats-grid'));
+
+        // Gestion de la pagination des projets
+        document.querySelectorAll('.dot').forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                // Retirer la classe active de tous les dots
+                document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+                // Ajouter la classe active au dot cliqué
+                dot.classList.add('active');
+                
+                console.log(`Slide ${index + 1} sélectionné`);
+            });
+        });
+
+        // Animation des cartes projets au hover
+        document.querySelectorAll('.projet-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Gestion des boutons "Lire plus"
+        document.querySelectorAll('.projet-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const title = btn.closest('.projet-card').querySelector('.projet-title').textContent;
+                console.log(`Lire plus sur: ${title}`);
+                // Ici vous pouvez rediriger vers une page détaillée du projet
+            });
+        });
+    </script>
+</body>
+</html>
