@@ -818,11 +818,231 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         // Close mobile menu if open
         const navMenu = document.getElementById('nav-menu');
+        const navToggle = document.getElementById('nav-toggle');
         if (navMenu && navMenu.classList.contains('active')) {
             navMenu.classList.remove('active');
+            if (navToggle) {
+                navToggle.classList.remove('active');
+            }
         }
     }
 });
+
+// Navigation Mobile Ultra-Optimisée
+function enhanceMobileNavigation() {
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const navLinks = document.querySelectorAll('.nav__link');
+    const dropdowns = document.querySelectorAll('.dropdown');
+    
+    if (navToggle && navMenu) {
+        // Toggle menu principal
+        navToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const isActive = navMenu.classList.contains('active');
+            
+            if (isActive) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+        
+        // Gestion des dropdowns mobiles
+        dropdowns.forEach(dropdown => {
+            const dropdownLink = dropdown.querySelector('.nav__link');
+            const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+            
+            if (dropdownLink && dropdownMenu) {
+                dropdownLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Fermer autres dropdowns
+                    dropdowns.forEach(other => {
+                        if (other !== dropdown) {
+                            other.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current dropdown
+                    dropdown.classList.toggle('active');
+                });
+            }
+        });
+        
+        // Fermer menu sur clic de liens (sauf dropdown parents)
+        navLinks.forEach(link => {
+            // Skip dropdown parent links
+            if (!link.closest('.dropdown') || link.closest('.dropdown-menu')) {
+                link.addEventListener('click', (e) => {
+                    // Pour les liens dans dropdown-menu, on ferme le menu
+                    if (link.closest('.dropdown-menu')) {
+                        closeMenu();
+                    }
+                    // Pour les liens normaux
+                    else if (!link.querySelector('i')) {
+                        closeMenu();
+                    }
+                });
+            }
+        });
+        
+        // Fermer menu en cliquant à l'extérieur
+        document.addEventListener('click', (e) => {
+            if (navMenu.classList.contains('active') && 
+                !navMenu.contains(e.target) && 
+                !navToggle.contains(e.target)) {
+                closeMenu();
+            }
+        });
+        
+        // Fermer avec Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+    }
+    
+    function openMenu() {
+        navMenu.classList.add('active');
+        navToggle.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Add overlay if it doesn't exist
+        if (!document.querySelector('.nav__overlay')) {
+            const overlay = document.createElement('div');
+            overlay.classList.add('nav__overlay');
+            document.body.appendChild(overlay);
+            
+            // Close menu when clicking overlay
+            overlay.addEventListener('click', closeMenu);
+            
+            // Activate overlay
+            setTimeout(() => {
+                overlay.classList.add('active');
+            }, 10);
+        }
+    }
+    
+    function closeMenu() {
+        navMenu.classList.remove('active');
+        navToggle.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Close all dropdowns
+        dropdowns.forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+        
+        // Remove overlay
+        const overlay = document.querySelector('.nav__overlay');
+        if (overlay) {
+            overlay.classList.remove('active');
+            setTimeout(() => {
+                overlay.remove();
+            }, 300);
+        }
+    }
+    
+    // Expose close function globally
+    window.closeMobileMenu = closeMenu;
+}
+
+// Touch support for carousels and sliders
+function addTouchSupport() {
+    const sliders = document.querySelectorAll('.hero, .testimonials__slider, .excellence__gallery');
+    
+    sliders.forEach(slider => {
+        let startX = 0;
+        let endX = 0;
+        let startY = 0;
+        let endY = 0;
+        
+        slider.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        }, { passive: true });
+        
+        slider.addEventListener('touchmove', (e) => {
+            // Prevent default only for horizontal swipes
+            const currentX = e.touches[0].clientX;
+            const currentY = e.touches[0].clientY;
+            const diffX = Math.abs(currentX - startX);
+            const diffY = Math.abs(currentY - startY);
+            
+            if (diffX > diffY && diffX > 10) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        slider.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            endY = e.changedTouches[0].clientY;
+            handleSwipe(slider);
+        }, { passive: true });
+        
+        function handleSwipe(element) {
+            const threshold = 50;
+            const diffX = startX - endX;
+            const diffY = Math.abs(startY - endY);
+            
+            // Only handle horizontal swipes
+            if (Math.abs(diffX) > threshold && diffY < 100) {
+                if (element.classList.contains('hero')) {
+                    // Hero slider swipe
+                    if (diffX > 0) {
+                        // Swipe left - next slide
+                        const nextBtn = element.querySelector('.hero__next');
+                        if (nextBtn) nextBtn.click();
+                    } else {
+                        // Swipe right - previous slide
+                        const prevBtn = element.querySelector('.hero__prev');
+                        if (prevBtn) prevBtn.click();
+                    }
+                } else if (element.classList.contains('testimonials__slider')) {
+                    // Testimonials swipe
+                    if (diffX > 0) {
+                        const nextBtn = element.querySelector('.testimonials__next');
+                        if (nextBtn) nextBtn.click();
+                    } else {
+                        const prevBtn = element.querySelector('.testimonials__prev');
+                        if (prevBtn) prevBtn.click();
+                    }
+                }
+            }
+        }
+    });
+}
+
+// Mobile-optimized scroll handling
+function optimizeScrollForMobile() {
+    let scrollTimeout;
+    
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            // Hide mobile menu on scroll if open
+            const navMenu = document.getElementById('nav-menu');
+            const navToggle = document.getElementById('nav-toggle');
+            if (navMenu && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                if (navToggle) {
+                    navToggle.classList.remove('active');
+                }
+                document.body.style.overflow = '';
+            }
+        }, 100);
+    }, { passive: true });
+}
+
+// Initialize mobile enhancements
+enhanceMobileNavigation();
+addTouchSupport();
+optimizeScrollForMobile();
 
 // Performance optimization: lazy load images
 if ('IntersectionObserver' in window) {
