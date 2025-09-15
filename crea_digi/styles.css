@@ -51,15 +51,78 @@
             gap: 30px;
         }
 
+        .nav-menu li {
+            position: relative;
+        }
+
         .nav-menu a {
             text-decoration: none;
             color: #333;
             font-weight: 500;
             transition: color 0.3s;
+            display: block;
+            padding: 10px 0;
         }
 
         .nav-menu a:hover {
             color: #ff8c00;
+        }
+
+        /* Dropdown styles */
+        .has-submenu > a::after {
+            content: '▼';
+            font-size: 10px;
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .has-submenu:hover > a::after {
+            transform: rotate(180deg);
+        }
+
+        .sub-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            list-style: none;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        .has-submenu:hover .sub-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .sub-menu li {
+            padding: 0;
+        }
+
+        .sub-menu a {
+            padding: 12px 20px;
+            color: #333;
+            font-weight: 400;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .sub-menu a:hover {
+            background: #f8f9fa;
+            color: #ff8c00;
+            padding-left: 25px;
+        }
+
+        .sub-menu li:last-child a {
+            border-bottom: none;
         }
 
         .devis-btn {
@@ -770,6 +833,34 @@
             
             .nav-menu.active {
                 display: flex;
+            }
+
+            /* Mobile dropdown styles */
+            .sub-menu {
+                position: static;
+                background: #f8f9fa;
+                box-shadow: none;
+                border-radius: 5px;
+                margin-top: 10px;
+                transform: none;
+                opacity: 1;
+                visibility: visible;
+                display: none;
+            }
+
+            .has-submenu:hover .sub-menu,
+            .has-submenu.active .sub-menu {
+                display: block;
+            }
+
+            .has-submenu > a::after {
+                content: '▶';
+                float: right;
+            }
+
+            .has-submenu:hover > a::after,
+            .has-submenu.active > a::after {
+                transform: rotate(90deg);
             }
             
             .mobile-menu-btn {

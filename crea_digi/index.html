@@ -18,9 +18,27 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="#karia">Karia</a></li>
-                <li><a href="#immobilier">Immobilier</a></li>
-                <li><a href="#logistique">Logistique</a></li>
-                <li><a href="#energie">Energie&Mine</a></li>
+                <li class="has-submenu">
+                    <a href="#immobilier">Immobilier</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">À vendre</a></li>
+                        <li><a href="#">À louer</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="#logistique">Logistique</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Transport routier</a></li>
+                        <li><a href="#">Stockage & distribution</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="#energie">Energie&Mine</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Exploitation minière</a></li>
+                        <li><a href="#">Services pétroliers</a></li>
+                    </ul>
+                </li>
                 <li><a href="#projets">Projets</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -508,6 +526,24 @@
         navMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
+            });
+        });
+
+        // Mobile submenu toggle
+        document.querySelectorAll('.has-submenu > a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const parentLi = link.parentElement;
+                    parentLi.classList.toggle('active');
+                    
+                    // Close other submenus
+                    document.querySelectorAll('.has-submenu').forEach(item => {
+                        if (item !== parentLi) {
+                            item.classList.remove('active');
+                        }
+                    });
+                }
             });
         });
         
