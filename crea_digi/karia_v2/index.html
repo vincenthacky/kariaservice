@@ -1506,6 +1506,65 @@
             line-height: 1.8;
         }
 
+        /* About Section 1 avec images superposées */
+        .about-one {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .about-one-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-one-images {
+            position: relative;
+            width: 100%;
+            height: 450px; /* hauteur fixe pour contenir la superposition */
+            overflow: visible; /* permet à la petite image de dépasser */
+        }
+
+        .about-one-images .big-img {
+            width: 70%;
+            height: 300px;
+            border-radius: 26px;
+            display: block;
+            object-fit: cover;
+            margin-left: 30%; /* décale à droite pour faire place à la petite image */
+        }
+
+        .about-one-images .small-img {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50%;
+            height: 200px;
+            border-radius: 22px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            object-fit: cover;
+            z-index: 2; /* au-dessus de la grande image */
+        }
+
+        .about-one-text {
+            padding-left: 20px;
+        }
+
+        .about-one-text h2 {
+            font-size: 2.5rem;
+            color: #2196F3;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .about-one-text p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
         .features {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -1705,14 +1764,14 @@
 
 
     <!-- About Section 1 -->
-    <section class="about">
+    <section class="about-one">
         <div class="container">
-            <div class="about-content">
-                <div class="about-images">
-                    <img src="img/2img.jpg" alt="Construction principale" class="img-large">
-                    <img src="img/3img.jpg" alt="Inspection chantier" class="img-small">
+            <div class="about-one-content">
+                <div class="about-one-images">
+                    <img src="img/2img.jpg" alt="Construction principale" class="big-img">
+                    <img src="img/3img.jpg" alt="Inspection chantier" class="small-img">
                 </div>
-                <div class="about-text">
+                <div class="about-one-text">
                     <div class="section-label">À PROPOS DE KARIA SERVICES</div>
                     <h2>Excellence et Fiabilité depuis Notre Création</h2>
                     <p>KARIA SERVICES est un acteur multi-sectoriel innovant, présent dans l'immobilier, la logistique et l'énergie pétrolière. Notre mission est de développer des solutions fiables et durables pour répondre aux besoins croissants de nos clients et partenaire</p>
