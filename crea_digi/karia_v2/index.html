@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karia Care Services</title>
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
 
         :root {
             --color-dark-blue: #2c6da7; /* Couleur de fond principale, ajustée légèrement pour le contraste */
             --color-medium-blue: #377eb8; /* Couleur plus claire pour l'effet de rayures ou pour les éléments bleus */
-            --color-primary-orange: #e59a4c; /* Couleur orange du bouton et du copyright */
+            --color-primary-orange: #ff9800; /* Couleur orange du bouton et du copyright */
             --color-white: #ffffff;
             --color-light-grey: #f7f7f7;
             --color-text-light: #f0f0f0;
@@ -48,85 +50,233 @@
 
         /* Header */
         header {
-            background-color: white;
-            padding: 20px 60px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            justify-content: space-between;
+            padding: 0 20px;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-size: 20px;
-            font-weight: 600;
+            font-weight: 700;
+            color: #333;
+            text-decoration: none;
         }
 
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, #ffa726 0%, #ffb74d 100%);
             border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-menu {
             display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 30px;
             align-items: center;
-            justify-content: center;
+        }
+
+        .nav-menu > li {
             position: relative;
         }
 
-        .logo-icon::before {
-            content: '🏠';
-            font-size: 24px;
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 10px 0;
+            transition: color 0.3s ease;
         }
 
-        .logo span:first-child {
-            color: #ff9800;
+        .nav-menu a:hover {
+            color: #ff8c00;
         }
 
-        .logo span:last-child {
+        /* Dropdown styles */
+        .has-submenu > a::after {
+            content: '▼';
+            font-size: 10px;
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .has-submenu:hover > a::after {
+            transform: rotate(180deg);
+        }
+
+        .sub-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            list-style: none;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        .has-submenu:hover .sub-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .sub-menu li {
+            padding: 0;
+        }
+
+        .sub-menu a {
+            padding: 12px 20px;
             color: #333;
             font-weight: 400;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+            display: block;
         }
 
-        nav {
-            display: flex;
-            gap: 35px;
-            align-items: center;
+        .sub-menu a:hover {
+            background: #f8f9fa;
+            color: #ff8c00;
+            padding-left: 25px;
         }
 
-        nav a {
-            color: #333;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
-            transition: color 0.3s;
+        .sub-menu li:last-child a {
+            border-bottom: none;
         }
 
-        nav a:hover {
-            color: #1976c5;
-        }
-
-        .cta-button {
-            background-color: #ff9800;
+        .devis-btn {
+            background: #ff8c00;
             color: white;
-            padding: 12px 28px;
-            border-radius: 6px;
+            padding: 10px 20px;
+            border-radius: 25px;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            transition: background-color 0.3s;
+            font-weight: bold;
+            transition: background 0.3s;
         }
 
-        .cta-button:hover {
-            background-color: #f57c00;
+        .devis-btn:hover {
+            background: #e67e00;
+        }
+
+        /* Ajustement pour le contenu sous le header fixe */
+        body {
+            padding-top: 80px;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                display: none;
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                border-bottom: 1px solid #f0f0f0;
+                padding: 10px 0;
+            }
+
+            .nav-menu li:last-child {
+                border-bottom: none;
+            }
+
+            /* Mobile dropdown styles */
+            .sub-menu {
+                position: static;
+                background: #f8f9fa;
+                box-shadow: none;
+                border-radius: 5px;
+                margin-top: 10px;
+                transform: none;
+                opacity: 1;
+                visibility: visible;
+                display: none;
+            }
+
+            .has-submenu:hover .sub-menu,
+            .has-submenu.active .sub-menu {
+                display: block;
+            }
+
+            .has-submenu > a::after {
+                content: '▶';
+                float: right;
+            }
+
+            .has-submenu:hover > a::after,
+            .has-submenu.active > a::after {
+                transform: rotate(90deg);
+            }
+            
+            .mobile-menu-btn {
+                display: block !important;
+            }
+            
+            .devis-btn {
+                margin-top: 10px;
+                text-align: center;
+            }
         }
 
         /* Hero Section */
         .hero {
             position: relative;
             height: 600px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="600"><rect fill="%23f5f5f5" width="1920" height="600"/></svg>');
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/1hero.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -137,8 +287,6 @@
             margin-top: 20px;
             border-radius: 20px;
             overflow: hidden;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        linear-gradient(135deg, #8b7d6b 0%, #a69785 50%, #8b7d6b 100%);
         }
 
         .hero-content {
@@ -188,10 +336,10 @@
         }
 
         .btn-secondary {
-            background-color: #ff9800;
+            background-color: var(--color-primary-orange);
             color: white;
             padding: 14px 36px;
-            border: 2px solid #ff9800;
+            border: 2px solid var(--color-primary-orange);
             border-radius: 6px;
             text-decoration: none;
             font-weight: 500;
@@ -200,31 +348,34 @@
         }
 
         .btn-secondary:hover {
-            background-color: #f57c00;
-            border-color: #f57c00;
+            background-color: var(--color-primary-orange);
+            border-color: var(--color-primary-orange);
         }
 
         /* Search Bar */
         .search-container {
             background-color: white;
-            padding: 30px 40px;
+            padding: 20px 30px;
             border-radius: 12px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.15);
             display: flex;
-            gap: 15px;
+            gap: 10px;
             align-items: center;
-            max-width: 900px;
-            width: 90%;
+            max-width: 1000px;
+            width: 95%;
             position: relative;
             z-index: 3;
+            flex-wrap: wrap;
         }
 
         .search-input {
             flex: 1;
-            padding: 12px 20px;
+            min-width: 150px;
+            max-width: 180px;
+            padding: 12px 15px;
             border: 1px solid #e0e0e0;
             border-radius: 6px;
-            font-size: 14px;
+            font-size: 13px;
             color: #666;
         }
 
@@ -234,7 +385,7 @@
         }
 
         .search-button {
-            background-color: #ff9800;
+            background-color: var(--color-primary-orange);
             color: white;
             padding: 12px 40px;
             border: none;
@@ -246,7 +397,7 @@
         }
 
         .search-button:hover {
-            background-color: #f57c00;
+            background-color: var(--color-primary-orange);
         }
 
         /* Carousel Indicators */
@@ -317,7 +468,7 @@
             padding: 35px 30px;
             text-align: center;
             transition: all 0.3s ease;
-            border-bottom: 3px solid #ff9800;
+            border-bottom: 3px solid var(--color-primary-orange);
             position: relative;
         }
 
@@ -455,7 +606,7 @@
 
         .service-button {
             display: inline-block;
-            background-color: #ff9800;
+            background-color: var(--color-primary-orange);
             color: white;
             padding: 12px 30px;
             border-radius: 6px;
@@ -466,7 +617,7 @@
         }
 
         .service-button:hover {
-            background-color: #f57c00;
+            background-color: var(--color-primary-orange);
         }
 
         /* Responsive */
@@ -499,7 +650,7 @@
             overflow: hidden;
             position: relative;
             height: 500px;
-            background-image: url('img/modern-house.jpg');
+            background-image: url('images/pro-de-imobilier.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -544,7 +695,7 @@
 
         .banner-button {
             display: inline-block;
-            background-color: #ff9800;
+            background-color: var(--color-primary-orange);
             color: white;
             padding: 16px 40px;
             border-radius: 8px;
@@ -556,7 +707,7 @@
         }
 
         .banner-button:hover {
-            background-color: #f57c00;
+            background-color: var(--color-primary-orange);
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(255,152,0,0.4);
         }
@@ -635,11 +786,13 @@
         }
 
         .property-card {
+            position: relative;
             background-color: white;
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .property-card:hover {
@@ -652,6 +805,64 @@
             height: 350px;
             object-fit: cover;
             display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .property-card:hover .property-image {
+            transform: scale(1.05);
+        }
+
+        /* Overlay Content */
+        .property-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .property-card:hover .property-overlay {
+            opacity: 1;
+        }
+
+        .property-text {
+            color: white;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.4;
+            text-align: left;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            max-width: 320px;
+            word-wrap: break-word;
+            hyphens: auto;
+        }
+
+        .property-button {
+            display: inline-block;
+            background-color: #ff9800;
+            color: white;
+            padding: 14px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(255,152,0,0.3);
+        }
+
+        .property-button:hover {
+            background-color: #f57c00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255,152,0,0.4);
         }
 
         /* Responsive */
@@ -676,6 +887,10 @@
 
             .property-image {
                 height: 280px;
+            }
+
+            .property-text {
+                font-size: 18px;
             }
         }
 
@@ -755,7 +970,7 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            background-color: #ff9800;
+            background-color: var(--color-primary-orange);
             color: white;
             padding: 10px 24px;
             border-radius: 6px;
@@ -780,25 +995,29 @@
             line-height: 1.7;
         }
 
-        /* Carousel Indicators */
-        .carousel-indicators {
+        /* Projets Section Carousel Indicators */
+        .projets-section .carousel-indicators {
             display: flex;
             gap: 12px;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 10;
         }
 
-        .indicator {
+        .projets-section .indicator {
             width: 12px;
             height: 12px;
             border-radius: 50%;
             background-color: #e0e0e0;
             cursor: pointer;
             transition: background-color 0.3s;
+            border: 2px solid #e0e0e0;
         }
 
-        .indicator.active {
+        .projets-section .indicator.active {
             background-color: #1976c5;
+            border-color: #1976c5;
         }
 
         /* Responsive */
@@ -903,7 +1122,7 @@
 }
 
 .popup-button:hover {
-    background-color: #d18a41; /* Couleur plus foncée au survol */
+    background-color: var(--color-primary-orange); /* Couleur plus foncée au survol */
 }
 
 /* Contenu du Footer principal (partie bleue) */
@@ -936,191 +1155,292 @@
 
 .footer-content {
     display: grid;
-    /* Mise en page par défaut (mobile) : empilement des colonnes */
-    gap: var(--spacing-lg);
-    position: relative; /* Pour être au-dessus du pseudo-élément de rayures */
+    gap: clamp(1.5rem, 4vw, 3rem);
+    position: relative;
     z-index: 2;
+    grid-template-columns: 1fr;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 5vw, 2rem);
 }
 
-/* Disposition des colonnes pour les grands écrans (Desktop) */
+/* Approche mobile-first pour la responsivité */
+@media (min-width: 576px) {
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-col-main {
+        grid-column: 1 / -1;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .footer-col-main {
+        grid-column: 1 / 2;
+        margin-bottom: 0;
+    }
+}
+
 @media (min-width: 992px) {
     .footer-content {
-        /* 4 colonnes, la première étant plus large */
-        grid-template-columns: 2fr 1.5fr 1fr 1fr;
-    }
-}
-
-/* Disposition des colonnes pour les écrans de taille moyenne (Tablet) */
-@media (min-width: 576px) and (max-width: 991px) {
-    .footer-content {
-        /* 2 colonnes par ligne */
-        grid-template-columns: 1fr 1fr;
-    }
-    .footer-col-main {
-        grid-column: 1 / -1; /* Prend toute la largeur sur la première ligne */
+        grid-template-columns: 2.5fr 2fr 1fr 1fr;
+        gap: clamp(2rem, 5vw, 4rem);
     }
 }
 
 
-/* Styles de la première colonne (Logo et Formulaire Newsletter) */
+/* === COLONNE PRINCIPALE (Logo et Newsletter) === */
+.footer-col-main {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1rem, 3vw, 1.5rem);
+}
+
 .logo-container {
     display: flex;
     align-items: center;
-    margin-bottom: var(--spacing-md);
-    gap: var(--spacing-sm);
+    gap: clamp(0.5rem, 2vw, 1rem);
 }
-/* Simuler l'image de logo avec un cercle */
-.logo-container::before {
-    content: " ";
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background-color: #6da3e5; /* Couleur de la pastille de l'image */
+
+.footer-logo {
+    width: clamp(28px, 4vw, 35px);
+    height: clamp(28px, 4vw, 35px);
     border-radius: 50%;
-    /* Simulation de l'icône à l'intérieur de la pastille (optionnel) */
-    /* content: "\f0f4"; 
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900; 
-    color: white;
-    text-align: center;
-    line-height: 30px; */
+    object-fit: cover;
+    flex-shrink: 0;
 }
 
 .logo-text {
-    font-size: 1.2em;
-    font-weight: bold;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 600;
     color: var(--color-white);
+    line-height: 1.2;
 }
 
 .newsletter-cta {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: var(--spacing-md);
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    font-weight: 600;
     line-height: 1.3;
+    color: var(--color-white);
+    margin: 0;
 }
 
 .footer-newsletter-form {
     display: flex;
-    max-width: 400px;
-    margin-top: var(--spacing-sm);
+    max-width: min(100%, 400px);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .footer-newsletter-form input {
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: clamp(0.75rem, 2vw, 1rem);
     border: none;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    flex-grow: 1;
-    font-size: 0.9em;
+    flex: 1;
+    font-size: clamp(0.875rem, 2vw, 1rem);
     color: #333;
+    background: #fff;
+}
+
+.footer-newsletter-form input::placeholder {
+    color: #999;
 }
 
 .footer-subscribe-btn {
     background-color: var(--color-primary-orange);
     color: var(--color-white);
     border: none;
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
+    padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
     cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
+    font-weight: 600;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .footer-subscribe-btn:hover {
-    background-color: #d18a41;
+    background-color: #e68900;
+    transform: translateY(-1px);
 }
 
-/* Styles des autres colonnes (Contact, Liens utiles, Services) */
+/* === COLONNES SECONDAIRES === */
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.75rem, 2vw, 1.25rem);
+}
+
 .footer-title {
-    font-size: 1.1em;
-    font-weight: bold;
-    margin-bottom: var(--spacing-md);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-weight: 600;
     color: var(--color-white);
+    margin: 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-primary-orange);
+    width: fit-content;
 }
 
-.contact-item {
+/* === SECTION CONTACT === */
+.contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.5rem, 1.5vw, 0.75rem);
+}
+
+.contact-items p {
+    color: var(--color-text-light);
+    margin: 0;
+    margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
     display: flex;
     align-items: center;
-    margin-bottom: var(--spacing-sm);
-    font-style: normal; /* Annule le style par défaut de <address> */
+    gap: clamp(0.5rem, 1.5vw, 0.75rem);
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    line-height: 1.4;
 }
 
-.contact-item i {
-    margin-right: var(--spacing-sm);
-    font-size: 1em;
-    color: var(--color-white); /* Les icônes sont blanches */
+.contact-items i {
+    width: 18px;
+    color: var(--color-primary-orange);
+    flex-shrink: 0;
+    font-size: clamp(0.875rem, 2vw, 1rem);
 }
 
-.contact-item a {
+.contact-items a {
     color: var(--color-text-light);
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
-.contact-item a:hover {
+.contact-items a:hover {
     color: var(--color-primary-orange);
 }
 
+/* === RÉSEAUX SOCIAUX === */
 .social-links {
     display: flex;
-    gap: var(--spacing-sm);
-    margin-top: var(--spacing-md);
+    gap: clamp(0.5rem, 1.5vw, 0.75rem);
+    margin-top: clamp(0.75rem, 2vw, 1rem);
+    flex-wrap: wrap;
 }
 
 .social-icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30px;
-    height: 30px;
-    border: 1px solid var(--color-text-light);
-    border-radius: 4px;
+    width: clamp(32px, 5vw, 38px);
+    height: clamp(32px, 5vw, 38px);
+    border: 1.5px solid var(--color-text-light);
+    border-radius: 8px;
     color: var(--color-text-light);
-    font-size: 1em;
+    font-size: clamp(0.875rem, 2vw, 1rem);
     text-decoration: none;
-    transition: background-color 0.3s, border-color 0.3s;
+    transition: all 0.3s ease;
 }
 
 .social-icon:hover {
     background-color: var(--color-primary-orange);
     border-color: var(--color-primary-orange);
+    color: white;
+    transform: translateY(-2px);
 }
 
+/* === NAVIGATION FOOTER === */
 .footer-nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-.footer-nav li {
-    margin-bottom: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.5rem, 1.5vw, 0.75rem);
 }
 
 .footer-nav a {
     color: var(--color-text-light);
     text-decoration: none;
-    font-size: 0.9em;
-    transition: color 0.3s;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.footer-nav a::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary-orange);
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
 }
 
 .footer-nav a:hover {
     color: var(--color-primary-orange);
+    padding-left: 1.5rem;
 }
 
-/* Section Copyright (partie orange) */
+.footer-nav a:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* === SECTION COPYRIGHT === */
 .footer-bottom {
     background-color: var(--color-primary-orange);
-    padding: var(--spacing-sm) 0;
+    padding: clamp(1rem, 3vw, 1.5rem) 0;
     text-align: center;
     color: var(--color-white);
-    font-size: 0.9em;
-    z-index: 10;
     position: relative;
+    z-index: 10;
 }
 
 .footer-bottom p {
     margin: 0;
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
+    font-weight: 500;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 5vw, 2rem);
+}
+
+/* === AMÉLIORATIONS RESPONSIVE === */
+@media (max-width: 575px) {
+    .footer-content-wrapper {
+        padding: clamp(1.5rem, 5vw, 2rem) 0;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .footer-newsletter-form {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .footer-newsletter-form input,
+    .footer-subscribe-btn {
+        border-radius: 6px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 400px) {
+    .logo-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .contact-items p {
+        justify-content: flex-start;
+        gap: 0.5rem;
+    }
 }
 
         
@@ -1419,7 +1739,7 @@
         .contact-icon {
             width: 50px;
             height: 50px;
-            background: #ff8c00;
+            background: var(--color-primary-orange);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -1616,25 +1936,47 @@
     <!-- Top Bar -->
     <div class="top-bar">
         <a href="#">Besoin d'aide ?</a>
-        <a href="tel:+2250545460808">📞 +225 0545460808</a>
-        <a href="mailto:hello@relume.io">✉ hello@relume.io</a>
+        <a href="tel:+225 07 18 71 7171">📞 +225 +225 07 18 71 7171</a>
+        <a href="mailto:info@kariaservices.com">✉ info@kariaservices.com</a>
     </div>
 
     <!-- Header -->
     <header>
-        <div class="logo">
-            <div class="logo-icon"></div>
-            <span>Karia</span>
-            <span>care services</span>
-        </div>
         <nav>
-            <a href="#">karia</a>
-            <a href="#">Immobilier</a>
-            <a href="#">Logistique</a>
-            <a href="#">Energie&Mine</a>
-            <a href="#">Projets</a>
-            <a href="#">Contact</a>
-            <a href="#" class="cta-button">Démander un devis</a>
+            <div class="logo">
+                <img src="images/logo_kariaservice.jpeg" alt="KARIA SERVICES" class="logo-icon">
+                KARIA SERVICES
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#karia">Karia</a></li>
+                <li class="has-submenu">
+                    <a href="#immobilier">Immobilier</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">À vendre</a></li>
+                        <li><a href="#">À louer</a></li>
+                        <li><a href="#">Gestion immobilière</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="#logistique">Logistique</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Transport routier</a></li>
+                        <li><a href="#">Stockage & distribution</a></li>
+                        <li><a href="#">Logistique internationale</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="#energie">Energie&Mine</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Exploitation minière</a></li>
+                        <li><a href="#">Services pétroliers</a></li>
+                        <li><a href="#">Énergies renouvelables</a></li>
+                    </ul>
+                </li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#devis" class="devis-btn">Devis</a>
         </nav>
     </header>
 
@@ -1650,10 +1992,14 @@
         </div>
         
         <div class="search-container">
-            <input type="text" class="search-input" placeholder="Entre la Propriétés">
-            <input type="text" class="search-input" placeholder="type de propriété">
+            <input type="text" class="search-input" placeholder="Propriétés">
+            <input type="text" class="search-input" placeholder="Type">
             <input type="text" class="search-input" placeholder="Localisation">
-            <input type="text" class="search-input" placeholder="Meublé">
+            <select class="search-input">
+                <option value="">Meublé</option>
+                <option value="meuble">Meublé</option>
+                <option value="non-meuble">Non meublé</option>
+            </select>
             <button class="search-button">Rechercher</button>
         </div>
 
@@ -1720,7 +2066,7 @@
         <div class="services-grid">
             <!-- Service 1: Gestion Immobilière -->
             <div class="service-card">
-                <img src="img/immobilier.jpg" alt="Gestion Immobilière" class="service-image">
+                <img src="images/service1.jpg" alt="Gestion Immobilière" class="service-image">
                 <div class="service-content">
                     <h3 class="service-title">Gestion Immobilière</h3>
                     <p class="service-text">
@@ -1734,7 +2080,7 @@
 
             <!-- Service 2: Logistique & Transport -->
             <div class="service-card">
-                <img src="img/logistique.jpg" alt="Logistique & Transport" class="service-image">
+                <img src="images/service2.jpg" alt="Logistique & Transport" class="service-image">
                 <div class="service-content">
                     <h3 class="service-title">Logistique&Transport</h3>
                     <p class="service-text">
@@ -1748,7 +2094,7 @@
 
             <!-- Service 3: Mine, Energie Petrole -->
             <div class="service-card">
-                <img src="img/energie.jpg" alt="Mine, Energie Petrole" class="service-image">
+                <img src="images/service3.jpg" alt="Mine, Energie Petrole" class="service-image">
                 <div class="service-content">
                     <h3 class="service-title">Mine, Energie Petrole</h3>
                     <p class="service-text">
@@ -1840,17 +2186,35 @@
         <div class="properties-grid">
             <!-- Property 1 -->
             <div class="property-card">
-                <img src="img/property1.jpg" alt="Propriété moderne" class="property-image">
+                <img src="images/1hero.jpg" alt="Propriété moderne" class="property-image">
+                <div class="property-overlay">
+                    <p class="property-text">
+                        Des hotels au design moderne et élégant, déclinés en 3 catégories pour toutes les envies, tous les budgets mais un plaisir unique.
+                    </p>
+                    <a href="#" class="property-button">Je consulte</a>
+                </div>
             </div>
 
             <!-- Property 2 -->
             <div class="property-card">
-                <img src="img/property2.jpg" alt="Propriété moderne" class="property-image">
+                <img src="images/1hero.jpg" alt="Propriété moderne" class="property-image">
+                <div class="property-overlay">
+                    <p class="property-text">
+                        Des hotels au design moderne et élégant, déclinés en 3 catégories pour toutes les envies, tous les budgets mais un plaisir unique.
+                    </p>
+                    <a href="#" class="property-button">Je consulte</a>
+                </div>
             </div>
 
             <!-- Property 3 -->
             <div class="property-card">
-                <img src="img/property3.jpg" alt="Propriété moderne" class="property-image">
+                <img src="images/1hero.jpg" alt="Propriété moderne" class="property-image">
+                <div class="property-overlay">
+                    <p class="property-text">
+                        Des hotels au design moderne et élégant, déclinés en 3 catégories pour toutes les envies, tous les budgets mais un plaisir unique.
+                    </p>
+                    <a href="#" class="property-button">Je consulte</a>
+                </div>
             </div>
         </div>
     </section>
@@ -1871,7 +2235,7 @@
             <!-- Project 1: Logistique -->
             <div class="project-card">
                 <div class="project-image-container">
-                    <img src="img/logistique-warehouse.jpg" alt="Logistique" class="project-image">
+                    <img src="images/projet-logistique.jpg" alt="Logistique" class="project-image">
                     <div class="project-badge">Logistique</div>
                 </div>
                 <div class="project-content">
@@ -1885,7 +2249,7 @@
             <!-- Project 2: Immobilier -->
             <div class="project-card">
                 <div class="project-image-container">
-                    <img src="img/immobilier-building.jpg" alt="Immobilier" class="project-image">
+                    <img src="images/pro-de-imobilier.jpg" alt="Immobilier" class="project-image">
                     <div class="project-badge">Immobilier</div>
                 </div>
                 <div class="project-content">
@@ -1899,7 +2263,7 @@
             <!-- Project 3: Energie -->
             <div class="project-card">
                 <div class="project-image-container">
-                    <img src="img/energie-oil.jpg" alt="Energie" class="project-image">
+                    <img src="images/projet-energie.jpg" alt="Energie" class="project-image">
                     <div class="project-badge">Energie</div>
                 </div>
                 <div class="project-content">
@@ -1978,6 +2342,7 @@
             <div class="footer-content container">
                 <div class="footer-col-main">
                     <div class="logo-container">
+                        <img src="images/logo_kariaservice.jpeg" alt="Karia Services Logo" class="footer-logo">
                         <span class="logo-text">Karia care services</span>
                     </div>
                     <p class="newsletter-cta">Inscrivez-vous à notre newsletter</p>
@@ -1989,17 +2354,12 @@
 
                 <div class="footer-col contact-col">
                     <h4 class="footer-title">Contact</h4>
-                    <address>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i> <span>Cocody Riviera 3, Centre commercial</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i> <span>+225 27 22 31 5671 / 07 08 13 1002</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i> <a href="mailto:Contact@test.com">Contact@test.com</a>
-                        </div>
-                    </address>
+                    <div class="contact-items">
+                        <p><i class="fas fa-map-marker-alt"></i> Cocody Riviera 3, Centre commercial</p>
+                        <p><i class="fas fa-phone"></i> +225 07 18 71 7171</p>
+                        <p><i class="fas fa-phone"></i> +225 07 18 74 74 74</p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@kariaservices.com">info@kariaservices.com</a></p>
+                    </div>
                     <div class="social-links">
                         <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a> <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a> <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a> <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a> </div>
                 </div>
@@ -2031,7 +2391,7 @@
 
         <div class="footer-bottom">
             <div class="container">
-                <p>Copyright © 2024 propulser par THW 1117 AO. All Rights Reserved.</p>
+                <p>Copyright © 2024 KARIA SERVICES. Propulsé par DIGIT CREA. Tous droits réservés.</p>
             </div>
         </div>
 </footer>
@@ -2087,6 +2447,76 @@
             </svg>
         </div>
     </div>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create mobile menu button
+            const mobileMenuBtn = document.createElement('button');
+            mobileMenuBtn.className = 'mobile-menu-btn';
+            mobileMenuBtn.innerHTML = '☰';
+            
+            const nav = document.querySelector('nav');
+            const navMenu = document.querySelector('.nav-menu');
+            nav.insertBefore(mobileMenuBtn, navMenu);
+            
+            // Toggle mobile menu
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on a link
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Mobile submenu toggle
+            document.querySelectorAll('.has-submenu > a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        const parentLi = link.parentElement;
+                        parentLi.classList.toggle('active');
+                        
+                        // Close other submenus
+                        document.querySelectorAll('.has-submenu').forEach(item => {
+                            if (item !== parentLi) {
+                                item.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Header transparency effect on scroll
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (window.pageYOffset > 100) {
+                    header.style.background = 'rgba(255, 255, 255, 0.98)';
+                    header.style.backdropFilter = 'blur(15px)';
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.95)';
+                    header.style.backdropFilter = 'blur(10px)';
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
