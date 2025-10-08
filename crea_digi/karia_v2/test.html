@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Images superposées</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #fff;
+    }
+
+    .container {
+      position: relative;
+      width: 600px; /* largeur de la grande image */
+    }
+
+    .big-img {
+      width: 70%;
+      height: 30%;
+      border-radius: 26px;
+      display: block;/* largeur de la petite image */
+    }
+
+    .small-img {
+      position: absolute;
+      bottom: -50px;   /* chevauchement vertical */
+      left: -30%;     /* chevauchement horizontal */
+      width: 50%;    /* largeur de la petite image */
+       height: 53%;
+      border-radius: 22px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Grande image -->
+    <img src="grande.jpg" alt="Grande image" class="big-img">
+
+    <!-- Petite image chevauchante -->
+    <img src="petite.jpg" alt="Petite image" class="small-img">
+  </div>
+</body>
+</html>
