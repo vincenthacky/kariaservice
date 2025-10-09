@@ -1086,10 +1086,58 @@
                 });
             }
 
+            // ===== PROPRIETES SECTION ANIMATIONS =====
+            function initProprietesAnimations() {
+                const proprietesSection = document.querySelector('.proprietes-section');
+                if (!proprietesSection) return;
+
+                // Configuration de l'Intersection Observer pour la section proprietes
+                const proprietesObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Ajouter la classe d'animation principale
+                            entry.target.classList.add('proprietes-animate');
+                            
+                            // Effet spécial pour les cartes de propriétés
+                            setTimeout(() => {
+                                addPropertyCardsEffect();
+                            }, 1500);
+
+                            // Observer seulement une fois
+                            proprietesObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.3,
+                    rootMargin: '0px 0px -80px 0px'
+                });
+
+                proprietesObserver.observe(proprietesSection);
+            }
+
+            // Effet spécial pour les cartes de propriétés avec effet 3D
+            function addPropertyCardsEffect() {
+                const propertyCards = document.querySelectorAll('.proprietes-animate .property-card');
+                
+                propertyCards.forEach((card, index) => {
+                    // Ajouter un effet de rotation et lueur après l'animation
+                    setTimeout(() => {
+                        // Effet de spotlight temporaire
+                        card.style.boxShadow = '0 0 30px rgba(56, 161, 105, 0.4), inset 0 1px 0 rgba(255,255,255,0.3)';
+                        card.style.transform = 'perspective(1000px) rotateY(2deg) rotateX(1deg)';
+                        
+                        setTimeout(() => {
+                            card.style.boxShadow = '';
+                            card.style.transform = '';
+                        }, 1200);
+                    }, index * 300);
+                });
+            }
+
             // ===== ENHANCED INTERSECTION OBSERVER FOR MULTIPLE SECTIONS =====
             function initScrollAnimations() {
                 // Observer pour toutes les sections qui ont besoin d'animations
-                const animatedSections = document.querySelectorAll('.services-section, .about-one, .immobilier-banner, .intro-section, .about, .projets-section');
+                const animatedSections = document.querySelectorAll('.services-section, .about-one, .immobilier-banner, .intro-section, .about, .projets-section, .proprietes-section');
                 
                 const sectionObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
@@ -1126,6 +1174,11 @@
                                 section.classList.add('projets-animate');
                             }
                             
+                            // Animation spécifique pour la section proprietes-section
+                            if (section.classList.contains('proprietes-section')) {
+                                section.classList.add('proprietes-animate');
+                            }
+                            
                             // Animation générale pour les autres sections
                             section.classList.add('section-visible');
                             
@@ -1152,6 +1205,7 @@
             initIntroAnimations();
             initAboutAnimations();
             initProjetsAnimations();
+            initProprietesAnimations();
             initFeatureInteractions();
             initScrollAnimations();
             // Create mobile menu button
