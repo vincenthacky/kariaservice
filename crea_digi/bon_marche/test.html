@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Vrai Marché</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f7fa;
+        }
+
+        /* Top Header Bar */
+        .top-header {
+            background-color: #0d3b52;
+            padding: 15px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            background-color: white;
+            padding: 12px 30px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 900;
+            color: #0d3b52;
+            text-transform: uppercase;
+        }
+
+        /* Search Bar */
+        .search-container {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 50px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 50px 14px 20px;
+            border: none;
+            border-radius: 30px;
+            background-color: #1a4d66;
+            color: white;
+            font-size: 15px;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .search-button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: white;
+            color: #0d3b52;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Top Right Icons */
+        .top-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+
+        .phone-icon {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0d3b52;
+        }
+
+        .phone-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .phone-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .phone-number {
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .icon-button {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+
+        .icon-button:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #00d98e;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Navigation Bar */
+        .navigation {
+            background-color: #0d3b52;
+            padding: 0 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 20px 25px;
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .nav-link i {
+            font-size: 16px;
+        }
+
+        .hot-badge {
+            background-color: #ff4757;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-left: 5px;
+        }
+
+        .offers-button {
+            background: linear-gradient(135deg, #00d98e 0%, #00b377 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s;
+        }
+
+        .offers-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 500px;
+            background-color: #f5f7fa;
+        }
+
+        /* Left Side - Content */
+        .hero-content {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500"><rect fill="%23e8f5f0" width="800" height="500"/></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 80px 60px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .brand-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #00d98e;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .brand-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background-color: #00d98e;
+        }
+
+        .main-title {
+            font-size: 56px;
+            font-weight: 900;
+            color: #0d3b52;
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
+
+        .hero-description {
+            color: #6c757d;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            background-color: #0d3b52;
+            color: white;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #164d68;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: #0d3b52;
+            padding: 16px 40px;
+            border: 2px solid #0d3b52;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: #0d3b52;
+            color: white;
+        }
+
+        /* Right Side - Image */
+        .hero-image {
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 550px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Features Section */
+        .features-section {
+            background-color: white;
+            padding: 30px 80px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #e8f5f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-icon i {
+            font-size: 28px;
+            color: #00d98e;
+        }
+
+        .feature-content h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0d3b52;
+            margin-bottom: 5px;
+        }
+
+        .feature-content p {
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+            }
+
+            .features-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-header,
+            .navigation {
+                padding: 15px 30px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                padding: 60px 30px;
+            }
+
+            .main-title {
+                font-size: 36px;
+            }
+
+            .features-section {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Header -->
+    <header class="top-header">
+        <!-- Logo -->
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Le Vrai Marché" class="logo-icon">
+            <span class="logo-text">LE VRAI<br>MARCHE</span>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Qu'est-ce que tu cherches?">
+            <button class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+
+        <!-- Top Right -->
+        <div class="top-right">
+            <!-- Phone Contact -->
+            <div class="contact-info">
+                <div class="phone-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div class="phone-details">
+                    <span class="phone-label">Infoline</span>
+                    <a href="tel:+2250710896330" class="phone-number">+2250710896330</a>
+                </div>
+            </div>
+
+            <!-- Cart Icon -->
+            <div class="icon-button">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-badge">0</span>
+            </div>
+
+            <!-- Wishlist Icon -->
+            <div class="icon-button">
+                <i class="fas fa-heart"></i>
+            </div>
+
+            <!-- User Icon -->
+            <div class="icon-button">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navigation">
+        <div class="nav-links">
+            <a href="#" class="nav-link">
+                <i class="fas fa-shopping-bag"></i>
+                Produits
+            </a>
+            <a href="#" class="nav-link">
+                Vente flash
+                <span class="hot-badge">HOT</span>
+            </a>
+            <a href="#" class="nav-link">
+                <i class="fas fa-tag"></i>
+                Offre Spécial
+                <i class="fas fa-chevron-down"></i>
+            </a>
+            <a href="#" class="nav-link">
+                Marques
+                <i class="fas fa-chevron-down"></i>
+            </a>
+            <a href="#" class="nav-link">
+                Blogs
+            </a>
+            <a href="#" class="nav-link">
+                Contact
+            </a>
+        </div>
+
+        <button class="offers-button">
+            <i class="fas fa-gift"></i>
+            Offres Journalières
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- Left Side - Content -->
+        <div class="hero-content">
+            <h2 class="brand-title">Levraimarché</h2>
+            <h1 class="main-title">Plus frais que jamais</h1>
+            <p class="hero-description">
+                Un supermarché est un magasin en libre-service proposant une grande variété d'aliments, de boissons et de produits ménagers, organisés en rayons.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn-primary">25 % de réduction</button>
+                <button class="btn-secondary">Decouvrer plus de produits</button>
+            </div>
+        </div>
+
+        <!-- Right Side - Image -->
+        <div class="hero-image">
+            <img src="img/hero-woman.png" alt="Fresh Products">
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <!-- Feature 1 -->
+        <div class="feature-item">
+            <div class="feature-icon">
+                <i class="fas fa-truck"></i>
+            </div>
+            <div class="feature-content">
+                <h4>Livraison rapide</h4>
+                <p>Sur toutes les commandes</p>
+            </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-item">
+            <div class="feature-icon">
+                <i class="fas fa-undo"></i>
+            </div>
+            <div class="feature-content">
+                <h4>Retour gratuit</h4>
+                <p>Les retours sont gratuits</p>
+            </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-item">
+            <div class="feature-icon">
+                <i class="fas fa-credit-card"></i>
+            </div>
+            <div class="feature-content">
+                <h4>Paiement sécurisé</h4>
+                <p>Vos paiements 100% sécurisés</p>
+            </div>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-item">
+            <div class="feature-icon">
+                <i class="fas fa-headset"></i>
+            </div>
+            <div class="feature-content">
+                <h4>24/7 Support</h4>
+                <p>disponible h24</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

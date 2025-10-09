@@ -3,283 +3,340 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Vrai Marché</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Levraimarche - Page Complète</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Base styles and variables */
+        :root {
+            --primary-color: #38A169; /* Green for main elements */
+            --secondary-color: #17243B; /* Dark blue for top header background */
+            --dark-nav-color: #2F4050; /* Darker blue for the navigation bar and search */
+            --text-color: #1A1A1A; /* Black for main text */
+            --light-text-color: #666; /* Grey for body/small text */
+            --hot-red: #E53E3E; /* Red for 'HOT' badge */
+            --bg-light: #F7FAFC; /* Light background for the hero section */
+            --white: #FFFFFF;
+            --max-width: 1200px;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f5f7fa;
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            color: var(--text-color);
         }
 
-        /* Top Header Bar */
-        .top-header {
-            background-color: #0d3b52;
-            padding: 15px 80px;
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- 1. Header Styling --- */
+        .header {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        /* 1.1 Top Bar (Logo, Search, Info, Icons) */
+        .header-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 20px 0;
         }
 
+        /* Logo Area */
         .logo-container {
-            background-color: white;
-            padding: 12px 30px;
-            border-radius: 12px;
+            background-color: var(--white);
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            width: 200px; 
+            height: 60px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-content {
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
         .logo-icon {
-            width: 45px;
-            height: 45px;
+            font-size: 30px;
+            color: var(--primary-color);
         }
-
         .logo-text {
-            font-size: 24px;
-            font-weight: 900;
-            color: #0d3b52;
-            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-color);
+            line-height: 1;
+        }
+        .logo-text small {
+            display: block;
+            font-size: 10px;
+            font-weight: 500;
+            color: var(--light-text-color);
+            margin-top: -5px;
+            letter-spacing: 1px;
         }
 
         /* Search Bar */
-        .search-container {
-            flex: 1;
+        .search-bar {
+            flex-grow: 1;
             max-width: 500px;
-            margin: 0 50px;
-            position: relative;
+            display: flex;
+            align-items: center;
+            background-color: var(--dark-nav-color);
+            border-radius: 8px;
+            margin: 0 40px;
         }
 
         .search-input {
             width: 100%;
-            padding: 14px 50px 14px 20px;
+            padding: 15px 20px;
+            background: transparent;
             border: none;
-            border-radius: 30px;
-            background-color: #1a4d66;
-            color: white;
-            font-size: 15px;
+            color: var(--white);
+            font-size: 16px;
+            outline: none;
         }
 
         .search-input::placeholder {
-            color: rgba(255,255,255,0.6);
+            color: #B0BEC5;
         }
 
-        .search-button {
-            position: absolute;
-            right: 5px;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: white;
-            color: #0d3b52;
+        .search-btn {
+            background-color: transparent;
             border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+            color: var(--white);
+            padding: 0 15px;
             cursor: pointer;
+            font-size: 18px;
+        }
+        
+        /* Infobox and User Icons */
+        .header-info-icons {
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 20px;
         }
 
-        /* Top Right Icons */
-        .top-right {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .contact-info {
+        .infobox {
             display: flex;
             align-items: center;
             gap: 10px;
-            color: white;
+            white-space: nowrap;
         }
 
-        .phone-icon {
+        .infobox-icon {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .infobox-text p {
+            font-size: 12px;
+            color: #B0BEC5;
+            line-height: 1;
+        }
+
+        .infobox-text a {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--white);
+            line-height: 1.2;
+            text-decoration: underline; /* To match the screenshot detail */
+        }
+
+        .user-icons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .icon-btn {
             width: 40px;
             height: 40px;
-            background-color: white;
             border-radius: 50%;
             display: flex;
-            align-items: center;
             justify-content: center;
-            color: #0d3b52;
-        }
-
-        .phone-details {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .phone-label {
-            font-size: 12px;
-            color: rgba(255,255,255,0.7);
-        }
-
-        .phone-number {
-            font-size: 16px;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-        }
-
-        .icon-button {
-            width: 45px;
-            height: 45px;
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            color: white;
-            cursor: pointer;
+            font-size: 18px;
+            color: var(--white);
+            transition: background-color 0.2s;
             position: relative;
-            transition: background-color 0.3s;
         }
 
-        .icon-button:hover {
-            background-color: rgba(255,255,255,0.2);
-        }
-
-        .cart-badge {
+        .cart-count {
             position: absolute;
             top: -5px;
             right: -5px;
-            background-color: #00d98e;
-            color: white;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            font-size: 11px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Navigation Bar */
-        .navigation {
-            background-color: #0d3b52;
-            padding: 0 80px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 0;
-        }
-
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            padding: 20px 25px;
-            font-size: 15px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-size: 10px;
             font-weight: 600;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        /* 1.2 Main Navigation Bar (Categories) */
+        .header-nav {
+            background-color: var(--dark-nav-color);
+            padding: 15px 0;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links-categories {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-category {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--white);
+            padding: 5px 0;
+            transition: color 0.3s;
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: background-color 0.3s;
+        }
+
+        .nav-category:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-category a {
+             display: flex;
+             align-items: center;
+             gap: 8px;
+        }
+
+        .nav-category.hot-link {
             position: relative;
-        }
-
-        .nav-link:hover {
-            background-color: rgba(255,255,255,0.1);
-        }
-
-        .nav-link i {
-            font-size: 16px;
         }
 
         .hot-badge {
-            background-color: #ff4757;
-            color: white;
-            padding: 3px 8px;
+            background-color: var(--hot-red);
+            color: var(--white);
+            font-size: 10px;
+            font-weight: 600;
+            padding: 2px 6px;
             border-radius: 4px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-left: 5px;
+            position: absolute;
+            top: -5px; 
+            right: -25px; 
         }
 
-        .offers-button {
-            background: linear-gradient(135deg, #00d98e 0%, #00b377 100%);
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 15px;
-            cursor: pointer;
+        .daily-deals-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 8px;
-            transition: transform 0.3s;
+            gap: 10px;
+            transition: background-color 0.3s;
+            white-space: nowrap;
         }
 
-        .offers-button:hover {
-            transform: translateY(-2px);
+        .daily-deals-btn:hover {
+            background-color: #2F855A;
         }
 
-        /* Hero Section */
+        /* --- 2. Hero Section Styling --- */
         .hero-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 500px;
-            background-color: #f5f7fa;
+            background-color: var(--bg-light);
+            padding: 60px 0 30px;
+            /* Simulating the light geometric background pattern */
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23F7FAFC"/><path fill="%23EBF4F5" d="M0 0h100v100H0z"/><path fill="none" stroke="%23E0EEEE" stroke-width="0.5" d="M10 0v100M20 0v100M30 0v100M40 0v100M50 0v100M60 0v100M70 0v100M80 0v100M90 0v100M0 10h100M0 20h100M0 30h100M0 40h100M0 50h100M0 60h100M0 70h100M0 80h100M0 90h100"/></svg>');
+            background-size: 15%; 
         }
 
-        /* Left Side - Content */
         .hero-content {
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500"><rect fill="%23e8f5f0" width="800" height="500"/></svg>');
-            background-size: cover;
-            background-position: center;
-            padding: 80px 80px 60px 80px;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-top: 30px;
+        }
+
+        .hero-image-container {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
             position: relative;
         }
 
-        .brand-title {
-            font-size: 32px;
-            font-weight: 700;
-            color: #00d98e;
-            margin-bottom: 15px;
+        .hero-image-placeholder {
+            width: 450px; 
+            height: 450px;
             position: relative;
+            z-index: 1;
+        }
+        
+        .hero-image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .highlight-text {
+            color: var(--primary-color);
+            font-size: 20px;
+            font-weight: 600;
+            padding-bottom: 5px;
+            border-bottom: 4px solid var(--primary-color);
             display: inline-block;
+            margin-bottom: 10px;
         }
 
-        .brand-title::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 60%;
-            height: 3px;
-            background-color: #00d98e;
-        }
-
-        .main-title {
-            font-size: 56px;
-            font-weight: 900;
-            color: #0d3b52;
-            line-height: 1.2;
-            margin-bottom: 25px;
+        .hero-title {
+            font-size: 60px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--text-color);
         }
 
         .hero-description {
-            color: #6c757d;
             font-size: 16px;
-            line-height: 1.8;
+            color: var(--light-text-color);
             margin-bottom: 40px;
             max-width: 500px;
         }
@@ -287,286 +344,300 @@
         .hero-buttons {
             display: flex;
             gap: 20px;
+            align-items: center;
         }
 
-        .btn-primary {
-            background-color: #0d3b52;
-            color: white;
-            padding: 16px 40px;
+        .button-primary {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s;
             border: none;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 16px;
             cursor: pointer;
-            transition: all 0.3s;
         }
 
-        .btn-primary:hover {
-            background-color: #164d68;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background-color: white;
-            color: #0d3b52;
-            padding: 16px 40px;
-            border: 2px solid #0d3b52;
-            border-radius: 30px;
-            font-weight: 700;
+        .button-secondary {
+            background-color: var(--white);
+            color: var(--text-color);
+            padding: 15px 30px;
+            border-radius: 8px;
             font-size: 16px;
+            font-weight: 500;
+            border: 1px solid #E2E8F0;
+            transition: background-color 0.3s;
             cursor: pointer;
-            transition: all 0.3s;
         }
 
-        .btn-secondary:hover {
-            background-color: #0d3b52;
-            color: white;
+        /* --- 3. Services/Features Styling --- */
+        .services-section {
+            padding: 30px 0 60px;
         }
 
-        /* Right Side - Image */
-        .hero-image {
-            background-color: white;
+        .services-list {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-        }
-
-        .hero-image img {
-            width: 100%;
-            max-width: 550px;
-            height: auto;
-            object-fit: contain;
-        }
-
-        /* Features Section */
-        .features-section {
-            background-color: white;
-            padding: 30px 80px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            border-top: 1px solid #e8e8e8;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
+            justify-content: space-between;
+            align-items: flex-start;
             gap: 20px;
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            margin-top: -60px; /* Adjusted negative margin to pull up more */
+            position: relative;
+            z-index: 5;
         }
 
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background-color: #e8f5f0;
+        .service-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 15px;
+        }
+
+        .service-icon-container {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
-            align-items: center;
             justify-content: center;
-            flex-shrink: 0;
+            align-items: center;
+            margin-bottom: 10px;
         }
 
-        .feature-icon i {
-            font-size: 28px;
-            color: #00d98e;
+        /* Specific Icon Background Colors */
+        .icon-free { background-color: #9AE6B4; color: var(--primary-color); }
+        .icon-return { background-color: #B2F5EA; color: #319795; }
+        .icon-payment { background-color: #FEEBC8; color: #D69E2E; }
+        .icon-support { background-color: #FBD38D; color: #C05621; }
+
+        .service-icon {
+            font-size: 24px;
         }
 
-        .feature-content h4 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #0d3b52;
+        .service-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-color);
             margin-bottom: 5px;
+            white-space: nowrap;
         }
 
-        .feature-content p {
-            font-size: 14px;
-            color: #6c757d;
+        .service-description {
+            font-size: 12px;
+            color: var(--light-text-color);
+            white-space: nowrap;
         }
 
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .hero-section {
-                grid-template-columns: 1fr;
+        /* --- Responsive Design (Essential for modern web) --- */
+        @media (max-width: 1024px) {
+            .header-info-icons {
+                gap: 10px;
             }
-
-            .features-section {
-                grid-template-columns: repeat(2, 1fr);
+            .infobox {
+                display: none; /* Hide infobox on smaller screens to save space */
+            }
+            .search-bar {
+                max-width: 400px;
+            }
+            .nav-links-categories {
+                gap: 20px;
             }
         }
-
+        
         @media (max-width: 768px) {
-            .top-header,
-            .navigation {
-                padding: 15px 30px;
+            .header-top {
+                flex-wrap: wrap;
+                justify-content: center;
             }
-
-            .nav-links {
-                display: none;
+            .logo-container {
+                margin-bottom: 15px;
             }
-
+            .search-bar {
+                order: 3; /* Move search bar below logo and info */
+                margin: 10px 0;
+                max-width: 100%;
+            }
             .hero-content {
-                padding: 60px 30px;
+                flex-direction: column;
+                text-align: center;
             }
-
-            .main-title {
-                font-size: 36px;
+            .hero-image-container {
+                justify-content: center;
             }
-
-            .features-section {
-                grid-template-columns: 1fr;
-                padding: 30px;
+            .hero-image-placeholder {
+                width: 300px;
+                height: 300px;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .nav-content {
+                flex-direction: column;
+            }
+            .nav-links-categories {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+                margin-bottom: 15px;
+            }
+            .services-list {
+                flex-wrap: wrap;
+            }
+            .service-item {
+                flex: 0 0 48%; /* Two items per row */
+                margin-bottom: 15px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Top Header -->
-    <header class="top-header">
-        <!-- Logo -->
-        <div class="logo-container">
-            <img src="img/logo.png" alt="Le Vrai Marché" class="logo-icon">
-            <span class="logo-text">LE VRAI<br>MARCHE</span>
-        </div>
 
-        <!-- Search Bar -->
-        <div class="search-container">
-            <input type="text" class="search-input" placeholder="Qu'est-ce que tu cherches?">
-            <button class="search-button">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <a href="#" class="logo-container">
+                    <div class="logo-content">
+                        <i class="fas fa-shopping-basket logo-icon"></i>
+                        <div class="logo-text">
+                            LEVRAI
+                            <small>MARCHÉ</small>
+                        </div>
+                    </div>
+                </a>
 
-        <!-- Top Right -->
-        <div class="top-right">
-            <!-- Phone Contact -->
-            <div class="contact-info">
-                <div class="phone-icon">
-                    <i class="fas fa-phone"></i>
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Qu'est-ce que tu cherches?">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
                 </div>
-                <div class="phone-details">
-                    <span class="phone-label">Infoline</span>
-                    <a href="tel:+2250710896330" class="phone-number">+2250710896330</a>
+
+                <div class="header-info-icons">
+                    <div class="infobox">
+                        <i class="fas fa-phone-alt infobox-icon"></i>
+                        <div class="infobox-text">
+                            <p>Infoline</p>
+                            <a href="tel:+2250710896330">+2250710896330</a>
+                        </div>
+                    </div>
+
+                    <div class="user-icons">
+                        <a href="#" class="icon-btn" title="Panier">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                        <a href="#" class="icon-btn" title="Compte">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <a href="#" class="icon-btn" title="Favoris">
+                            <i class="fas fa-heart"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Cart Icon -->
-            <div class="icon-button">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-badge">0</span>
-            </div>
+            <div class="header-nav">
+                <div class="container nav-content">
+                    <ul class="nav-links-categories">
+                        <li>
+                            <a href="#" class="nav-category">
+                                <i class="fas fa-box"></i>
+                                Produits
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-category hot-link">
+                                Vente flash
+                                <span class="hot-badge">HOT</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-category">
+                                Offre Spécial
+                                <i class="fas fa-caret-down" style="font-size: 12px;"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-category">
+                                Marques
+                                <i class="fas fa-caret-down" style="font-size: 12px;"></i>
+                            </a>
+                        </li>
+                        <li><a href="#" class="nav-category">Blogs</a></li>
+                        <li><a href="#" class="nav-category">Contact</a></li>
+                    </ul>
 
-            <!-- Wishlist Icon -->
-            <div class="icon-button">
-                <i class="fas fa-heart"></i>
-            </div>
-
-            <!-- User Icon -->
-            <div class="icon-button">
-                <i class="fas fa-user"></i>
+                    <a href="#" class="daily-deals-btn">
+                        <i class="fas fa-gift"></i>
+                        Offres Journalières
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Navigation Bar -->
-    <nav class="navigation">
-        <div class="nav-links">
-            <a href="#" class="nav-link">
-                <i class="fas fa-shopping-bag"></i>
-                Produits
-            </a>
-            <a href="#" class="nav-link">
-                Vente flash
-                <span class="hot-badge">HOT</span>
-            </a>
-            <a href="#" class="nav-link">
-                <i class="fas fa-tag"></i>
-                Offre Spécial
-                <i class="fas fa-chevron-down"></i>
-            </a>
-            <a href="#" class="nav-link">
-                Marques
-                <i class="fas fa-chevron-down"></i>
-            </a>
-            <a href="#" class="nav-link">
-                Blogs
-            </a>
-            <a href="#" class="nav-link">
-                Contact
-            </a>
-        </div>
-
-        <button class="offers-button">
-            <i class="fas fa-gift"></i>
-            Offres Journalières
-        </button>
-    </nav>
-
-    <!-- Hero Section -->
     <section class="hero-section">
-        <!-- Left Side - Content -->
-        <div class="hero-content">
-            <h2 class="brand-title">Levraimarché</h2>
-            <h1 class="main-title">Plus frais que jamais</h1>
-            <p class="hero-description">
-                Un supermarché est un magasin en libre-service proposant une grande variété d'aliments, de boissons et de produits ménagers, organisés en rayons.
-            </p>
-            <div class="hero-buttons">
-                <button class="btn-primary">25 % de réduction</button>
-                <button class="btn-secondary">Decouvrer plus de produits</button>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <p class="highlight-text">Levraimarche</p>
+                <h1 class="hero-title">Plus frais que jamais</h1>
+                <p class="hero-description">
+                    Un supermarché est un magasin en libre-service proposant une grande variété d'aliments, de boissons et de produits ménagers, organisés en rayons.
+                </p>
+                <div class="hero-buttons">
+                    <button class="button-primary">25% de réduction</button>
+                    <button class="button-secondary">Découvrir plus de produits</button>
+                </div>
             </div>
-        </div>
 
-        <!-- Right Side - Image -->
-        <div class="hero-image">
-            <img src="img/hero-woman.png" alt="Fresh Products">
+            <div class="hero-image-container">
+                <div class="hero-image-placeholder">
+                    <img src="images/supermarket_wordPress_theme.png" alt="Supermarket WordPress theme">
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features-section">
-        <!-- Feature 1 -->
-        <div class="feature-item">
-            <div class="feature-icon">
-                <i class="fas fa-truck"></i>
-            </div>
-            <div class="feature-content">
-                <h4>Livraison rapide</h4>
-                <p>Sur toutes les commandes</p>
-            </div>
-        </div>
+    <section class="services-section">
+        <div class="container">
+            <ul class="services-list">
+                <li class="service-item">
+                    <div class="service-icon-container icon-free">
+                        <i class="fas fa-shipping-fast service-icon"></i>
+                    </div>
+                    <h3 class="service-title">Livraison rapide</h3>
+                    <p class="service-description">Sur toutes les commandes</p>
+                </li>
 
-        <!-- Feature 2 -->
-        <div class="feature-item">
-            <div class="feature-icon">
-                <i class="fas fa-undo"></i>
-            </div>
-            <div class="feature-content">
-                <h4>Retour gratuit</h4>
-                <p>Les retours sont gratuits</p>
-            </div>
-        </div>
+                <li class="service-item">
+                    <div class="service-icon-container icon-return">
+                        <i class="fas fa-undo service-icon"></i>
+                    </div>
+                    <h3 class="service-title">Retour gratuit</h3>
+                    <p class="service-description">Les retours sont gratuits</p>
+                </li>
 
-        <!-- Feature 3 -->
-        <div class="feature-item">
-            <div class="feature-icon">
-                <i class="fas fa-credit-card"></i>
-            </div>
-            <div class="feature-content">
-                <h4>Paiement sécurisé</h4>
-                <p>Vos paiements 100% sécurisés</p>
-            </div>
-        </div>
+                <li class="service-item">
+                    <div class="service-icon-container icon-payment">
+                        <i class="fas fa-lock service-icon"></i>
+                    </div>
+                    <h3 class="service-title">Paiement sécurisé</h3>
+                    <p class="service-description">Vos paiements 100% sécurisés</p>
+                </li>
 
-        <!-- Feature 4 -->
-        <div class="feature-item">
-            <div class="feature-icon">
-                <i class="fas fa-headset"></i>
-            </div>
-            <div class="feature-content">
-                <h4>24/7 Support</h4>
-                <p>disponible h24</p>
-            </div>
+                <li class="service-item">
+                    <div class="service-icon-container icon-support">
+                        <i class="fas fa-headset service-icon"></i>
+                    </div>
+                    <h3 class="service-title">24/7 Support</h3>
+                    <p class="service-description">Disponible h24</p>
+                </li>
+            </ul>
         </div>
     </section>
+
 </body>
 </html>
