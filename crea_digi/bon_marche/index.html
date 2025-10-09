@@ -18,8 +18,49 @@
             --bg-light: #F7FAFC; /* Light background for the hero section */
             --white: #FFFFFF;
             --max-width: 1200px;
+            --primary-color: #38A169; /* Green standard */
+            --highlight-green: #6EE7B7; /* Vert clair exact pour le texte */
+            --highlight-bg: #D1FAE5; 
+             --highlight-green: #6EE7B7;     /* Vert clair exact pour le texte */
+    --highlight-bg-line: #D1FAE5;   /* Fond de la bande épaisse */
+    /* ... */
         }
+      
+        
+.highlight-text-container {
+    /* Conteneur pour positionner la ligne par rapport au texte */
+    display: inline-block;
+    position: relative;
+    margin-bottom: 20px; /* Espace sous le titre */
+}
 
+.highlight-text {
+    /* Style du texte lui-même */
+    color: var(--highlight-green);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    z-index: 2; /* S'assurer que le texte est au-dessus de la ligne */
+    position: relative;
+    padding-right: 10px; /* Petit espace pour que le texte ne touche pas la ligne */
+    background: none; /* Important: retirer le background précédent */
+}
+
+.highlight-text-container::after {
+    content: "";
+    /* Propriétés de la bande épaisse qui dépasse */
+    position: absolute;
+    bottom: 5px; /* Positionnement vertical sous le texte */
+    left: -10px; /* Fait dépasser la ligne à gauche */
+    
+    /* Définition de la largeur et hauteur de la ligne */
+    width: 120%; /* Fait dépasser la ligne bien à droite */
+    height: 18px; /* Hauteur (épaisseur) de la ligne */
+    
+    background-color: var(--highlight-bg-line);
+    border-radius: 4px;
+    z-index: 1; /* Place la ligne derrière le texte */
+}
         * {
             margin: 0;
             padding: 0;
@@ -77,26 +118,15 @@
         .logo-content {
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
         }
 
-        .logo-icon {
-            font-size: 30px;
-            color: var(--primary-color);
-        }
-        .logo-text {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--text-color);
-            line-height: 1;
-        }
-        .logo-text small {
-            display: block;
-            font-size: 10px;
-            font-weight: 500;
-            color: var(--light-text-color);
-            margin-top: -5px;
-            letter-spacing: 1px;
+        .logo-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
 
         /* Search Bar */
@@ -106,7 +136,7 @@
             display: flex;
             align-items: center;
             background-color: var(--dark-nav-color);
-            border-radius: 8px;
+            border-radius: 50px;
             margin: 0 40px;
         }
 
@@ -205,7 +235,7 @@
         .header-nav {
             background-color: var(--dark-nav-color);
             padding: 15px 0;
-            border-radius: 0 0 10px 10px;
+            border-radius:50px;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         }
 
@@ -261,7 +291,7 @@
             background-color: var(--primary-color);
             color: var(--white);
             padding: 12px 25px;
-            border-radius: 6px;
+            border-radius: 50px;
             font-weight: 600;
             display: flex;
             align-items: center;
@@ -316,7 +346,7 @@
             border-radius: 10px;
         }
 
-        .highlight-text {
+        /* .highlight-text {
             color: var(--primary-color);
             font-size: 20px;
             font-weight: 600;
@@ -324,7 +354,7 @@
             border-bottom: 4px solid var(--primary-color);
             display: inline-block;
             margin-bottom: 10px;
-        }
+        } */
 
         .hero-title {
             font-size: 60px;
@@ -351,7 +381,7 @@
             background-color: var(--secondary-color);
             color: var(--white);
             padding: 15px 30px;
-            border-radius: 8px;
+            border-radius: 50px;
             font-size: 16px;
             font-weight: 500;
             transition: background-color 0.3s;
@@ -363,7 +393,7 @@
             background-color: var(--white);
             color: var(--text-color);
             padding: 15px 30px;
-            border-radius: 8px;
+            border-radius: 50px;
             font-size: 16px;
             font-weight: 500;
             border: 1px solid #E2E8F0;
@@ -383,7 +413,7 @@
             gap: 20px;
             padding: 20px;
             background-color: var(--white);
-            border-radius: 10px;
+            border-radius: 50px;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             margin-top: -60px; /* Adjusted negative margin to pull up more */
             position: relative;
@@ -393,30 +423,32 @@
         .service-item {
             flex: 1;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
-            text-align: center;
+            text-align: left;
             padding: 0 15px;
+            gap: 15px;
         }
 
         .service-icon-container {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 10px;
+            flex-shrink: 0;
         }
 
         /* Specific Icon Background Colors */
-        .icon-free { background-color: #9AE6B4; color: var(--primary-color); }
-        .icon-return { background-color: #B2F5EA; color: #319795; }
-        .icon-payment { background-color: #FEEBC8; color: #D69E2E; }
-        .icon-support { background-color: #FBD38D; color: #C05621; }
+        .icon-free { background-color: #E0FAED; }
+        .icon-return { background-color: #E0FAED; }
+        .icon-payment { background-color: #E0FAED; }
+        .icon-support { background-color: #E0FAED; }
 
         .service-icon {
-            font-size: 24px;
+            width: 32px;
+            height: 32px;
         }
 
         .service-title {
@@ -502,11 +534,7 @@
             <div class="header-top">
                 <a href="#" class="logo-container">
                     <div class="logo-content">
-                        <i class="fas fa-shopping-basket logo-icon"></i>
-                        <div class="logo-text">
-                            LEVRAI
-                            <small>MARCHÉ</small>
-                        </div>
+                        <img src="images/logo-vrai-marche.png" alt="Le Vrai Marché" class="logo-image">
                     </div>
                 </a>
 
@@ -582,7 +610,9 @@
     <section class="hero-section">
         <div class="container hero-content">
             <div class="hero-text">
-                <p class="highlight-text">Levraimarche</p>
+               <div class="highlight-text-container">
+                    <p class="highlight-text">Levraimarche</p>
+                </div>
                 <h1 class="hero-title">Plus frais que jamais</h1>
                 <p class="hero-description">
                     Un supermarché est un magasin en libre-service proposant une grande variété d'aliments, de boissons et de produits ménagers, organisés en rayons.
@@ -606,34 +636,42 @@
             <ul class="services-list">
                 <li class="service-item">
                     <div class="service-icon-container icon-free">
-                        <i class="fas fa-shipping-fast service-icon"></i>
+                        <img src="images/icon_car.png" alt="Car icon" class="service-icon">
                     </div>
-                    <h3 class="service-title">Livraison rapide</h3>
-                    <p class="service-description">Sur toutes les commandes</p>
+                    <div class="service-text">
+                        <h3 class="service-title">Livraison rapide</h3>
+                        <p class="service-description">Sur toutes les commandes</p>
+                    </div>
                 </li>
 
                 <li class="service-item">
                     <div class="service-icon-container icon-return">
-                        <i class="fas fa-undo service-icon"></i>
+                        <img src="images/icon_money.png" alt="Money icon" class="service-icon">
                     </div>
-                    <h3 class="service-title">Retour gratuit</h3>
-                    <p class="service-description">Les retours sont gratuits</p>
+                    <div class="service-text">
+                        <h3 class="service-title">Retour gratuit</h3>
+                        <p class="service-description">Les retours sont gratuits</p>
+                    </div>
                 </li>
 
                 <li class="service-item">
                     <div class="service-icon-container icon-payment">
-                        <i class="fas fa-lock service-icon"></i>
+                        <img src="images/icon_phone.png" alt="Phone icon" class="service-icon">
                     </div>
-                    <h3 class="service-title">Paiement sécurisé</h3>
-                    <p class="service-description">Vos paiements 100% sécurisés</p>
+                    <div class="service-text">
+                        <h3 class="service-title">Paiement sécurisé</h3>
+                        <p class="service-description">Vos paiements 100% sécurisés</p>
+                    </div>
                 </li>
 
                 <li class="service-item">
                     <div class="service-icon-container icon-support">
-                        <i class="fas fa-headset service-icon"></i>
+                        <img src="images/icon_money.png" alt="Money icon" class="service-icon">
                     </div>
-                    <h3 class="service-title">24/7 Support</h3>
-                    <p class="service-description">Disponible h24</p>
+                    <div class="service-text">
+                        <h3 class="service-title">24/7 Support</h3>
+                        <p class="service-description">Disponible h24</p>
+                    </div>
                 </li>
             </ul>
         </div>
