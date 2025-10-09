@@ -58,20 +58,25 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-carousel">
-            <div class="hero-slide hero-slide-1"></div>
-            <div class="hero-slide hero-slide-2"></div>
-            <div class="hero-slide hero-slide-3"></div>
+    <section class="hero" id="hero">
+        <!-- Background Carousel -->
+        <div class="carousel-container">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-slide active" style="background-image: url('images/1hero.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('images/4img.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('images/6img.jpg')"></div>
+            </div>
+            
+            <!-- Navigation Arrows -->
+            <button class="carousel-btn carousel-btn--prev" id="prevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn carousel-btn--next" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
         
-        <button class="hero-arrow prev" onclick="changeSlide(-1)">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="hero-arrow next" onclick="changeSlide(1)">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-        
+        <!-- Hero Content -->
         <div class="hero-content">
             <h1>Bâtir, transporter, alimenter l'avenir</h1>
             <p>Kariaservice vous accompagne avec des solutions personnalisées et haut de gamme<br>dans l'immobilier, la logistique, et les secteurs miniers et pétroliers</p>
@@ -81,6 +86,7 @@
             </div>
         </div>
         
+        <!-- Search Container -->
         <div class="search-container">
             <input type="text" class="search-input" placeholder="Propriétés">
             <input type="text" class="search-input" placeholder="Type">
@@ -93,10 +99,11 @@
             <button class="search-button">Rechercher</button>
         </div>
 
-        <div class="hero-nav">
-            <span class="hero-dot active" onclick="currentSlide(1)"></span>
-            <span class="hero-dot" onclick="currentSlide(2)"></span>
-            <span class="hero-dot" onclick="currentSlide(3)"></span>
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+            <button class="indicator active" data-slide="0"></button>
+            <button class="indicator" data-slide="1"></button>
+            <button class="indicator" data-slide="2"></button>
         </div>
     </section>
 
@@ -554,6 +561,144 @@
     <script>
         // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', function() {
+            
+            // Hero animations initialization
+            function initHeroAnimations() {
+                const heroTitle = document.querySelector('.hero-content h1');
+                const heroSubtitle = document.querySelector('.hero-content p');
+                const heroButtons = document.querySelector('.hero-buttons');
+                const searchContainer = document.querySelector('.search-container');
+                const carouselIndicators = document.querySelector('.carousel-indicators');
+                const arrowLeft = document.querySelector('.carousel-btn--prev');
+                const arrowRight = document.querySelector('.carousel-btn--next');
+                const carouselContainer = document.querySelector('.carousel-container');
+
+                // Add animation classes with delay
+                setTimeout(() => {
+                    if (carouselContainer) carouselContainer.classList.add('animate-carousel');
+                }, 100);
+                
+                setTimeout(() => {
+                    if (heroTitle) heroTitle.classList.add('animate-title');
+                }, 300);
+                
+                setTimeout(() => {
+                    if (heroSubtitle) heroSubtitle.classList.add('animate-subtitle');
+                }, 600);
+                
+                setTimeout(() => {
+                    if (heroButtons) heroButtons.classList.add('animate-buttons');
+                }, 900);
+                
+                setTimeout(() => {
+                    if (searchContainer) searchContainer.classList.add('animate-search');
+                }, 1200);
+                
+                setTimeout(() => {
+                    if (carouselIndicators) carouselIndicators.classList.add('animate-nav');
+                }, 1500);
+                
+                setTimeout(() => {
+                    if (arrowLeft) arrowLeft.classList.add('animate-arrow-left');
+                    if (arrowRight) arrowRight.classList.add('animate-arrow-right');
+                }, 1800);
+            }
+
+            // Initialize hero animations
+            initHeroAnimations();
+
+            // ===== MODERN CAROUSEL IMPLEMENTATION =====
+            class HeroCarousel {
+                constructor() {
+                    this.currentSlide = 0;
+                    this.slides = document.querySelectorAll('.carousel-slide');
+                    this.indicators = document.querySelectorAll('.indicator');
+                    this.prevBtn = document.getElementById('prevBtn');
+                    this.nextBtn = document.getElementById('nextBtn');
+                    this.autoPlayInterval = null;
+                    this.autoPlayDelay = 5000;
+                    
+                    this.init();
+                }
+                
+                init() {
+                    if (this.slides.length === 0) return;
+                    
+                    // Set up event listeners
+                    this.prevBtn?.addEventListener('click', () => this.prevSlide());
+                    this.nextBtn?.addEventListener('click', () => this.nextSlide());
+                    
+                    // Indicator click events
+                    this.indicators.forEach((indicator, index) => {
+                        indicator.addEventListener('click', () => this.goToSlide(index));
+                    });
+                    
+                    // Initialize first slide
+                    this.updateSlides();
+                    
+                    // Start autoplay after initial animations
+                    setTimeout(() => this.startAutoPlay(), 2000);
+                }
+                
+                updateSlides() {
+                    // Remove all classes from slides
+                    this.slides.forEach((slide, index) => {
+                        slide.classList.remove('active', 'prev', 'next');
+                        
+                        if (index === this.currentSlide) {
+                            slide.classList.add('active');
+                        } else if (index < this.currentSlide) {
+                            slide.classList.add('prev');
+                        } else {
+                            slide.classList.add('next');
+                        }
+                    });
+                    
+                    // Update indicators
+                    this.indicators.forEach((indicator, index) => {
+                        indicator.classList.toggle('active', index === this.currentSlide);
+                    });
+                }
+                
+                goToSlide(index) {
+                    if (index === this.currentSlide) return;
+                    
+                    this.currentSlide = index;
+                    this.updateSlides();
+                    this.resetAutoPlay();
+                }
+                
+                nextSlide() {
+                    this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+                    this.updateSlides();
+                    this.resetAutoPlay();
+                }
+                
+                prevSlide() {
+                    this.currentSlide = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1;
+                    this.updateSlides();
+                    this.resetAutoPlay();
+                }
+                
+                startAutoPlay() {
+                    this.autoPlayInterval = setInterval(() => this.nextSlide(), this.autoPlayDelay);
+                }
+                
+                stopAutoPlay() {
+                    if (this.autoPlayInterval) {
+                        clearInterval(this.autoPlayInterval);
+                        this.autoPlayInterval = null;
+                    }
+                }
+                
+                resetAutoPlay() {
+                    this.stopAutoPlay();
+                    this.startAutoPlay();
+                }
+            }
+            
+            // Initialize carousel
+            const heroCarousel = new HeroCarousel();
             // Create mobile menu button
             const mobileMenuBtn = document.createElement('button');
             mobileMenuBtn.className = 'mobile-menu-btn';
@@ -619,48 +764,6 @@
                 }
             });
 
-            // Carousel JavaScript
-            let currentSlideIndex = 0;
-            const carousel = document.querySelector('.hero-carousel');
-            const slides = document.querySelectorAll('.hero-slide');
-            const dots = document.querySelectorAll('.hero-dot');
-
-            function showSlide(index) {
-                // Update carousel position - chaque slide fait 33.333% du carousel
-                const translateX = -index * 33.333;
-                carousel.style.transform = `translateX(${translateX}%)`;
-                
-                // Update dots
-                dots.forEach(dot => dot.classList.remove('active'));
-                if (dots[index]) {
-                    dots[index].classList.add('active');
-                }
-                
-                currentSlideIndex = index;
-            }
-
-            window.changeSlide = function(direction) {
-                currentSlideIndex += direction;
-                
-                if (currentSlideIndex >= slides.length) {
-                    currentSlideIndex = 0;
-                } else if (currentSlideIndex < 0) {
-                    currentSlideIndex = slides.length - 1;
-                }
-                
-                showSlide(currentSlideIndex);
-            }
-
-            window.currentSlide = function(index) {
-                showSlide(index - 1);
-            }
-
-            // Auto-play carousel
-            if (slides.length > 0) {
-                setInterval(() => {
-                    changeSlide(1);
-                }, 5000); // Change slide every 5 seconds
-            }
         });
     </script>
 
