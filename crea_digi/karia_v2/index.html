@@ -699,6 +699,461 @@
             
             // Initialize carousel
             const heroCarousel = new HeroCarousel();
+
+            // ===== SERVICES SECTION SCROLL ANIMATIONS =====
+            function initServicesAnimations() {
+                const servicesSection = document.querySelector('.services-section');
+                
+                if (!servicesSection) return;
+
+                // Configuration de l'Intersection Observer
+                const observerOptions = {
+                    threshold: 0.3, // Déclenche quand 30% de la section est visible
+                    rootMargin: '0px 0px -100px 0px' // Déclenche un peu avant que la section soit complètement visible
+                };
+
+                const servicesObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Ajouter la classe d'animation
+                            entry.target.classList.add('services-animate');
+                            
+                            // Animer les cartes de service avec un délai échelonné
+                            const serviceCards = entry.target.querySelectorAll('.service-card');
+                            serviceCards.forEach((card, index) => {
+                                setTimeout(() => {
+                                    card.style.opacity = '1';
+                                    card.style.transform = 'translateY(0)';
+                                }, 800 + (index * 200)); // Délai échelonné de 200ms entre chaque carte
+                            });
+
+                            // Observer seulement une fois
+                            servicesObserver.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                // Observer la section services
+                servicesObserver.observe(servicesSection);
+            }
+
+            // ===== ABOUT-ONE SECTION ANIMATIONS =====
+            function initAboutOneAnimations() {
+                const aboutSection = document.querySelector('.about-one');
+                
+                if (!aboutSection) return;
+
+                // Configuration de l'Intersection Observer pour about-one
+                const aboutObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Ajouter la classe d'animation
+                            entry.target.classList.add('about-animate');
+                            
+                            // Animer les compteurs de statistiques
+                            setTimeout(() => {
+                                animateCounters();
+                            }, 1000);
+
+                            // Observer seulement une fois
+                            aboutObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.3,
+                    rootMargin: '0px 0px -80px 0px'
+                });
+
+                aboutObserver.observe(aboutSection);
+            }
+
+            // Animation des compteurs de statistiques
+            function animateCounters() {
+                const counters = document.querySelectorAll('.stat-number-new');
+                
+                counters.forEach((counter, index) => {
+                    const target = parseInt(counter.textContent.replace(/\D/g, ''));
+                    const prefix = counter.textContent.includes('+') ? '+' : '';
+                    let current = 0;
+                    const increment = target / 30; // Animation sur 30 frames
+                    const duration = 1500; // 1.5 secondes
+                    const stepTime = duration / 30;
+
+                    setTimeout(() => {
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                counter.textContent = prefix + target;
+                                clearInterval(timer);
+                            } else {
+                                counter.textContent = prefix + Math.floor(current);
+                            }
+                        }, stepTime);
+                    }, index * 200); // Délai échelonné entre chaque compteur
+                });
+            }
+
+            // ===== IMMOBILIER-BANNER SECTION ANIMATIONS =====
+            function initBannerAnimations() {
+                const bannerSection = document.querySelector('.immobilier-banner');
+                
+                if (!bannerSection) return;
+
+                // Configuration de l'Intersection Observer pour immobilier-banner
+                const bannerObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Ajouter la classe d'animation
+                            entry.target.classList.add('banner-animate');
+                            
+                            // Effet de typing pour le titre (optionnel)
+                            setTimeout(() => {
+                                addTypingEffect();
+                            }, 800);
+
+                            // Effet de particules (léger)
+                            setTimeout(() => {
+                                addParticleEffect();
+                            }, 1500);
+
+                            // Observer seulement une fois
+                            bannerObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.4,
+                    rootMargin: '0px 0px -100px 0px'
+                });
+
+                bannerObserver.observe(bannerSection);
+            }
+
+            // Effet de typing subtil pour le titre
+            function addTypingEffect() {
+                const bannerTitle = document.querySelector('.banner-title');
+                if (!bannerTitle) return;
+
+                // Ajouter un cursor clignotant temporaire
+                const cursor = document.createElement('span');
+                cursor.textContent = '|';
+                cursor.style.animation = 'blink 1s infinite';
+                cursor.style.opacity = '0.7';
+                
+                bannerTitle.appendChild(cursor);
+                
+                // Retirer le cursor après 3 secondes
+                setTimeout(() => {
+                    if (cursor.parentNode) {
+                        cursor.parentNode.removeChild(cursor);
+                    }
+                }, 3000);
+            }
+
+            // Effet de particules léger
+            function addParticleEffect() {
+                const banner = document.querySelector('.immobilier-banner');
+                if (!banner) return;
+
+                for (let i = 0; i < 5; i++) {
+                    const particle = document.createElement('div');
+                    particle.style.cssText = `
+                        position: absolute;
+                        width: 4px;
+                        height: 4px;
+                        background: rgba(255, 255, 255, 0.6);
+                        border-radius: 50%;
+                        pointer-events: none;
+                        animation: float 4s ease-in-out infinite;
+                        animation-delay: ${i * 0.5}s;
+                        left: ${20 + i * 15}%;
+                        top: ${30 + Math.random() * 40}%;
+                        z-index: 1;
+                    `;
+                    
+                    banner.appendChild(particle);
+                    
+                    // Supprimer les particules après l'animation
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    }, 6000);
+                }
+            }
+
+            // ===== INTRO-SECTION ANIMATIONS =====
+            function initIntroAnimations() {
+                const introSection = document.querySelector('.intro-section');
+                
+                if (!introSection) return;
+
+                // Configuration de l'Intersection Observer pour intro-section
+                const introObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Ajouter la classe d'animation
+                            entry.target.classList.add('intro-animate');
+                            
+                            // Animer les icônes avec des délais échelonnés
+                            const features = entry.target.querySelectorAll('.feature');
+                            features.forEach((feature, index) => {
+                                setTimeout(() => {
+                                    // Ajouter effet de highlight temporaire
+                                    feature.style.transform = 'scale(1.1)';
+                                    feature.style.transition = 'all 0.3s ease';
+                                    
+                                    setTimeout(() => {
+                                        feature.style.transform = 'scale(1)';
+                                    }, 300);
+                                }, 600 + (index * 200));
+                            });
+
+                            // Effet de vague sur les features
+                            setTimeout(() => {
+                                addWaveEffect();
+                            }, 1500);
+
+                            // Observer seulement une fois
+                            introObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.3,
+                    rootMargin: '0px 0px -80px 0px'
+                });
+
+                introObserver.observe(introSection);
+            }
+
+            // Effet de vague sur les icônes
+            function addWaveEffect() {
+                const features = document.querySelectorAll('.intro-animate .feature');
+                
+                features.forEach((feature, index) => {
+                    setTimeout(() => {
+                        const icon = feature.querySelector('.feature-icon img');
+                        if (icon) {
+                            // Créer un effet de pulsation
+                            icon.style.animation = 'iconPulse 0.6s ease-in-out';
+                            
+                            // Nettoyer l'animation après
+                            setTimeout(() => {
+                                icon.style.animation = '';
+                            }, 600);
+                        }
+                    }, index * 100);
+                });
+            }
+
+            // Ajouter interactions avancées pour les features
+            function initFeatureInteractions() {
+                const features = document.querySelectorAll('.feature');
+                
+                features.forEach((feature, index) => {
+                    // Effet de survol avancé
+                    feature.addEventListener('mouseenter', () => {
+                        // Ajouter effet de lueur aux autres features
+                        features.forEach((otherFeature, otherIndex) => {
+                            if (otherIndex !== index) {
+                                otherFeature.style.opacity = '0.7';
+                                otherFeature.style.transform = 'scale(0.95)';
+                            }
+                        });
+                    });
+
+                    feature.addEventListener('mouseleave', () => {
+                        // Restaurer l'état normal
+                        features.forEach((otherFeature) => {
+                            otherFeature.style.opacity = '1';
+                            otherFeature.style.transform = 'scale(1)';
+                        });
+                    });
+
+                    // Effet de clic
+                    feature.addEventListener('click', () => {
+                        // Animation de "sélection"
+                        feature.style.animation = 'featureSelect 0.4s ease-out';
+                        
+                        setTimeout(() => {
+                            feature.style.animation = '';
+                        }, 400);
+                    });
+                });
+            }
+
+            // ===== ABOUT SECTION ANIMATIONS =====
+            function initAboutAnimations() {
+                const aboutSection = document.querySelector('.about');
+                if (!aboutSection) return;
+
+                // Configuration de l'Intersection Observer pour la section about
+                const aboutObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Ajouter la classe d'animation principale
+                            entry.target.classList.add('about-animate');
+                            
+                            // Animation spécifique pour les images
+                            setTimeout(() => {
+                                animateAboutImages();
+                            }, 400);
+
+                            // Animation pour les textes
+                            setTimeout(() => {
+                                animateAboutTexts();
+                            }, 800);
+
+                            // Animation pour les boutons
+                            setTimeout(() => {
+                                animateAboutButtons();
+                            }, 1200);
+
+                            // Observer seulement une fois
+                            aboutObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.3,
+                    rootMargin: '0px 0px -80px 0px'
+                });
+
+                aboutObserver.observe(aboutSection);
+            }
+
+            // Animations spécifiques pour les images de la section about
+            function animateAboutImages() {
+                // Les animations CSS sont déjà définies dans le CSS avec .about-animate
+                // Pas besoin d'ajouter d'animations JavaScript spécifiques
+                console.log('About images animations triggered via CSS');
+            }
+
+            // Animations pour les textes de la section about
+            function animateAboutTexts() {
+                // Les animations CSS sont déjà définies dans le CSS avec .about-animate
+                // Pas besoin d'ajouter d'animations JavaScript spécifiques
+                console.log('About texts animations triggered via CSS');
+            }
+
+            // Animations pour les boutons de la section about
+            function animateAboutButtons() {
+                // Les animations CSS sont déjà définies dans le CSS avec .about-animate
+                // Pas besoin d'ajouter d'animations JavaScript spécifiques
+                console.log('About buttons animations triggered via CSS');
+            }
+
+            // ===== PROJETS SECTION ANIMATIONS =====
+            function initProjetsAnimations() {
+                const projetsSection = document.querySelector('.projets-section');
+                if (!projetsSection) return;
+
+                // Configuration de l'Intersection Observer pour la section projets
+                const projetsObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Ajouter la classe d'animation principale
+                            entry.target.classList.add('projets-animate');
+                            
+                            // Effet spécial pour les cartes de projets
+                            setTimeout(() => {
+                                addProjectCardsEffect();
+                            }, 1500);
+
+                            // Observer seulement une fois
+                            projetsObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.3,
+                    rootMargin: '0px 0px -80px 0px'
+                });
+
+                projetsObserver.observe(projetsSection);
+            }
+
+            // Effet spécial pour les cartes de projets
+            function addProjectCardsEffect() {
+                const projectCards = document.querySelectorAll('.projets-animate .project-card');
+                
+                projectCards.forEach((card, index) => {
+                    // Ajouter un effet de lueur après l'animation
+                    setTimeout(() => {
+                        card.style.boxShadow = '0 0 20px rgba(56, 161, 105, 0.3)';
+                        
+                        setTimeout(() => {
+                            card.style.boxShadow = '';
+                        }, 1000);
+                    }, index * 200);
+                });
+            }
+
+            // ===== ENHANCED INTERSECTION OBSERVER FOR MULTIPLE SECTIONS =====
+            function initScrollAnimations() {
+                // Observer pour toutes les sections qui ont besoin d'animations
+                const animatedSections = document.querySelectorAll('.services-section, .about-one, .immobilier-banner, .intro-section, .about, .projets-section');
+                
+                const sectionObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const section = entry.target;
+                            
+                            // Animation spécifique pour la section services
+                            if (section.classList.contains('services-section')) {
+                                section.classList.add('services-animate');
+                            }
+                            
+                            // Animation spécifique pour la section about-one
+                            if (section.classList.contains('about-one')) {
+                                section.classList.add('about-animate');
+                            }
+                            
+                            // Animation spécifique pour la section immobilier-banner
+                            if (section.classList.contains('immobilier-banner')) {
+                                section.classList.add('banner-animate');
+                            }
+                            
+                            // Animation spécifique pour la section intro-section
+                            if (section.classList.contains('intro-section')) {
+                                section.classList.add('intro-animate');
+                            }
+                            
+                            // Animation spécifique pour la section about
+                            if (section.classList.contains('about')) {
+                                section.classList.add('about-animate');
+                            }
+                            
+                            // Animation spécifique pour la section projets-section
+                            if (section.classList.contains('projets-section')) {
+                                section.classList.add('projets-animate');
+                            }
+                            
+                            // Animation générale pour les autres sections
+                            section.classList.add('section-visible');
+                            
+                            // Ajouter un effet de parallaxe léger
+                            section.style.transform = 'translateY(0)';
+                            section.style.opacity = '1';
+                        }
+                    });
+                }, {
+                    threshold: 0.2,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+
+                // Observer toutes les sections
+                animatedSections.forEach(section => {
+                    sectionObserver.observe(section);
+                });
+            }
+
+            // Initialiser les animations de scroll
+            initServicesAnimations();
+            initAboutOneAnimations();
+            initBannerAnimations();
+            initIntroAnimations();
+            initAboutAnimations();
+            initProjetsAnimations();
+            initFeatureInteractions();
+            initScrollAnimations();
             // Create mobile menu button
             const mobileMenuBtn = document.createElement('button');
             mobileMenuBtn.className = 'mobile-menu-btn';

@@ -164,6 +164,1503 @@
             animation: pulse 0.6s ease-in-out;
         }
 
+        /* ===== SERVICES SECTION ANIMATIONS ===== */
+        
+        @keyframes slideInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes zoomInUp {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes floatCard {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Initial hidden state for services elements */
+        .services-section .section-label,
+        .services-section .section-title,
+        .services-section .section-description,
+        .service-card {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        /* Animation classes for services */
+        .services-animate .section-label {
+            animation: slideInFromBottom 0.8s ease-out 0.2s forwards;
+        }
+
+        .services-animate .section-title {
+            animation: slideInFromBottom 0.8s ease-out 0.4s forwards;
+        }
+
+        .services-animate .section-description {
+            animation: slideInFromBottom 0.8s ease-out 0.6s forwards;
+        }
+
+        .services-animate .service-card:nth-child(1) {
+            animation: slideInFromLeft 0.8s ease-out 0.8s forwards;
+        }
+
+        .services-animate .service-card:nth-child(2) {
+            animation: zoomInUp 0.8s ease-out 1s forwards;
+        }
+
+        .services-animate .service-card:nth-child(3) {
+            animation: slideInFromRight 0.8s ease-out 1.2s forwards;
+        }
+
+        /* Hover animation for service cards */
+        .service-card {
+            transition: all 0.3s ease;
+        }
+
+        .services-animate .service-card:hover {
+            animation: floatCard 2s ease-in-out infinite;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Stagger animation for better visual effect */
+        .service-card .service-image {
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-image {
+            transform: scale(1.05);
+        }
+
+        .service-card .service-button {
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-button {
+            background-color: var(--color-primary-orange);
+            transform: translateY(-2px);
+        }
+
+        /* Enhanced section animations */
+        .services-section {
+            transition: all 0.6s ease;
+        }
+
+        .section-visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        /* Add subtle parallax effect */
+        .services-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-primary-orange), transparent);
+            transform: translateX(-100%);
+            transition: transform 1s ease-out 0.5s;
+        }
+
+        .services-animate::before {
+            transform: translateX(0);
+        }
+
+        /* Service card entrance animations */
+        .service-card {
+            transform: translateY(50px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .services-animate .service-card {
+            transform: translateY(0) scale(1);
+        }
+
+        /* Add a subtle bounce effect on service buttons */
+        .service-button {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-button:hover::before {
+            left: 100%;
+        }
+
+        /* ===== ABOUT-ONE SECTION ANIMATIONS ===== */
+
+        @keyframes slideInFromLeftFar {
+            from {
+                opacity: 0;
+                transform: translateX(-80px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromRightFar {
+            from {
+                opacity: 0;
+                transform: translateX(80px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes imageParallax {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes buttonPulse {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Initial hidden state for about-one elements */
+        .about-one .about-one-images .big-img,
+        .about-one .about-one-images .small-img,
+        .about-one .section-label,
+        .about-one h2,
+        .about-one p,
+        .about-one .stat-card-new,
+        .about-one .btn-primary-about {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        /* Animation classes for about-one */
+        .about-animate .about-one-images .big-img {
+            animation: imageParallax 1s ease-out 0.3s forwards;
+        }
+
+        .about-animate .about-one-images .small-img {
+            animation: imageParallax 1s ease-out 0.5s forwards;
+        }
+
+        .about-animate .section-label {
+            animation: slideInFromRightFar 0.8s ease-out 0.4s forwards;
+        }
+
+        .about-animate h2 {
+            animation: slideInFromRightFar 0.8s ease-out 0.6s forwards;
+        }
+
+        .about-animate p {
+            animation: fadeInScale 0.8s ease-out 0.8s forwards;
+        }
+
+        .about-animate .stat-card-new:nth-child(1) {
+            animation: countUp 0.6s ease-out 1s forwards;
+        }
+
+        .about-animate .stat-card-new:nth-child(2) {
+            animation: countUp 0.6s ease-out 1.2s forwards;
+        }
+
+        .about-animate .stat-card-new:nth-child(3) {
+            animation: countUp 0.6s ease-out 1.4s forwards;
+        }
+
+        .about-animate .btn-primary-about {
+            animation: buttonPulse 0.8s ease-out 1.6s forwards;
+        }
+
+        /* Enhanced hover effects for about-one */
+        .about-one-images .big-img {
+            transition: all 0.4s ease;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .about-one-images .small-img {
+            transition: all 0.4s ease;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .about-animate .about-one-images .big-img:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .about-animate .about-one-images .small-img:hover {
+            transform: scale(1.05) rotate(-1deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Animated statistics numbers */
+        .stat-number-new {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-animate .stat-number-new {
+            position: relative;
+        }
+
+        .about-animate .stat-number-new::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s ease-in-out 2s forwards;
+        }
+
+        @keyframes shimmer {
+            to {
+                left: 100%;
+            }
+        }
+
+        /* Enhanced button animation */
+        .btn-primary-about {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary-about:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary-about:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Parallax effect on scroll */
+        .about-one {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-one::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--karia-primary-green), transparent);
+            transform: translateX(-100%);
+            transition: transform 1.2s ease-out 0.8s;
+        }
+
+        .about-animate::before {
+            transform: translateX(0);
+        }
+
+        /* Performance optimizations */
+        .about-one-images img {
+            will-change: transform;
+            backface-visibility: hidden;
+        }
+
+        .stat-card-new {
+            will-change: transform, opacity;
+        }
+
+        /* Additional micro-interactions */
+        .about-one .section-label {
+            position: relative;
+        }
+
+        .about-animate .section-label::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--karia-primary-green);
+            animation: underlineExpand 0.8s ease-out 1s forwards;
+        }
+
+        @keyframes underlineExpand {
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Enhanced responsive behavior */
+        @media (max-width: 768px) {
+            .about-animate .about-one-images .big-img:hover,
+            .about-animate .about-one-images .small-img:hover {
+                transform: scale(1.02);
+            }
+            
+            .about-animate .stat-card-new:nth-child(1),
+            .about-animate .stat-card-new:nth-child(2),
+            .about-animate .stat-card-new:nth-child(3) {
+                animation-delay: 0.8s, 1s, 1.2s;
+            }
+        }
+
+        /* ===== IMMOBILIER-BANNER SECTION ANIMATIONS ===== */
+
+        @keyframes heroTitleSlide {
+            from {
+                opacity: 0;
+                transform: translateX(-100px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        @keyframes heroSubtitleFade {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heroButtonBounce {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes backgroundPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes textGlow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(255,255,255,0.3);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(255,255,255,0.6), 0 0 40px rgba(255,255,255,0.4);
+            }
+        }
+
+        /* Initial hidden state for immobilier-banner elements */
+        .immobilier-banner .banner-title,
+        .immobilier-banner .banner-subtitle,
+        .immobilier-banner .banner-button {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        /* Animation classes for immobilier-banner */
+        .banner-animate .banner-title {
+            animation: heroTitleSlide 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+        }
+
+        .banner-animate .banner-subtitle {
+            animation: heroSubtitleFade 1s ease-out 0.8s forwards;
+        }
+
+        .banner-animate .banner-button {
+            animation: heroButtonBounce 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1.3s forwards;
+        }
+
+        /* Enhanced banner background effect */
+        .immobilier-banner {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .immobilier-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+            z-index: 1;
+            transition: all 0.8s ease;
+        }
+
+        .banner-animate::before {
+            background: linear-gradient(135deg, rgba(0,0,0,0.2), rgba(0,0,0,0.4));
+        }
+
+        .immobilier-banner .banner-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Enhanced hover effects for banner elements */
+        .banner-animate .banner-title {
+            transition: all 0.3s ease;
+        }
+
+        .banner-animate .banner-title:hover {
+            animation: textGlow 2s ease-in-out infinite;
+            transform: scale(1.05);
+        }
+
+        .banner-animate .banner-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+        }
+
+        .banner-animate .banner-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+            z-index: 1;
+        }
+
+        .banner-animate .banner-button:hover::before {
+            left: 100%;
+        }
+
+        .banner-animate .banner-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        /* Subtle background animation */
+        .banner-animate {
+            animation: backgroundPulse 8s ease-in-out infinite;
+        }
+
+        /* Parallax effect for banner content */
+        .banner-animate .banner-content {
+            animation: none;
+        }
+
+        /* Enhanced typography animations */
+        .banner-animate .banner-title {
+            background: linear-gradient(45deg, #ffffff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Staggered word animation for title */
+        .banner-title {
+            overflow: hidden;
+        }
+
+        .banner-animate .banner-title {
+            position: relative;
+        }
+
+        .banner-animate .banner-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-primary-orange), #ff6b00);
+            animation: titleUnderline 1s ease-out 1.5s forwards;
+        }
+
+        @keyframes titleUnderline {
+            to {
+                width: 60%;
+            }
+        }
+
+        /* Button enhanced interactions */
+        .banner-button {
+            position: relative;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .banner-animate .banner-button::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--color-primary-orange), #ff6b00, var(--color-primary-orange));
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .banner-animate .banner-button:hover::after {
+            opacity: 1;
+        }
+
+        /* Keyframes for cursor and particles */
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 1;
+            }
+        }
+
+        /* Enhanced background overlay transition */
+        .immobilier-banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.1) 100%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .banner-animate::after {
+            opacity: 1;
+        }
+
+        /* Advanced text effects */
+        .banner-animate .banner-subtitle {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-animate .banner-subtitle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: textShimmer 3s ease-in-out 2s forwards;
+        }
+
+        @keyframes textShimmer {
+            to {
+                left: 100%;
+            }
+        }
+
+        /* Responsive animations */
+        @media (max-width: 768px) {
+            .banner-animate .banner-title {
+                animation-duration: 1s;
+            }
+            
+            .banner-animate .banner-button:hover {
+                transform: translateY(-3px) scale(1.02);
+            }
+            
+            /* Reduce particle count on mobile */
+            .banner-animate .float {
+                display: none;
+            }
+        }
+
+        /* ===== INTRO-SECTION ANIMATIONS ===== */
+
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes iconBounce {
+            from {
+                opacity: 0;
+                transform: scale(0) rotate(-180deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes featureSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes iconRotate {
+            from {
+                transform: rotateY(0deg);
+            }
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+
+        @keyframes featureGlow {
+            0%, 100% {
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+            50% {
+                box-shadow: 0 8px 25px rgba(56, 161, 105, 0.3);
+            }
+        }
+
+        @keyframes textReveal {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Initial hidden state for intro-section elements */
+        .intro-section .section-label,
+        .intro-section .section-title,
+        .intro-section .feature {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        /* Animation classes for intro-section */
+        .intro-animate .section-label {
+            animation: slideInFromTop 0.8s ease-out 0.2s forwards;
+        }
+
+        .intro-animate .section-title {
+            animation: slideInFromTop 0.8s ease-out 0.4s forwards;
+        }
+
+        .intro-animate .feature:nth-child(1) {
+            animation: featureSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s forwards;
+        }
+
+        .intro-animate .feature:nth-child(2) {
+            animation: featureSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s forwards;
+        }
+
+        .intro-animate .feature:nth-child(3) {
+            animation: featureSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s forwards;
+        }
+
+        .intro-animate .feature:nth-child(4) {
+            animation: featureSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.2s forwards;
+        }
+
+        /* Enhanced feature card effects */
+        .intro-animate .feature {
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .intro-animate .feature:hover {
+            transform: translateY(-10px) scale(1.05);
+            animation: featureGlow 2s ease-in-out infinite;
+        }
+
+        /* Icon specific animations */
+        .intro-animate .feature-icon {
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+        }
+
+        .intro-animate .feature:hover .feature-icon {
+            animation: iconRotate 0.6s ease-in-out;
+        }
+
+        .intro-animate .feature-icon img {
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+
+        .intro-animate .feature:hover .feature-icon img {
+            filter: drop-shadow(0 8px 16px rgba(56, 161, 105, 0.4));
+            transform: scale(1.1);
+        }
+
+        /* Text animations */
+        .intro-animate .feature h4 {
+            transition: all 0.3s ease;
+        }
+
+        .intro-animate .feature:hover h4 {
+            color: var(--karia-primary-green);
+            animation: textReveal 0.4s ease-out;
+        }
+
+        .intro-animate .feature p {
+            transition: all 0.3s ease;
+        }
+
+        .intro-animate .feature:hover p {
+            color: var(--karia-text-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Section background effect */
+        .intro-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--karia-primary-green), transparent);
+            transform: translateX(-100%);
+            transition: transform 1s ease-out 0.6s;
+        }
+
+        .intro-animate::before {
+            transform: translateX(0);
+        }
+
+        /* Features grid enhanced */
+        .intro-animate .features {
+            position: relative;
+        }
+
+        .intro-animate .features::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 2px;
+            height: 2px;
+            background: var(--karia-primary-green);
+            border-radius: 50%;
+            animation: centerPulse 3s ease-in-out infinite;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes centerPulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(20);
+                opacity: 0;
+            }
+        }
+
+        /* Staggered content reveal */
+        .intro-animate .section-label {
+            position: relative;
+        }
+
+        .intro-animate .section-label::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--karia-primary-green), var(--karia-orange));
+            animation: labelUnderline 0.8s ease-out 1s forwards;
+        }
+
+        @keyframes labelUnderline {
+            to {
+                width: 80%;
+            }
+        }
+
+        /* Performance optimizations */
+        .intro-section .feature {
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+
+        .intro-section .feature-icon img {
+            will-change: transform, filter;
+        }
+
+        /* Additional keyframes for enhanced effects */
+        @keyframes iconPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+                filter: drop-shadow(0 0 20px rgba(56, 161, 105, 0.6));
+            }
+        }
+
+        @keyframes featureSelect {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+            50% {
+                transform: scale(1.08);
+                box-shadow: 0 12px 30px rgba(56, 161, 105, 0.4);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+        }
+
+        /* Enhanced feature focus states */
+        .intro-animate .feature:focus {
+            outline: 2px solid var(--karia-primary-green);
+            outline-offset: 4px;
+        }
+
+        /* Wave animation for sequential reveals */
+        .intro-animate .feature:nth-child(1) {
+            animation-delay: 0.6s;
+        }
+
+        .intro-animate .feature:nth-child(2) {
+            animation-delay: 0.8s;
+        }
+
+        .intro-animate .feature:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .intro-animate .feature:nth-child(4) {
+            animation-delay: 1.2s;
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            .intro-animate .feature,
+            .intro-animate .section-label,
+            .intro-animate .section-title {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+            
+            .intro-animate .features::after {
+                animation: none;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .intro-animate .feature:hover {
+                transform: translateY(-5px) scale(1.02);
+            }
+            
+            .intro-animate .feature:nth-child(1),
+            .intro-animate .feature:nth-child(2),
+            .intro-animate .feature:nth-child(3),
+            .intro-animate .feature:nth-child(4) {
+                animation-delay: 0.4s, 0.6s, 0.8s, 1s;
+            }
+
+            .intro-animate .features::after {
+                display: none;
+            }
+        }
+
+        /* ===== ABOUT SECTION ANIMATIONS ===== */
+
+        @keyframes slideInFromLeftSlow {
+            from {
+                opacity: 0;
+                transform: translateX(-100px) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        @keyframes slideInFromRightSlow {
+            from {
+                opacity: 0;
+                transform: translateX(100px) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        @keyframes imageRevealLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-80px) translateY(30px) rotate(-5deg);
+                filter: blur(5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) translateY(0) rotate(0deg);
+                filter: blur(0px);
+            }
+        }
+
+        @keyframes imageRevealRight {
+            from {
+                opacity: 0;
+                transform: translateX(80px) translateY(-30px) rotate(5deg);
+                filter: blur(5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) translateY(0) rotate(0deg);
+                filter: blur(0px);
+            }
+        }
+
+        @keyframes textTypewriter {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+                max-height: 200px;
+            }
+        }
+
+        @keyframes buttonSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes contentGlow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(56, 161, 105, 0.1);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(56, 161, 105, 0.3);
+            }
+        }
+
+        /* Initial hidden state for about section elements */
+        .about .img-large,
+        .about .img-small,
+        .about .section-label,
+        .about h2,
+        .about p,
+        .about .btn-secondary {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        /* Animation classes for about section */
+        .about-animate .img-large {
+            animation: imageRevealLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+        }
+
+        .about-animate .img-small {
+            animation: imageRevealRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s forwards;
+        }
+
+        .about-animate .section-label {
+            animation: slideInFromRightSlow 0.8s ease-out 0.4s forwards;
+        }
+
+        .about-animate h2 {
+            animation: slideInFromRightSlow 0.8s ease-out 0.7s forwards;
+        }
+
+        .about-animate p {
+            animation: textTypewriter 1s ease-out 1s forwards;
+        }
+
+        .about-animate .btn-secondary {
+            animation: buttonSlideIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1.3s forwards;
+        }
+
+        /* Enhanced about section effects */
+        .about {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--karia-primary-green), var(--karia-orange), transparent);
+            transform: translateX(-100%);
+            transition: transform 1.2s ease-out 0.8s;
+        }
+
+        .about-animate::before {
+            transform: translateX(0);
+        }
+
+        /* Image hover effects */
+        .about-animate .img-large {
+            transition: all 0.4s ease;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .about-animate .img-small {
+            transition: all 0.4s ease;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .about-animate .img-large:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+
+        .about-animate .img-small:hover {
+            transform: scale(1.05) rotate(-2deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+
+        /* Text content enhancements */
+        .about-animate .about-text {
+            position: relative;
+        }
+
+        .about-animate .about-text::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -20px;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg, var(--karia-primary-green), var(--karia-orange));
+            animation: textBorder 0.8s ease-out 1.2s forwards;
+        }
+
+        @keyframes textBorder {
+            to {
+                height: 100%;
+            }
+        }
+
+        /* Section label enhancement */
+        .about-animate .section-label {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-animate .section-label::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--karia-primary-green), var(--karia-orange));
+            animation: labelExpand 0.6s ease-out 1.4s forwards;
+        }
+
+        @keyframes labelExpand {
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Button enhanced effects */
+        .about-animate .btn-secondary {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .about-animate .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .about-animate .btn-secondary:hover::before {
+            left: 100%;
+        }
+
+        .about-animate .btn-secondary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(56, 161, 105, 0.3);
+            animation: contentGlow 2s ease-in-out infinite;
+        }
+
+        /* Image overlay effects */
+        .about-animate .img-large::before,
+        .about-animate .img-small::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(56, 161, 105, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .about-animate .img-large:hover::before,
+        .about-animate .img-small:hover::before {
+            opacity: 1;
+        }
+
+        /* Content container animation */
+        .about-animate .about-content {
+            position: relative;
+        }
+
+        .about-animate .about-content::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: var(--karia-primary-green);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            animation: centerDot 0.5s ease-out 1.8s forwards, centerPulseAbout 3s ease-in-out 2.3s infinite;
+        }
+
+        @keyframes centerDot {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes centerPulseAbout {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0.4;
+            }
+        }
+
+        /* Performance optimizations */
+        .about .img-large,
+        .about .img-small {
+            will-change: transform, filter;
+            backface-visibility: hidden;
+        }
+
+        .about .about-text {
+            will-change: transform, opacity;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .about-animate .img-large:hover,
+            .about-animate .img-small:hover {
+                transform: scale(1.02);
+            }
+
+            .about-animate .btn-secondary:hover {
+                transform: translateY(-2px) scale(1.02);
+            }
+
+            .about-animate .about-content::after {
+                display: none;
+            }
+        }
+
+        /* Accessibility support */
+        @media (prefers-reduced-motion: reduce) {
+            .about-animate .img-large,
+            .about-animate .img-small,
+            .about-animate .section-label,
+            .about-animate h2,
+            .about-animate p,
+            .about-animate .btn-secondary {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* ===== PROJETS SECTION ANIMATIONS ===== */
+
+        /* Initial hidden state for projets section elements */
+        .projets-section .section-label,
+        .projets-section .section-title,
+        .projets-section .section-description,
+        .projets-section .project-card {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        /* Animation classes for projets section */
+        .projets-animate .section-label {
+            animation: slideInFromRightSlow 0.8s ease-out 0.2s forwards;
+        }
+
+        .projets-animate .section-title {
+            animation: slideInFromRightSlow 0.8s ease-out 0.4s forwards;
+        }
+
+        .projets-animate .section-description {
+            animation: textTypewriter 1s ease-out 0.6s forwards;
+        }
+
+        .projets-animate .project-card:nth-child(1) {
+            animation: projectCardReveal 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s forwards;
+        }
+
+        .projets-animate .project-card:nth-child(2) {
+            animation: projectCardReveal 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s forwards;
+        }
+
+        .projets-animate .project-card:nth-child(3) {
+            animation: projectCardReveal 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.2s forwards;
+        }
+
+        @keyframes projectCardReveal {
+            from {
+                opacity: 0;
+                transform: translateY(60px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Enhanced projets section effects */
+        .projets-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .projets-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--karia-primary-green), var(--karia-orange), transparent);
+            transform: translateX(-100%);
+            transition: transform 1.2s ease-out 0.8s;
+        }
+
+        .projets-animate::before {
+            transform: translateX(0);
+        }
+
+        /* Project card hover effects */
+        .projets-animate .project-card {
+            transition: all 0.4s ease;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .projets-animate .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .projets-animate .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(56, 161, 105, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .projets-animate .project-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Performance optimizations for projets section */
+        .projets-section .project-card {
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+
+        .projets-section .project-image {
+            will-change: transform;
+        }
+
+        /* Responsive adjustments for projets animations */
+        @media (max-width: 768px) {
+            .projets-animate .project-card:hover {
+                transform: translateY(-5px) scale(1.01);
+            }
+        }
+
+        /* Accessibility support for projets section */
+        @media (prefers-reduced-motion: reduce) {
+            .projets-animate .section-label,
+            .projets-animate .section-title,
+            .projets-animate .section-description,
+            .projets-animate .project-card {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+        }
+
         /* ===== HERO CAROUSEL STYLES ===== */
         
         /* Hero Container */
