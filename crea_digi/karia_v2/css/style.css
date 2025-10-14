@@ -291,22 +291,7 @@
             transform: translateY(0) !important;
         }
 
-        /* Add subtle parallax effect */
-        .services-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--color-primary-orange), transparent);
-            transform: translateX(-100%);
-            transition: transform 1s ease-out 0.5s;
-        }
-
-        .services-animate::before {
-            transform: translateX(0);
-        }
+        /* Parallax effect removed */
 
         /* Service card entrance animations */
         .service-card {
@@ -539,21 +524,7 @@
             overflow: hidden;
         }
 
-        .about-one::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--karia-primary-green), transparent);
-            transform: translateX(-100%);
-            transition: transform 1.2s ease-out 0.8s;
-        }
-
-        .about-animate::before {
-            transform: translateX(0);
-        }
+        /* Top gradient line removed */
 
         /* Performance optimizations */
         .about-one-images img {
@@ -570,22 +541,7 @@
             position: relative;
         }
 
-        .about-animate .section-label::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--karia-primary-green);
-            animation: underlineExpand 0.8s ease-out 1s forwards;
-        }
-
-        @keyframes underlineExpand {
-            to {
-                width: 100%;
-            }
-        }
+        /* Label underline removed */
 
         /* Enhanced responsive behavior */
         @media (max-width: 768px) {
@@ -1036,21 +992,7 @@
             overflow: hidden;
         }
 
-        .intro-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--karia-primary-green), transparent);
-            transform: translateX(-100%);
-            transition: transform 1s ease-out 0.6s;
-        }
-
-        .intro-animate::before {
-            transform: translateX(0);
-        }
+        /* Top line removed */
 
         /* Features grid enhanced */
         .intro-animate .features {
@@ -1086,17 +1028,7 @@
             position: relative;
         }
 
-        .intro-animate .section-label::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--karia-primary-green), var(--karia-orange));
-            animation: labelUnderline 0.8s ease-out 1s forwards;
-        }
+        /* Intro label underline removed */
 
         @keyframes labelUnderline {
             to {
@@ -1321,21 +1253,7 @@
             overflow: hidden;
         }
 
-        .about::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--karia-primary-green), var(--karia-orange), transparent);
-            transform: translateX(-100%);
-            transition: transform 1.2s ease-out 0.8s;
-        }
-
-        .about-animate::before {
-            transform: translateX(0);
-        }
+        /* Top gradient line removed */
 
         /* Image hover effects */
         .about-animate .img-large {
@@ -1369,22 +1287,7 @@
             position: relative;
         }
 
-        .about-animate .about-text::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -20px;
-            width: 4px;
-            height: 0;
-            background: linear-gradient(180deg, var(--karia-primary-green), var(--karia-orange));
-            animation: textBorder 0.8s ease-out 1.2s forwards;
-        }
-
-        @keyframes textBorder {
-            to {
-                height: 100%;
-            }
-        }
+        /* Vertical text border removed */
 
         /* Section label enhancement */
         .about-animate .section-label {
@@ -1392,22 +1295,7 @@
             overflow: hidden;
         }
 
-        .about-animate .section-label::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--karia-primary-green), var(--karia-orange));
-            animation: labelExpand 0.6s ease-out 1.4s forwards;
-        }
-
-        @keyframes labelExpand {
-            to {
-                width: 100%;
-            }
-        }
+        /* Section label underline removed */
 
         /* Button enhanced effects */
         .about-animate .btn-secondary {
@@ -1586,21 +1474,7 @@
             overflow: hidden;
         }
 
-        .projets-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--karia-primary-green), var(--karia-orange), transparent);
-            transform: translateX(-100%);
-            transition: transform 1.2s ease-out 0.8s;
-        }
-
-        .projets-animate::before {
-            transform: translateX(0);
-        }
+        /* Top gradient line removed */
 
         /* Project card hover effects */
         .projets-animate .project-card {
@@ -1711,21 +1585,7 @@
             overflow: hidden;
         }
 
-        .proprietes-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, var(--karia-primary-green), var(--karia-orange), transparent);
-            transform: translateX(-100%);
-            transition: transform 1.2s ease-out 0.8s;
-        }
-
-        .proprietes-animate::before {
-            transform: translateX(0);
-        }
+        /* Top progress bar removed */
 
         /* Property card hover effects */
         .proprietes-animate .property-card {
