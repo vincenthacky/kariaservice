@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karia Care Services - Logistique</title>
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Styles for cards from test.html */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            position: relative;
+            padding: 30px 20px 25px 20px;
+            text-align: center;
+        }
+
+        /* --- Bande orange avec icône camion --- */
+        .icon-tag {
+            position: absolute;
+            top: -20px;
+            left: 0;
+            background: #e69a2b;
+            color: white;
+            border-top-right-radius: 40px;
+            border-bottom-right-radius: 40px;
+            height: 40px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-tag svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            color: #2d3e50;
+            font-weight: 700;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #6c757d;
+            line-height: 1.5;
+        }
+
+        /* Responsive grid: 2 cartes sur mobile */
+        @media (max-width: 768px) {
+            .cards-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Styles for sections from test2.html */
+        .section {
+            display: flex;
+            background: white;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 40px auto;
+            max-width: 1170px;
+        }
+
+        .left-column {
+            flex: 0 0 40%;
+            padding: 50px 40px;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1976d2;
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+
+        .orange-line {
+            width: 60px;
+            height: 3px;
+            background: #ff6b35;
+            margin-bottom: 30px;
+        }
+
+        .description {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .description strong {
+            color: #333;
+            font-weight: 700;
+        }
+
+        .right-column {
+            flex: 0 0 60%;
+            position: relative;
+            background-image: url('images/Container-4.png');
+            background-size: cover;
+            background-position: center;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right-column::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        .right-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .right-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .right-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+            font-size: 15px;
+        }
+
+        .checkmark {
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .checkmark::after {
+            content: '✓';
+            color: #1976d2;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Section Services */
+        .services-section {
+            display: flex;
+            background: white;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 40px auto;
+            max-width: 1170px;
+        }
+
+        .services-image {
+            flex: 0 0 50%;
+            background-image: url('images/warehouse.jpg');
+            background-size: cover;
+            background-position: center;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+            min-height: 550px;
+        }
+
+        .services-content {
+            flex: 0 0 50%;
+            padding: 60px 50px;
+            background: #fafafa;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 50px;
+        }
+
+        .service-item {
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+        }
+
+        .hexagon-icon {
+            width: 65px;
+            height: 65px;
+            background: #ff9800;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .hexagon-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        .service-text {
+            flex: 1;
+        }
+
+        .service-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1976d2;
+            margin-bottom: 15px;
+        }
+
+        .service-description {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        /* Section Info */
+        .info-section {
+            background: #f9f9f9;
+            padding: 80px 0;
+            margin-top: 40px;
+        }
+
+        .info-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1170px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .info-content {
+            flex: 0 0 50%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 28px;
+        }
+
+        .info-icon.orange {
+            background: rgba(255, 152, 0, 0.1);
+        }
+
+        .info-icon.blue {
+            background: rgba(25, 118, 210, 0.1);
+        }
+
+        .info-text h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+
+        .info-text p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .info-image {
+            flex: 0 0 45%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .info-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 968px) {
+            .section {
+                flex-direction: column;
+            }
+
+            .left-column,
+            .right-column {
+                flex: 1 1 100%;
+            }
+
+            .right-column {
+                border-radius: 0;
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
+            }
+
+            .right-column::before {
+                border-radius: 0;
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
+            }
+
+            .left-column {
+                padding: 40px 30px;
+            }
+
+            .right-column {
+                padding: 40px 30px;
+            }
+
+            .title {
+                font-size: 26px;
+            }
+
+            .right-title {
+                font-size: 22px;
+            }
+
+            .services-section {
+                flex-direction: column;
+            }
+
+            .services-image {
+                flex: 1 1 100%;
+                min-height: 300px;
+                border-radius: 0;
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+            }
+
+            .services-content {
+                flex: 1 1 100%;
+                padding: 40px 30px;
+                gap: 40px;
+            }
+
+            .service-item {
+                gap: 20px;
+            }
+
+            .service-title {
+                font-size: 20px;
+            }
+
+            .info-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .info-content {
+                flex: 1 1 100%;
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .info-image {
+                flex: 1 1 100%;
+                width: 100%;
+            }
+
+            .info-section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .left-column {
+                padding: 30px 20px;
+            }
+
+            .right-column {
+                padding: 30px 20px;
+            }
+
+            .title {
+                font-size: 22px;
+            }
+
+            .right-title {
+                font-size: 20px;
+            }
+
+            .description {
+                font-size: 14px;
+            }
+
+            .feature-item {
+                font-size: 14px;
+            }
+
+            .services-content {
+                padding: 30px 20px;
+                gap: 35px;
+            }
+
+            .hexagon-icon {
+                width: 55px;
+                height: 55px;
+            }
+
+            .hexagon-icon svg {
+                width: 26px;
+                height: 26px;
+            }
+
+            .service-title {
+                font-size: 18px;
+            }
+
+            .service-description {
+                font-size: 14px;
+            }
+
+            .info-section {
+                padding: 40px 0;
+            }
+
+            .info-item {
+                gap: 15px;
+            }
+
+            .info-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+
+            .info-text h3 {
+                font-size: 18px;
+            }
+
+            .info-text p {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <a href="#">Besoin d'aide ?</a>
+        <a href="tel:+225 07 18 71 7171">📞 +225 +225 07 18 71 7171</a>
+        <a href="mailto:info@kariaservices.com">✉ info@kariaservices.com</a>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/logo_kariaservice.jpeg" alt="KARIA SERVICES" class="logo-icon">
+                KARIA SERVICES
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#karia">Karia</a></li>
+                <li class="has-submenu">
+                    <a href="#immobilier">Immobilier</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">À vendre</a></li>
+                        <li><a href="#">À louer</a></li>
+                        <li><a href="#">Gestion immobilière</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="#logistique">Logistique</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Transport routier</a></li>
+                        <li><a href="#">Stockage & distribution</a></li>
+                        <li><a href="#">Logistique internationale</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="#energie">Energie&Mine</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Exploitation minière</a></li>
+                        <li><a href="#">Services pétroliers</a></li>
+                        <li><a href="#">Énergies renouvelables</a></li>
+                    </ul>
+                </li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#devis" class="devis-btn">Devis</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <!-- Background Carousel -->
+        <div class="carousel-container">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-slide active" style="background-image: url('images/imga8.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('images/imga6.jpg')"></div>
+                <div class="carousel-slide" style="background-image: url('images/care_tranfert.jpeg')"></div>
+            </div>
+            
+            <!-- Navigation Arrows -->
+            <button class="carousel-btn carousel-btn--prev" id="prevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn carousel-btn--next" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <h1>Solutions Logistiques d'Excellence</h1>
+            <p>Kariaservice vous accompagne avec des solutions logistiques personnalisées et haut de gamme<br>pour optimiser vos flux de transport et distribution</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">Demander un devis</a>
+                <a href="#" class="btn-secondary">En savoir plus</a>
+            </div>
+        </div>
+        
+        <!-- Search Container -->
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Type de transport">
+            <input type="text" class="search-input" placeholder="Destination">
+            <input type="text" class="search-input" placeholder="Volume">
+            <select class="search-input">
+                <option value="">Urgence</option>
+                <option value="standard">Standard</option>
+                <option value="express">Express</option>
+            </select>
+            <button class="search-button">Rechercher</button>
+        </div>
+
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+            <button class="indicator active" data-slide="0"></button>
+            <button class="indicator" data-slide="1"></button>
+            <button class="indicator" data-slide="2"></button>
+        </div>
+    </section>
+
+    <!-- Cards Container from test.html -->
+    <div class="cards-container">
+        <!-- Carte 1 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1586788224331-947f28d4b838?auto=format&fit=crop&w=800&q=80" alt="Camion de fret routier">
+            <div class="card-content">
+                <div class="icon-tag">
+                    <!-- Icône camion SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M20 8h-3V4H3v13h2a3 3 0 0 0 6 0h4a3 3 0 0 0 6 0h1v-7l-2-2zm-5 0v4H4V6h11v2zM8 19a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm10 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm2-3h-1a3 3 0 0 0-6 0h-4a3 3 0 0 0-6 0H5V10h11v2h4v4z"/>
+                    </svg>
+                </div>
+                <h3>FRET ROUTIER</h3>
+                <p>
+                    Nous disposons d'engin de haute performance capable de contenir jusqu'à
+                    20 tonnes de produits à des frets abordables et accessibles à tous.
+                </p>
+            </div>
+        </div>
+
+        <!-- Carte 2 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80" alt="Transport logistique">
+            <div class="card-content">
+                <div class="icon-tag">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M20 8h-3V4H3v13h2a3 3 0 0 0 6 0h4a3 3 0 0 0 6 0h1v-7l-2-2zm-5 0v4H4V6h11v2zM8 19a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm10 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm2-3h-1a3 3 0 0 0-6 0h-4a3 3 0 0 0-6 0H5V10h11v2h4v4z"/>
+                    </svg>
+                </div>
+                <h3>LOGISTIQUE AVANCÉE</h3>
+                <p>
+                    Solutions complètes de stockage et distribution avec suivi en temps réel
+                    pour optimiser votre chaîne d'approvisionnement.
+                </p>
+            </div>
+        </div>
+
+        <!-- Carte 3 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80" alt="Transport logistique">
+            <div class="card-content">
+                <div class="icon-tag">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M20 8h-3V4H3v13h2a3 3 0 0 0 6 0h4a3 3 0 0 0 6 0h1v-7l-2-2zm-5 0v4H4V6h11v2zM8 19a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm10 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm2-3h-1a3 3 0 0 0-6 0h-4a3 3 0 0 0-6 0H5V10h11v2h4v4z"/>
+                    </svg>
+                </div>
+                <h3>TRANSPORT INTERNATIONAL</h3>
+                <p>
+                    Service de transport transfrontalier avec gestion complète des 
+                    formalités douanières et documentations.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sections from test2.html -->
+    <div class="container">
+        <div class="section">
+            <div class="left-column">
+                <h2 class="title">Nous offrons une solution rapide et puissante</h2>
+                <div class="orange-line"></div>
+                <p class="description">
+                    <strong>KARIA CARE SERVICES</strong> est votre transitaire préféré car nous sommes experts en Logistique et transport. Un savoir faire particulier que possède la société grâce à notre expérience dans ce domaine.
+                </p>
+            </div>
+            
+            <div class="right-column"></div>
+        </div>
+
+        <!-- Section Services -->
+        <div class="services-section">
+            <div class="services-image"></div>
+            
+            <div class="services-content">
+                <div class="service-item">
+                    <div class="hexagon-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18-.21 0-.41-.06-.57-.18l-7.9-4.44C3.21 17.21 3 16.88 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18.21 0 .41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9z"/>
+                        </svg>
+                    </div>
+                    <div class="service-text">
+                        <h3 class="service-title">Entrepot</h3>
+                        <p class="service-description">
+                            Nous vous proposons de conserver dans nos entrepôts sécurisés vos produits et de réaliser la préoccupation et l'envoi des commandes. Nous apportons des solutions pour le stockage des commandes à toutes sortes d'entreprise.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="hexagon-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 18.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm1.5-9H17V12h4.46L19.5 9.5zM6 18.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zM20 8l3 4v5h-2c0 1.66-1.34 3-3 3s-3-1.34-3-3H9c0 1.66-1.34 3-3 3s-3-1.34-3-3H1V6c0-1.11.89-2 2-2h14v4h3zM3 6v9h.76c.55-.61 1.35-1 2.24-1 .89 0 1.69.39 2.24 1H15V6H3z"/>
+                        </svg>
+                    </div>
+                    <div class="service-text">
+                        <h3 class="service-title">Organisateur de transport</h3>
+                        <p class="service-description">
+                            L'organisation de transport consiste à créer chez un client une structure chargée de la gestion de sa chaine logistique. Déchargé de l'organisation de ses flux de transports entrants et sortants et de leur partie administrative, le client peut se consacrer totalement à son activité principale et, second avantage, réduire ses coûts.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="hexagon-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 18.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm1.5-9H17V12h4.46L19.5 9.5zM6 18.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zM20 8l3 4v5h-2c0 1.66-1.34 3-3 3s-3-1.34-3-3H9c0 1.66-1.34 3-3 3s-3-1.34-3-3H1V6c0-1.11.89-2 2-2h14v4h3zM3 6v9h.76c.55-.61 1.35-1 2.24-1 .89 0 1.69.39 2.24 1H15V6H3z"/>
+                        </svg>
+                    </div>
+                    <div class="service-text">
+                        <h3 class="service-title">Transport</h3>
+                        <p class="service-description">
+                            Quel que soit le type de chargement, la fréquence ou la distance à courir, notre expertise nous permet de nous adapter à toutes vos demandes en matière de fret industriel.<br><br>
+                            La qualité de notre parc, dont l'âge moyen se situe à 5 ans est un atout supplémentaire dont vous pouvez profiter en toute sécurité pour l'acheminement de vos approvisionnements, de vos matières premières, la distribution de vos produits et/ou le stockage.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Info -->
+        <div class="info-section">
+            <div class="info-container">
+                <div class="info-content">
+                    <div class="info-item">
+                        <div class="info-icon orange">⚓</div>
+                        <div class="info-text">
+                            <h3>Notre emplacement</h3>
+                            <p>Abidjan – Côte d'Ivoire. Aéroport international FHB, Zone logistique Ouest derrière GSA.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon blue">☂</div>
+                        <div class="info-text">
+                            <h3>Assistance 24/7</h3>
+                            <p>Nous sommes disponible 24h/24 ; 7j/7.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon orange">📰</div>
+                        <div class="info-text">
+                            <h3>Actualite</h3>
+                            <p>KARIA CARE SERVICES meilleure société ivoirienne de transport routier de marchandises</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon orange">🚴</div>
+                        <div class="info-text">
+                            <h3>Livraison rapide</h3>
+                            <p>Disponible dans plusieurs pays afin de pouvoir livrer vos produits dans le temps.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-image">
+                    <img src="images/forklift-boxes.png" alt="Chariot élévateur avec cartons">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Map (section before footer from index.html) -->
+    <section class="contact-map">
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.0585440821453!2d-3.9558724845217475!3d5.348429636322748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc1ecfb15171aad%3A0xd533742e1a201c24!2sPharmcie%20Riviera%203!5e0!3m2!1sfr!2sci!4v1647123456789!5m2!1sfr!2sci" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Notre localisation - Pharmacie Riviera 3">
+            </iframe>
+        </div>
+        <div class="map-overlay">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <h4>+225 07 18 71 71 71</h4>
+                    <span>Disponible 24/7</span>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">✉</div>
+                    <h4>info@kariaservices.com</h4>
+                    <span>E-mail</span>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h4>Pharmacie Riviera 3 Est 56</h4>
+                    <span>Abidjan, Côte d'Ivoire</span>
+                </div>
+            </div>
+        </div>
+        <div class="contact-label">
+            Contactez-Nous
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="newsletter-popup-container">
+            <div class="newsletter-popup">
+                <form action="#" method="post" class="popup-form">
+                    <h3 class="popup-title">Souscrire à la newsletter</h3>
+                    <input type="text" name="prenom" placeholder="* Entrez votre prénom" required>
+                    <input type="email" name="email" placeholder="* Entrez votre Email" required>
+                    <button type="submit" class="popup-button">Envoyez</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-content-wrapper">
+            <div class="footer-content container">
+                <div class="footer-col-main">
+                    <div class="logo-container">
+                        <img src="images/logo_kariaservice.jpeg" alt="Karia Services Logo" class="footer-logo">
+                        <span class="logo-text">Karia care services</span>
+                    </div>
+                    <p class="newsletter-cta">Inscrivez-vous à notre newsletter</p>
+                    <form action="#" method="post" class="footer-newsletter-form">
+                        <input type="email" name="email-footer" placeholder="Entrez votre adresse mail" required>
+                        <button type="submit" class="footer-subscribe-btn">S'inscrire</button>
+                    </form>
+                </div>
+
+                <div class="footer-col contact-col">
+                    <h4 class="footer-title">Contact</h4>
+                    <div class="contact-items">
+                        <p><i class="fas fa-map-marker-alt"></i> Pharmacie Riviera 3 Est 56, Abidjan</p>
+                        <p><i class="fas fa-phone"></i> +225 07 18 71 7171</p>
+                        <p><i class="fas fa-phone"></i> +225 07 18 74 74 74</p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@kariaservices.com">info@kariaservices.com</a></p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a> <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a> <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a> <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a> </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Liens utiles</h4>
+                    <nav class="footer-nav">
+                        <ul>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Terme & Condition</a></li>
+                            <li><a href="#">Mentions légales</a></li>
+                            <li><a href="#">Politique</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Services</h4>
+                    <nav class="footer-nav">
+                        <ul>
+                            <li><a href="#">Logistique</a></li>
+                            <li><a href="#">Énergie et mine</a></li>
+                            <li><a href="#">BTP</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>Copyright © 2024 KARIA SERVICES. Propulsé par DIGIT CREA. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Widget WhatsApp -->
+    <div class="whatsapp-widget">
+        <!-- Boîte de chat -->
+        <div class="whatsapp-chat">
+            <!-- En-tête -->
+            <div class="chat-header">
+                <div class="chat-header-content">
+                    <!-- Logo WhatsApp -->
+                    <svg class="whatsapp-logo" viewBox="0 0 120 28">
+                        <path d="M117.2 17c0 .4-.2.7-.4 1-.1.3-.4.5-.7.7l-1 .2c-.5 0-.9 0-1.2-.2l-.7-.7a3 3 0 0 1-.4-1 5.4 5.4 0 0 1 0-2.3c0-.4.2-.7.4-1l.7-.7a2 2 0 0 1 1.1-.3 2 2 0 0 1 1.8 1l.4 1a5.3 5.3 0 0 1 0 2.3zm2.5-3c-.1-.7-.4-1.3-.8-1.7a4 4 0 0 0-1.3-1.2c-.6-.3-1.3-.4-2-.4-.6 0-1.2.1-1.7.4a3 3 0 0 0-1.2 1.1V11H110v13h2.7v-4.5c.4.4.8.8 1.3 1 .5.3 1 .4 1.6.4a4 4 0 0 0 3.2-1.5c.4-.5.7-1 .8-1.6.2-.6.3-1.2.3-1.9s0-1.3-.3-2zm-13.1 3c0 .4-.2.7-.4 1l-.7.7-1.1.2c-.4 0-.8 0-1-.2-.4-.2-.6-.4-.8-.7a3 3 0 0 1-.4-1 5.4 5.4 0 0 1 0-2.3c0-.4.2-.7.4-1 .1-.3.4-.5.7-.7a2 2 0 0 1 1-.3 2 2 0 0 1 1.9 1l.4 1a5.4 5.4 0 0 1 0 2.3zm1.7-4.7a4 4 0 0 0-3.3-1.6c-.6 0-1.2.1-1.7.4a3 3 0 0 0-1.2 1.1V11h-2.6v13h2.7v-4.5c.3.4.7.8 1.2 1 .6.3 1.1.4 1.7.4a4 4 0 0 0 3.2-1.5c.4-.5.6-1 .8-1.6.2-.6.3-1.2.3-1.9s-.1-1.3-.3-2c-.2-.6-.4-1.2-.8-1.6zm-17.5 3.2l1.7-5 1.7 5h-3.4zm.2-8.2l-5 13.4h3l1-3h5l1 3h3L94 7.3h-3zm-5.3 9.1l-.6-.8-1-.5a11.6 11.6 0 0 0-2.3-.5l-1-.3a2 2 0 0 1-.6-.3.7.7 0 0 1-.3-.6c0-.2 0-.4.2-.5l.3-.3h.5l.5-.1c.5 0 .9 0 1.2.3.4.1.6.5.6 1h2.5c0-.6-.2-1.1-.4-1.5a3 3 0 0 0-1-1 4 4 0 0 0-1.3-.5 7.7 7.7 0 0 0-3 0c-.6.1-1 .3-1.4.5l-1 1a3 3 0 0 0-.4 1.5 2 2 0 0 0 1 1.8l1 .5 1.1.3 2.2.6c.6.2.8.5.8 1l-.1.5-.4.4a2 2 0 0 1-.6.2 2.8 2.8 0 0 1-1.4 0 2 2 0 0 1-.6-.3l-.5-.5-.2-.8H77c0 .7.2 1.2.5 1.6.2.5.6.8 1 1 .4.3.9.5 1.4.6a8 8 0 0 0 3.3 0c.5 0 1-.2 1.4-.5a3 3 0 0 0 1-1c.3-.5.4-1 .4-1.6 0-.5 0-.9-.3-1.2zM74.7 8h-2.6v3h-1.7v1.7h1.7v5.8c0 .5 0 .9.2 1.2l.7.7 1 .3a7.8 7.8 0 0 0 2 0h.7v-2.1a3.4 3.4 0 0 1-.8 0l-1-.1-.2-1v-4.8h2V11h-2V8zm-7.6 9v.5l-.3.8-.7.6c-.2.2-.7.2-1.2.2h-.6l-.5-.2a1 1 0 0 1-.4-.4l-.1-.6.1-.6.4-.4.5-.3a4.8 4.8 0 0 1 1.2-.2 8.3 8.3 0 0 0 1.2-.2l.4-.3v1zm2.6 1.5v-5c0-.6 0-1.1-.3-1.5l-1-.8-1.4-.4a10.9 10.9 0 0 0-3.1 0l-1.5.6c-.4.2-.7.6-1 1a3 3 0 0 0-.5 1.5h2.7c0-.5.2-.9.5-1a2 2 0 0 1 1.3-.4h.6l.6.2.3.4.2.7c0 .3 0 .5-.3.6-.1.2-.4.3-.7.4l-1 .1a21.9 21.9 0 0 0-2.4.4l-1 .5c-.3.2-.6.5-.8.9-.2.3-.3.8-.3 1.3s.1 1 .3 1.3c.1.4.4.7.7 1l1 .4c.4.2.9.2 1.3.2a6 6 0 0 0 1.8-.2c.6-.2 1-.5 1.5-1a4 4 0 0 0 .2 1H70l-.3-1v-1.2zm-11-6.7c-.2-.4-.6-.6-1-.8-.5-.2-1-.3-1.8-.3-.5 0-1 .1-1.5.4a3 3 0 0 0-1.3 1.2v-5h-2.7v13.4H53v-5.1c0-1 .2-1.7.5-2.2.3-.4.9-.6 1.6-.6.6 0 1 .2 1.3.6.3.4.4 1 .4 1.8v5.5h2.7v-6c0-.6 0-1.2-.2-1.6 0-.5-.3-1-.5-1.3zm-14 4.7l-2.3-9.2h-2.8l-2.3 9-2.2-9h-3l3.6 13.4h3l2.2-9.2 2.3 9.2h3l3.6-13.4h-3l-2.1 9.2zm-24.5.2L18 15.6c-.3-.1-.6-.2-.8.2A20 20 0 0 1 16 17c-.2.2-.4.3-.7.1-.4-.2-1.5-.5-2.8-1.7-1-1-1.7-2-2-2.4-.1-.4 0-.5.2-.7l.5-.6.4-.6v-.6L10.4 8c-.3-.6-.6-.5-.8-.6H9c-.2 0-.6.1-.9.5C7.8 8.2 7 9 7 10.7c0 1.7 1.3 3.4 1.4 3.6.2.3 2.5 3.7 6 5.2l1.9.8c.8.2 1.6.2 2.2.1.6-.1 2-.8 2.3-1.6.3-.9.3-1.5.2-1.7l-.7-.4zM14 25.3c-2 0-4-.5-5.8-1.6l-.4-.2-4.4 1.1 1.2-4.2-.3-.5A11.5 11.5 0 0 1 22.1 5.7 11.5 11.5 0 0 1 14 25.3zM14 0A13.8 13.8 0 0 0 2 20.7L0 28l7.3-2A13.8 13.8 0 1 0 14 0z"/>
+                    </svg>
+                </div>
+                <!-- Bouton fermer -->
+                <div class="chat-close">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Corps du chat -->
+            <div class="chat-body">
+                <!-- Message -->
+                <div class="chat-message">
+                    Karia Services,<br>
+                    A votre service !
+                </div>
+
+                <!-- Bouton Open Chat -->
+                <button class="open-chat-btn" onclick="openWhatsAppChat()">
+                    Open chat
+                    <svg class="send-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22,2 15,22 11,13 2,9 22,2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Bouton principal -->
+        <div class="whatsapp-button">
+            <!-- Tooltip -->
+            <div class="whatsapp-tooltip">Besoin d'aide ?</div>
+            
+            <!-- Icône WhatsApp -->
+            <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.46 3.488"/>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Hero animations initialization
+            function initHeroAnimations() {
+                const heroTitle = document.querySelector('.hero-content h1');
+                const heroSubtitle = document.querySelector('.hero-content p');
+                const heroButtons = document.querySelector('.hero-buttons');
+                const searchContainer = document.querySelector('.search-container');
+                const carouselIndicators = document.querySelector('.carousel-indicators');
+                const arrowLeft = document.querySelector('.carousel-btn--prev');
+                const arrowRight = document.querySelector('.carousel-btn--next');
+                const carouselContainer = document.querySelector('.carousel-container');
+
+                // Add animation classes with delay
+                setTimeout(() => {
+                    if (carouselContainer) carouselContainer.classList.add('animate-carousel');
+                }, 100);
+                
+                setTimeout(() => {
+                    if (heroTitle) heroTitle.classList.add('animate-title');
+                }, 300);
+                
+                setTimeout(() => {
+                    if (heroSubtitle) heroSubtitle.classList.add('animate-subtitle');
+                }, 600);
+                
+                setTimeout(() => {
+                    if (heroButtons) heroButtons.classList.add('animate-buttons');
+                }, 900);
+                
+                setTimeout(() => {
+                    if (searchContainer) searchContainer.classList.add('animate-search');
+                }, 1200);
+                
+                setTimeout(() => {
+                    if (carouselIndicators) carouselIndicators.classList.add('animate-nav');
+                }, 1500);
+                
+                setTimeout(() => {
+                    if (arrowLeft) arrowLeft.classList.add('animate-arrow-left');
+                    if (arrowRight) arrowRight.classList.add('animate-arrow-right');
+                }, 1800);
+            }
+
+            // Initialize hero animations
+            initHeroAnimations();
+
+            // ===== MODERN CAROUSEL IMPLEMENTATION =====
+            class HeroCarousel {
+                constructor() {
+                    this.currentSlide = 0;
+                    this.slides = document.querySelectorAll('.carousel-slide');
+                    this.indicators = document.querySelectorAll('.indicator');
+                    this.prevBtn = document.getElementById('prevBtn');
+                    this.nextBtn = document.getElementById('nextBtn');
+                    this.autoPlayInterval = null;
+                    this.autoPlayDelay = 5000;
+                    
+                    this.init();
+                }
+                
+                init() {
+                    if (this.slides.length === 0) return;
+                    
+                    // Set up event listeners
+                    this.prevBtn?.addEventListener('click', () => this.prevSlide());
+                    this.nextBtn?.addEventListener('click', () => this.nextSlide());
+                    
+                    // Indicator click events
+                    this.indicators.forEach((indicator, index) => {
+                        indicator.addEventListener('click', () => this.goToSlide(index));
+                    });
+                    
+                    // Initialize first slide
+                    this.updateSlides();
+                    
+                    // Start autoplay after initial animations
+                    setTimeout(() => this.startAutoPlay(), 2000);
+                }
+                
+                updateSlides() {
+                    // Remove all classes from slides
+                    this.slides.forEach((slide, index) => {
+                        slide.classList.remove('active', 'prev', 'next');
+                        
+                        if (index === this.currentSlide) {
+                            slide.classList.add('active');
+                        } else if (index < this.currentSlide) {
+                            slide.classList.add('prev');
+                        } else {
+                            slide.classList.add('next');
+                        }
+                    });
+                    
+                    // Update indicators
+                    this.indicators.forEach((indicator, index) => {
+                        indicator.classList.toggle('active', index === this.currentSlide);
+                    });
+                }
+                
+                goToSlide(index) {
+                    if (index === this.currentSlide) return;
+                    
+                    this.currentSlide = index;
+                    this.updateSlides();
+                    this.resetAutoPlay();
+                }
+                
+                nextSlide() {
+                    this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+                    this.updateSlides();
+                    this.resetAutoPlay();
+                }
+                
+                prevSlide() {
+                    this.currentSlide = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1;
+                    this.updateSlides();
+                    this.resetAutoPlay();
+                }
+                
+                startAutoPlay() {
+                    this.autoPlayInterval = setInterval(() => this.nextSlide(), this.autoPlayDelay);
+                }
+                
+                stopAutoPlay() {
+                    if (this.autoPlayInterval) {
+                        clearInterval(this.autoPlayInterval);
+                        this.autoPlayInterval = null;
+                    }
+                }
+                
+                resetAutoPlay() {
+                    this.stopAutoPlay();
+                    this.startAutoPlay();
+                }
+            }
+            
+            // Initialize carousel
+            const heroCarousel = new HeroCarousel();
+
+            // Create mobile menu button
+            const mobileMenuBtn = document.createElement('button');
+            mobileMenuBtn.className = 'mobile-menu-btn';
+            mobileMenuBtn.innerHTML = '☰';
+            
+            const nav = document.querySelector('nav');
+            const navMenu = document.querySelector('.nav-menu');
+            nav.insertBefore(mobileMenuBtn, navMenu);
+            
+            // Toggle mobile menu
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on a link
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Mobile submenu toggle
+            document.querySelectorAll('.has-submenu > a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        const parentLi = link.parentElement;
+                        parentLi.classList.toggle('active');
+                        
+                        // Close other submenus
+                        document.querySelectorAll('.has-submenu').forEach(item => {
+                            if (item !== parentLi) {
+                                item.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Header transparency effect on scroll
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (window.pageYOffset > 100) {
+                    header.style.background = 'rgba(255, 255, 255, 0.98)';
+                    header.style.backdropFilter = 'blur(15px)';
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.95)';
+                    header.style.backdropFilter = 'blur(10px)';
+                }
+            });
+
+        });
+
+        // WhatsApp function
+        function openWhatsAppChat() {
+            window.open('https://wa.me/22507187171', '_blank');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,214 +1,163 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quelques propriétés en vente</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carte Fret Routier</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f5f7fa;
-        }
+    body {
+      background-color: #f8f9fc;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
 
-        /* Propriétés Section */
-        .proprietes-section {
-            background-color: #f5f7fa;
-            padding: 80px 60px 100px;
-        }
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      width: 100%;
+      max-width: 1200px;
+    }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
 
-        .section-label {
-            color: #4caf50;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+    }
 
-        .section-title {
-            color: #1976c5;
-            font-size: 44px;
-            font-weight: 700;
-            line-height: 1.3;
-        }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
 
-        /* Properties Grid */
-        .properties-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            max-width: 1500px;
-            margin: 0 auto;
-        }
+    .card-content {
+      position: relative;
+      padding: 30px 20px 25px 20px;
+      text-align: center;
+    }
 
-        .property-card {
-            position: relative;
-            background-color: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
+    /* --- Bande orange avec icône camion --- */
+    .icon-tag {
+      position: absolute;
+      top: -20px;
+      left: 0;
+      background: #e69a2b;
+      color: white;
+      border-top-right-radius: 40px;
+      border-bottom-right-radius: 40px;
+      height: 40px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .property-card:hover {
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-            transform: translateY(-5px);
-        }
+    .icon-tag svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+    }
 
-        .property-image {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.3s ease;
-        }
+    .card h3 {
+      font-size: 1.2rem;
+      color: #2d3e50;
+      font-weight: 700;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
 
-        .property-card:hover .property-image {
-            transform: scale(1.05);
-        }
+    .card p {
+      font-size: 0.95rem;
+      color: #6c757d;
+      line-height: 1.5;
+    }
 
-        /* Overlay Content */
-        .property-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 40px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+    /* Responsive grid: 2 cartes sur mobile */
+    @media (max-width: 768px) {
+      .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
 
-        .property-card:hover .property-overlay {
-            opacity: 1;
-        }
-
-        .property-text {
-            color: white;
-            font-size: 20px;
-            font-weight: 400;
-            line-height: 1.6;
-            text-align: center;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .property-button {
-            display: inline-block;
-            background-color: #ff9800;
-            color: white;
-            padding: 14px 40px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(255,152,0,0.3);
-        }
-
-        .property-button:hover {
-            background-color: #f57c00;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(255,152,0,0.4);
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .properties-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .properties-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .section-title {
-                font-size: 32px;
-            }
-
-            .proprietes-section {
-                padding: 60px 30px 80px;
-            }
-
-            .property-image {
-                height: 280px;
-            }
-
-            .property-text {
-                font-size: 18px;
-            }
-        }
-    </style>
+    @media (max-width: 480px) {
+      .cards-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <section class="proprietes-section">
-        <div class="section-header">
-            <div class="section-label">KARIA CARE SERVICES</div>
-            <h2 class="section-title">Quelques propriétés en vente</h2>
+  <div class="cards-container">
+    <!-- Carte 1 -->
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1586788224331-947f28d4b838?auto=format&fit=crop&w=800&q=80" alt="Camion de fret routier">
+      <div class="card-content">
+        <div class="icon-tag">
+          <!-- Icône camion SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M20 8h-3V4H3v13h2a3 3 0 0 0 6 0h4a3 3 0 0 0 6 0h1v-7l-2-2zm-5 0v4H4V6h11v2zM8 19a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm10 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm2-3h-1a3 3 0 0 0-6 0h-4a3 3 0 0 0-6 0H5V10h11v2h4v4z"/>
+          </svg>
         </div>
+        <h3>FRET ROUTIER</h3>
+        <p>
+          Nous disposons d’engin de haute performance capable de contenir jusqu’à
+          20 tonnes de produits à des frets abordables et accessibles à tous.
+        </p>
+      </div>
+    </div>
 
-        <div class="properties-grid">
-            <!-- Property 1 -->
-            <div class="property-card">
-                <img src="images/1hero.jpg" alt="Propriété moderne" class="property-image">
-                <div class="property-overlay">
-                    <p class="property-text">
-                        Des hotels au design moderne et élégant,<br>
-                        déclinés en 3 catégories pour toutes les<br>
-                        envies, tous les budgets mais un plaisir<br>
-                        unique.
-                    </p>
-                    <a href="#" class="property-button">Je consulte</a>
-                </div>
-            </div>
-
-            <!-- Property 2 -->
-            <div class="property-card">
-                <img src="images/1hero.jpg" alt="Propriété moderne" class="property-image">
-                <div class="property-overlay">
-                    <p class="property-text">
-                        Des hotels au design moderne et élégant,<br>
-                        déclinés en 3 catégories pour toutes les<br>
-                        envies, tous les budgets mais un plaisir<br>
-                        unique.
-                    </p>
-                    <a href="#" class="property-button">Je consulte</a>
-                </div>
-            </div>
-
-            <!-- Property 3 -->
-            <div class="property-card">
-                <img src="images/1hero.jpg" alt="Propriété moderne" class="property-image">
-                <div class="property-overlay">
-                    <p class="property-text">
-                        Des hotels au design moderne et élégant,<br>
-                        déclinés en 3 catégories pour toutes les<br>
-                        envies, tous les budgets mais un plaisir<br>
-                        unique.
-                    </p>
-                    <a href="#" class="property-button">Je consulte</a>
-                </div>
-            </div>
+    <!-- Carte 2 (exemple pour le responsive) -->
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80" alt="Transport logistique">
+      <div class="card-content">
+        <div class="icon-tag">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M20 8h-3V4H3v13h2a3 3 0 0 0 6 0h4a3 3 0 0 0 6 0h1v-7l-2-2zm-5 0v4H4V6h11v2zM8 19a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm10 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm2-3h-1a3 3 0 0 0-6 0h-4a3 3 0 0 0-6 0H5V10h11v2h4v4z"/>
+          </svg>
         </div>
-    </section>
+        <h3>FRET ROUTIER</h3>
+        <p>
+          Nous disposons d’engin de haute performance capable de contenir jusqu’à
+          20 tonnes de produits à des frets abordables et accessibles à tous.
+        </p>
+      </div>
+    </div>
+
+     <!-- Carte 3 (exemple pour le responsive) -->
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80" alt="Transport logistique">
+      <div class="card-content">
+        <div class="icon-tag">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M20 8h-3V4H3v13h2a3 3 0 0 0 6 0h4a3 3 0 0 0 6 0h1v-7l-2-2zm-5 0v4H4V6h11v2zM8 19a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm10 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm2-3h-1a3 3 0 0 0-6 0h-4a3 3 0 0 0-6 0H5V10h11v2h4v4z"/>
+          </svg>
+        </div>
+        <h3>FRET ROUTIER</h3>
+        <p>
+          Nous disposons d’engin de haute performance capable de contenir jusqu’à
+          20 tonnes de produits à des frets abordables et accessibles à tous.
+        </p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
