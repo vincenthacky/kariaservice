@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karia Care Services - Énergie & Mines</title>
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Variables CSS harmonisées avec le site principal */
+        :root {
+            --karia-primary-blue: #3182CE;
+            --karia-primary-green: #38A169;
+            --karia-orange: #ED8936;
+            --karia-text-dark: #2D3748;
+            --karia-text-light: #718096;
+            --color-medium-blue: #377eb8;
+            --color-primary-orange: #ff9800;
+            --white: #FFFFFF;
+        }
+
+        /* Hero Section avec parallaxe */
+        .hero-energy {
+            margin: 0 30px;
+            margin-top: 20px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            height: 600px;
+            background-image: url('https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-energy::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(49, 130, 206, 0.8), rgba(55, 126, 184, 0.6));
+            z-index: 1;
+        }
+
+        .hero-energy-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+            max-width: 1000px;
+        }
+
+        .hero-energy-badge {
+            display: inline-block;
+            background: var(--karia-orange);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-energy-title {
+            color: white;
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-energy-subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 22px;
+            margin-bottom: 40px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .hero-energy-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-energy-button {
+            display: inline-block;
+            padding: 18px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .hero-energy-button.primary {
+            background-color: var(--karia-orange);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(237, 137, 54, 0.3);
+        }
+
+        .hero-energy-button.primary:hover {
+            background-color: #C0742C;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(237, 137, 54, 0.4);
+        }
+
+        .hero-energy-button.secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .hero-energy-button.secondary:hover {
+            background-color: white;
+            color: var(--karia-text-dark);
+        }
+
+
+        /* Energy Services Section - Nouvelle version propre */
+        .energy-services {
+            padding: 100px 30px;
+            background: #f8f9fa;
+        }
+
+        .energy-services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .energy-services-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .energy-services-label {
+            color: var(--karia-primary-green);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .energy-services-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--karia-text-dark);
+            margin-bottom: 20px;
+        }
+
+        .energy-services-description {
+            color: var(--karia-text-light);
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .energy-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .energy-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--karia-orange);
+        }
+
+        .energy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .energy-card-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            background: var(--karia-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            box-shadow: 0 4px 15px rgba(237, 137, 54, 0.3);
+        }
+
+        .energy-card-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--karia-text-dark);
+            margin-bottom: 20px;
+        }
+
+        .energy-card-text {
+            color: var(--karia-text-light);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .energy-card-button {
+            background: var(--karia-orange);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(237, 137, 54, 0.3);
+            width: 100%;
+        }
+
+        .energy-card-button:hover {
+            background: #C0742C;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(237, 137, 54, 0.4);
+        }
+
+        /* Process Section Interactive */
+        .process-section {
+            padding: 100px 30px;
+            background: white;
+            position: relative;
+        }
+
+        .process-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .process-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--karia-text-dark);
+            margin-bottom: 20px;
+        }
+
+        .process-subtitle {
+            color: var(--karia-text-light);
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .process-timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--karia-primary-green), var(--karia-orange));
+            transform: translateX(-50%);
+        }
+
+        .process-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .process-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .process-step:nth-child(even) .process-content {
+            text-align: right;
+        }
+
+        .process-content {
+            flex: 1;
+            padding: 0 40px;
+        }
+
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--karia-primary-green), var(--karia-primary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+            margin: 0 40px;
+        }
+
+        .process-step-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--karia-text-dark);
+            margin-bottom: 10px;
+        }
+
+        .process-step-text {
+            color: var(--karia-text-light);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Projects Showcase */
+        .projects-showcase {
+            padding: 100px 30px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .projects-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .projects-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .projects-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--karia-text-dark);
+            margin-bottom: 20px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(49, 130, 206, 0.8), rgba(56, 161, 105, 0.6));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-view-btn {
+            background: white;
+            color: var(--karia-primary-blue);
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-view-btn {
+            transform: translateY(0);
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-category {
+            display: inline-block;
+            background: var(--karia-primary-green);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .project-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--karia-text-dark);
+            margin-bottom: 10px;
+        }
+
+        .project-description {
+            color: var(--karia-text-light);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            margin: 0 30px;
+            margin-top: 60px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            height: 300px;
+            background-image: url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(49, 130, 206, 0.85);
+            z-index: 1;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+            max-width: 800px;
+        }
+
+        .cta-title {
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .cta-text {
+            color: rgba(255,255,255,0.9);
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--karia-orange);
+            color: var(--white);
+            padding: 18px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(237, 137, 54, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: #C0742C;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(237, 137, 54, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-energy {
+                margin: 0 20px;
+                height: 500px;
+            }
+
+            .hero-energy-title {
+                font-size: 36px;
+            }
+
+            .hero-energy-subtitle {
+                font-size: 18px;
+            }
+
+            .hero-energy-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+
+            .energy-services {
+                padding: 80px 20px;
+            }
+
+            .energy-services-title {
+                font-size: 32px;
+            }
+
+            .energy-services-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .process-section {
+                padding: 80px 20px;
+            }
+
+            .process-timeline::before {
+                left: 30px;
+            }
+
+            .process-step {
+                flex-direction: column !important;
+                align-items: flex-start;
+                padding-left: 80px;
+            }
+
+            .process-step:nth-child(even) .process-content {
+                text-align: left;
+            }
+
+            .process-number {
+                position: absolute;
+                left: 0;
+                margin: 0;
+            }
+
+            .process-content {
+                padding: 0;
+                margin-top: 20px;
+            }
+
+            .projects-showcase {
+                padding: 80px 20px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-banner {
+                margin: 0 20px;
+                height: 250px;
+            }
+
+            .cta-title {
+                font-size: 24px;
+            }
+
+            .cta-text {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-energy {
+                margin: 0 15px;
+                height: 450px;
+            }
+
+            .hero-energy-title {
+                font-size: 28px;
+            }
+
+            .hero-energy-subtitle {
+                font-size: 16px;
+            }
+
+
+            .energy-services {
+                padding: 60px 15px;
+            }
+
+            .energy-services-title {
+                font-size: 28px;
+            }
+
+            .process-section {
+                padding: 60px 15px;
+            }
+
+            .projects-showcase {
+                padding: 60px 15px;
+            }
+
+            .cta-banner {
+                margin: 0 15px;
+                height: 220px;
+            }
+
+            .cta-title {
+                font-size: 20px;
+            }
+        }
+
+        /* Animations personnalisées */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <a href="#">Besoin d'aide ?</a>
+        <a href="tel:+225 07 18 71 7171">📞 +225 +225 07 18 71 7171</a>
+        <a href="mailto:info@kariaservices.com">✉ info@kariaservices.com</a>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/logo_kariaservice.jpeg" alt="KARIA SERVICES" class="logo-icon">
+                KARIA SERVICES
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#karia">Karia</a></li>
+                <li class="has-submenu">
+                    <a href="#immobilier">Immobilier</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">À vendre</a></li>
+                        <li><a href="#">À louer</a></li>
+                        <li><a href="#">Gestion immobilière</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="#logistique">Logistique</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Transport routier</a></li>
+                        <li><a href="#">Stockage & distribution</a></li>
+                        <li><a href="#">Logistique internationale</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="#energie">Energie&Mine</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Exploitation minière</a></li>
+                        <li><a href="#">Services pétroliers</a></li>
+                        <li><a href="#">Énergies renouvelables</a></li>
+                    </ul>
+                </li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#devis" class="devis-btn">Devis</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-energy" id="hero">
+        <div class="hero-energy-content">
+            <div class="hero-energy-badge">Excellence Énergétique</div>
+            <h1 class="hero-energy-title">Façonnons l'Avenir Énergétique de l'Afrique</h1>
+            <p class="hero-energy-subtitle">Solutions innovantes en exploitation minière, services pétroliers et énergies renouvelables pour un développement durable</p>
+            <div class="hero-energy-buttons">
+                <a href="#" class="hero-energy-button primary">Découvrir nos projets</a>
+                <a href="#" class="hero-energy-button secondary">Demander un devis</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="energy-services">
+        <div class="energy-services-container">
+            <div class="energy-services-header">
+                <span class="energy-services-label">Nos Expertises</span>
+                <h2 class="energy-services-title">Solutions Énergétiques Intégrées</h2>
+                <p class="energy-services-description">Une gamme complète de services pour répondre aux défis énergétiques et miniers de demain</p>
+            </div>
+            
+            <div class="energy-services-grid">
+                <div class="energy-card">
+                    <div class="energy-card-icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <h3 class="energy-card-title">Exploitation Minière</h3>
+                    <p class="energy-card-text">
+                        Extraction responsable et durable des ressources minérales avec les technologies les plus avancées et le respect de l'environnement au cœur de nos opérations.
+                    </p>
+                    <button class="energy-card-button">En savoir plus</button>
+                </div>
+
+                <div class="energy-card">
+                    <div class="energy-card-icon">
+                        <i class="fas fa-oil-well"></i>
+                    </div>
+                    <h3 class="energy-card-title">Services Pétroliers</h3>
+                    <p class="energy-card-text">
+                        Exploration, forage et raffinement pétrolier avec une expertise technique reconnue et des standards de sécurité internationaux pour optimiser la production.
+                    </p>
+                    <button class="energy-card-button">En savoir plus</button>
+                </div>
+
+                <div class="energy-card">
+                    <div class="energy-card-icon">
+                        <i class="fas fa-solar-panel"></i>
+                    </div>
+                    <h3 class="energy-card-title">Énergies Renouvelables</h3>
+                    <p class="energy-card-text">
+                        Développement de projets solaires, éoliens et hydroélectriques pour une transition énergétique réussie vers un avenir plus propre et durable.
+                    </p>
+                    <button class="energy-card-button">En savoir plus</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Process Section -->
+    <section class="process-section animate-on-scroll">
+        <div class="process-container">
+            <div class="process-header">
+                <h2 class="process-title">Notre Processus d'Excellence</h2>
+                <p class="process-subtitle">Une approche méthodique et rigoureuse pour mener à bien chaque projet énergétique</p>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="process-content">
+                        <h3 class="process-step-title">Analyse & Étude</h3>
+                        <p class="process-step-text">Évaluation complète du potentiel du site, études géologiques approfondies et analyse de faisabilité économique pour garantir le succès du projet.</p>
+                    </div>
+                    <div class="process-number">1</div>
+                    <div class="process-content"></div>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-content"></div>
+                    <div class="process-number">2</div>
+                    <div class="process-content">
+                        <h3 class="process-step-title">Planification & Design</h3>
+                        <p class="process-step-text">Conception détaillée des installations, planification des ressources et élaboration d'un calendrier optimisé avec nos équipes d'ingénieurs spécialisés.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-content">
+                        <h3 class="process-step-title">Développement & Construction</h3>
+                        <p class="process-step-text">Mise en œuvre du projet avec nos équipes techniques expertes, respect des normes de sécurité et contrôle qualité à chaque étape de construction.</p>
+                    </div>
+                    <div class="process-number">3</div>
+                    <div class="process-content"></div>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-content"></div>
+                    <div class="process-number">4</div>
+                    <div class="process-content">
+                        <h3 class="process-step-title">Exploitation & Maintenance</h3>
+                        <p class="process-step-text">Gestion opérationnelle optimisée, maintenance préventive et monitoring continu pour assurer une performance durable et une rentabilité maximale.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Showcase -->
+    <section class="projects-showcase animate-on-scroll">
+        <div class="projects-container">
+            <div class="projects-header">
+                <h2 class="projects-title">Projets d'Excellence</h2>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div style="position: relative;">
+                        <img src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Mine d'or moderne" class="project-image">
+                        <div class="project-overlay">
+                            <a href="#" class="project-view-btn">Voir le projet</a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Exploitation Minière</span>
+                        <h3 class="project-title">Mine d'Or de Bonikro</h3>
+                        <p class="project-description">Exploitation moderne et responsable avec une production de 150 000 onces d'or par an, créant plus de 800 emplois locaux.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div style="position: relative;">
+                        <img src="https://images.unsplash.com/photo-1625519230050-3618dbf6e23e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Parc solaire" class="project-image">
+                        <div class="project-overlay">
+                            <a href="#" class="project-view-btn">Voir le projet</a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Énergie Renouvelable</span>
+                        <h3 class="project-title">Parc Solaire de Boundiali</h3>
+                        <p class="project-description">Installation de 50MW alimentant 45 000 foyers en énergie propre et réduisant les émissions de CO2 de 25 000 tonnes/an.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div style="position: relative;">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Plateforme pétrolière" class="project-image">
+                        <div class="project-overlay">
+                            <a href="#" class="project-view-btn">Voir le projet</a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Services Pétroliers</span>
+                        <h3 class="project-title">Champ Pétrolifère Offshore</h3>
+                        <p class="project-description">Développement d'un champ pétrolifère en eau profonde avec une production journalière de 30 000 barils et des standards environnementaux élevés.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner animate-on-scroll">
+        <div class="cta-content">
+            <h2 class="cta-title">Prêt à Développer Votre Projet Énergétique ?</h2>
+            <p class="cta-text">Contactez nos experts pour une consultation personnalisée et découvrez comment nous pouvons transformer vos ambitions en réalité.</p>
+            <a href="#" class="cta-button">Planifier une consultation</a>
+        </div>
+    </section>
+
+    <!-- Contact Map -->
+    <section class="contact-map">
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.0585440821453!2d-3.9558724845217475!3d5.348429636322748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc1ecfb15171aad%3A0xd533742e1a201c24!2sPharmcie%20Riviera%203!5e0!3m2!1sfr!2sci!4v1647123456789!5m2!1sfr!2sci" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Notre localisation - Pharmacie Riviera 3">
+            </iframe>
+        </div>
+        <div class="map-overlay">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <h4>+225 07 18 71 71 71</h4>
+                    <span>Disponible 24/7</span>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">✉</div>
+                    <h4>info@kariaservices.com</h4>
+                    <span>E-mail</span>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h4>Pharmacie Riviera 3 Est 56</h4>
+                    <span>Abidjan, Côte d'Ivoire</span>
+                </div>
+            </div>
+        </div>
+        <div class="contact-label">
+            Contactez-Nous
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="newsletter-popup-container">
+            <div class="newsletter-popup">
+                <form action="#" method="post" class="popup-form">
+                    <h3 class="popup-title">Souscrire à la newsletter</h3>
+                    <input type="text" name="prenom" placeholder="* Entrez votre prénom" required>
+                    <input type="email" name="email" placeholder="* Entrez votre Email" required>
+                    <button type="submit" class="popup-button">Envoyez</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-content-wrapper">
+            <div class="footer-content container">
+                <div class="footer-col-main">
+                    <div class="logo-container">
+                        <img src="images/logo_kariaservice.jpeg" alt="Karia Services Logo" class="footer-logo">
+                        <span class="logo-text">Karia care services</span>
+                    </div>
+                    <p class="newsletter-cta">Inscrivez-vous à notre newsletter</p>
+                    <form action="#" method="post" class="footer-newsletter-form">
+                        <input type="email" name="email-footer" placeholder="Entrez votre adresse mail" required>
+                        <button type="submit" class="footer-subscribe-btn">S'inscrire</button>
+                    </form>
+                </div>
+
+                <div class="footer-col contact-col">
+                    <h4 class="footer-title">Contact</h4>
+                    <div class="contact-items">
+                        <p><i class="fas fa-map-marker-alt"></i> Pharmacie Riviera 3 Est 56, Abidjan</p>
+                        <p><i class="fas fa-phone"></i> +225 07 18 71 7171</p>
+                        <p><i class="fas fa-phone"></i> +225 07 18 74 74 74</p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@kariaservices.com">info@kariaservices.com</a></p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a> <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a> <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a> <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a> </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Liens utiles</h4>
+                    <nav class="footer-nav">
+                        <ul>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Terme & Condition</a></li>
+                            <li><a href="#">Mentions légales</a></li>
+                            <li><a href="#">Politique</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Services</h4>
+                    <nav class="footer-nav">
+                        <ul>
+                            <li><a href="#">Exploitation minière</a></li>
+                            <li><a href="#">Services pétroliers</a></li>
+                            <li><a href="#">Énergies renouvelables</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>Copyright © 2024 KARIA SERVICES. Propulsé par DIGIT CREA. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Widget WhatsApp -->
+    <div class="whatsapp-widget">
+        <!-- Boîte de chat -->
+        <div class="whatsapp-chat">
+            <!-- En-tête -->
+            <div class="chat-header">
+                <div class="chat-header-content">
+                    <!-- Logo WhatsApp -->
+                    <svg class="whatsapp-logo" viewBox="0 0 120 28">
+                        <path d="M117.2 17c0 .4-.2.7-.4 1-.1.3-.4.5-.7.7l-1 .2c-.5 0-.9 0-1.2-.2l-.7-.7a3 3 0 0 1-.4-1 5.4 5.4 0 0 1 0-2.3c0-.4.2-.7.4-1l.7-.7a2 2 0 0 1 1.1-.3 2 2 0 0 1 1.8 1l.4 1a5.3 5.3 0 0 1 0 2.3zm2.5-3c-.1-.7-.4-1.3-.8-1.7a4 4 0 0 0-1.3-1.2c-.6-.3-1.3-.4-2-.4-.6 0-1.2.1-1.7.4a3 3 0 0 0-1.2 1.1V11H110v13h2.7v-4.5c.4.4.8.8 1.3 1 .5.3 1 .4 1.6.4a4 4 0 0 0 3.2-1.5c.4-.5.7-1 .8-1.6.2-.6.3-1.2.3-1.9s0-1.3-.3-2zm-13.1 3c0 .4-.2.7-.4 1l-.7.7-1.1.2c-.4 0-.8 0-1-.2-.4-.2-.6-.4-.8-.7a3 3 0 0 1-.4-1 5.4 5.4 0 0 1 0-2.3c0-.4.2-.7.4-1 .1-.3.4-.5.7-.7a2 2 0 0 1 1-.3 2 2 0 0 1 1.9 1l.4 1a5.4 5.4 0 0 1 0 2.3zm1.7-4.7a4 4 0 0 0-3.3-1.6c-.6 0-1.2.1-1.7.4a3 3 0 0 0-1.2 1.1V11h-2.6v13h2.7v-4.5c.3.4.7.8 1.2 1 .6.3 1.1.4 1.7.4a4 4 0 0 0 3.2-1.5c.4-.5.6-1 .8-1.6.2-.6.3-1.2.3-1.9s-.1-1.3-.3-2c-.2-.6-.4-1.2-.8-1.6zm-17.5 3.2l1.7-5 1.7 5h-3.4zm.2-8.2l-5 13.4h3l1-3h5l1 3h3L94 7.3h-3zm-5.3 9.1l-.6-.8-1-.5a11.6 11.6 0 0 0-2.3-.5l-1-.3a2 2 0 0 1-.6-.3.7.7 0 0 1-.3-.6c0-.2 0-.4.2-.5l.3-.3h.5l.5-.1c.5 0 .9 0 1.2.3.4.1.6.5.6 1h2.5c0-.6-.2-1.1-.4-1.5a3 3 0 0 0-1-1 4 4 0 0 0-1.3-.5 7.7 7.7 0 0 0-3 0c-.6.1-1 .3-1.4.5l-1 1a3 3 0 0 0-.4 1.5 2 2 0 0 0 1 1.8l1 .5 1.1.3 2.2.6c.6.2.8.5.8 1l-.1.5-.4.4a2 2 0 0 1-.6.2 2.8 2.8 0 0 1-1.4 0 2 2 0 0 1-.6-.3l-.5-.5-.2-.8H77c0 .7.2 1.2.5 1.6.2.5.6.8 1 1 .4.3.9.5 1.4.6a8 8 0 0 0 3.3 0c.5 0 1-.2 1.4-.5a3 3 0 0 0 1-1c.3-.5.4-1 .4-1.6 0-.5 0-.9-.3-1.2zM74.7 8h-2.6v3h-1.7v1.7h1.7v5.8c0 .5 0 .9.2 1.2l.7.7 1 .3a7.8 7.8 0 0 0 2 0h.7v-2.1a3.4 3.4 0 0 1-.8 0l-1-.1-.2-1v-4.8h2V11h-2V8zm-7.6 9v.5l-.3.8-.7.6c-.2.2-.7.2-1.2.2h-.6l-.5-.2a1 1 0 0 1-.4-.4l-.1-.6.1-.6.4-.4.5-.3a4.8 4.8 0 0 1 1.2-.2 8.3 8.3 0 0 0 1.2-.2l.4-.3v1zm2.6 1.5v-5c0-.6 0-1.1-.3-1.5l-1-.8-1.4-.4a10.9 10.9 0 0 0-3.1 0l-1.5.6c-.4.2-.7.6-1 1a3 3 0 0 0-.5 1.5h2.7c0-.5.2-.9.5-1a2 2 0 0 1 1.3-.4h.6l.6.2.3.4.2.7c0 .3 0 .5-.3.6-.1.2-.4.3-.7.4l-1 .1a21.9 21.9 0 0 0-2.4.4l-1 .5c-.3.2-.6.5-.8.9-.2.3-.3.8-.3 1.3s.1 1 .3 1.3c.1.4.4.7.7 1l1 .4c.4.2.9.2 1.3.2a6 6 0 0 0 1.8-.2c.6-.2 1-.5 1.5-1a4 4 0 0 0 .2 1H70l-.3-1v-1.2zm-11-6.7c-.2-.4-.6-.6-1-.8-.5-.2-1-.3-1.8-.3-.5 0-1 .1-1.5.4a3 3 0 0 0-1.3 1.2v-5h-2.7v13.4H53v-5.1c0-1 .2-1.7.5-2.2.3-.4.9-.6 1.6-.6.6 0 1 .2 1.3.6.3.4.4 1 .4 1.8v5.5h2.7v-6c0-.6 0-1.2-.2-1.6 0-.5-.3-1-.5-1.3zm-14 4.7l-2.3-9.2h-2.8l-2.3 9-2.2-9h-3l3.6 13.4h3l2.2-9.2 2.3 9.2h3l3.6-13.4h-3l-2.1 9.2zm-24.5.2L18 15.6c-.3-.1-.6-.2-.8.2A20 20 0 0 1 16 17c-.2.2-.4.3-.7.1-.4-.2-1.5-.5-2.8-1.7-1-1-1.7-2-2-2.4-.1-.4 0-.5.2-.7l.5-.6.4-.6v-.6L10.4 8c-.3-.6-.6-.5-.8-.6H9c-.2 0-.6.1-.9.5C7.8 8.2 7 9 7 10.7c0 1.7 1.3 3.4 1.4 3.6.2.3 2.5 3.7 6 5.2l1.9.8c.8.2 1.6.2 2.2.1.6-.1 2-.8 2.3-1.6.3-.9.3-1.5.2-1.7l-.7-.4zM14 25.3c-2 0-4-.5-5.8-1.6l-.4-.2-4.4 1.1 1.2-4.2-.3-.5A11.5 11.5 0 0 1 22.1 5.7 11.5 11.5 0 0 1 14 25.3zM14 0A13.8 13.8 0 0 0 2 20.7L0 28l7.3-2A13.8 13.8 0 1 0 14 0z"/>
+                    </svg>
+                </div>
+                <!-- Bouton fermer -->
+                <div class="chat-close">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Corps du chat -->
+            <div class="chat-body">
+                <!-- Message -->
+                <div class="chat-message">
+                    Karia Services,<br>
+                    A votre service !
+                </div>
+
+                <!-- Bouton Open Chat -->
+                <button class="open-chat-btn" onclick="openWhatsAppChat()">
+                    Open chat
+                    <svg class="send-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22,2 15,22 11,13 2,9 22,2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Bouton principal -->
+        <div class="whatsapp-button">
+            <!-- Tooltip -->
+            <div class="whatsapp-tooltip">Besoin d'aide ?</div>
+            
+            <!-- Icône WhatsApp -->
+            <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.46 3.488"/>
+            </svg>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation on scroll
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+
+
+            // Create mobile menu button
+            const mobileMenuBtn = document.createElement('button');
+            mobileMenuBtn.className = 'mobile-menu-btn';
+            mobileMenuBtn.innerHTML = '☰';
+            
+            const nav = document.querySelector('nav');
+            const navMenu = document.querySelector('.nav-menu');
+            nav.insertBefore(mobileMenuBtn, navMenu);
+            
+            // Toggle mobile menu
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on a link
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Mobile submenu toggle
+            document.querySelectorAll('.has-submenu > a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        const parentLi = link.parentElement;
+                        parentLi.classList.toggle('active');
+                        
+                        // Close other submenus
+                        document.querySelectorAll('.has-submenu').forEach(item => {
+                            if (item !== parentLi) {
+                                item.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Header transparency effect on scroll
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (window.pageYOffset > 100) {
+                    header.style.background = 'rgba(255, 255, 255, 0.98)';
+                    header.style.backdropFilter = 'blur(15px)';
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.95)';
+                    header.style.backdropFilter = 'blur(10px)';
+                }
+            });
+        });
+
+        // WhatsApp function
+        function openWhatsAppChat() {
+            window.open('https://wa.me/22507187171', '_blank');
+        }
+    </script>
+
+</body>
+</html>
