@@ -273,6 +273,14 @@
             flex-direction: column;
             gap: 15px;
         }
+        
+        .services-placeholder {
+            padding: 20px;
+            text-align: center;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px dashed #e2e8f0;
+        }
 
         .checkbox-item {
             display: flex;
@@ -584,42 +592,74 @@
 
                     <div class="form-group full-width">
                         <label class="form-label">Services souhaités *</label>
-                        <div class="form-checkbox-group">
-                            <div class="checkbox-item">
+                        <div class="form-checkbox-group" id="services-container">
+                            <!-- Services Immobilier -->
+                            <div class="checkbox-item service-immobilier" style="display: none;">
                                 <input type="checkbox" id="immobilier-vente" name="services[]" value="immobilier-vente">
-                                <label for="immobilier-vente">Immobilier - Vente</label>
+                                <label for="immobilier-vente">Vente de biens immobiliers</label>
                             </div>
-                            <div class="checkbox-item">
+                            <div class="checkbox-item service-immobilier" style="display: none;">
                                 <input type="checkbox" id="immobilier-location" name="services[]" value="immobilier-location">
-                                <label for="immobilier-location">Immobilier - Location</label>
+                                <label for="immobilier-location">Location de biens</label>
                             </div>
-                            <div class="checkbox-item">
+                            <div class="checkbox-item service-immobilier" style="display: none;">
                                 <input type="checkbox" id="immobilier-gestion" name="services[]" value="immobilier-gestion">
                                 <label for="immobilier-gestion">Gestion immobilière</label>
                             </div>
-                            <div class="checkbox-item">
+                            <div class="checkbox-item service-immobilier" style="display: none;">
+                                <input type="checkbox" id="immobilier-estimation" name="services[]" value="immobilier-estimation">
+                                <label for="immobilier-estimation">Estimation de biens</label>
+                            </div>
+                            
+                            <!-- Services Logistique -->
+                            <div class="checkbox-item service-logistique" style="display: none;">
                                 <input type="checkbox" id="transport-routier" name="services[]" value="transport-routier">
                                 <label for="transport-routier">Transport routier</label>
                             </div>
-                            <div class="checkbox-item">
+                            <div class="checkbox-item service-logistique" style="display: none;">
                                 <input type="checkbox" id="stockage" name="services[]" value="stockage">
                                 <label for="stockage">Stockage & Distribution</label>
                             </div>
-                            <div class="checkbox-item">
+                            <div class="checkbox-item service-logistique" style="display: none;">
                                 <input type="checkbox" id="logistique-international" name="services[]" value="logistique-international">
                                 <label for="logistique-international">Logistique internationale</label>
                             </div>
-                            <div class="checkbox-item">
+                            <div class="checkbox-item service-logistique" style="display: none;">
+                                <input type="checkbox" id="transit-douane" name="services[]" value="transit-douane">
+                                <label for="transit-douane">Transit & Douane</label>
+                            </div>
+                            
+                            <!-- Services Énergie & Mines -->
+                            <div class="checkbox-item service-energie-mine" style="display: none;">
                                 <input type="checkbox" id="exploitation-miniere" name="services[]" value="exploitation-miniere">
                                 <label for="exploitation-miniere">Exploitation minière</label>
                             </div>
-                            <div class="checkbox-item">
+                            <div class="checkbox-item service-energie-mine" style="display: none;">
                                 <input type="checkbox" id="services-petroliers" name="services[]" value="services-petroliers">
                                 <label for="services-petroliers">Services pétroliers</label>
                             </div>
-                            <div class="checkbox-item">
+                            <div class="checkbox-item service-energie-mine" style="display: none;">
                                 <input type="checkbox" id="energies-renouvelables" name="services[]" value="energies-renouvelables">
                                 <label for="energies-renouvelables">Énergies renouvelables</label>
+                            </div>
+                            <div class="checkbox-item service-energie-mine" style="display: none;">
+                                <input type="checkbox" id="exploration-geologique" name="services[]" value="exploration-geologique">
+                                <label for="exploration-geologique">Exploration géologique</label>
+                            </div>
+                            
+                            <!-- Services Autres -->
+                            <div class="checkbox-item service-autre" style="display: none;">
+                                <input type="checkbox" id="conseil-strategie" name="services[]" value="conseil-strategie">
+                                <label for="conseil-strategie">Conseil & Stratégie</label>
+                            </div>
+                            <div class="checkbox-item service-autre" style="display: none;">
+                                <input type="checkbox" id="formation" name="services[]" value="formation">
+                                <label for="formation">Formation</label>
+                            </div>
+                            
+                            <!-- Message par défaut -->
+                            <div id="services-placeholder" class="services-placeholder">
+                                <p style="color: #718096; font-style: italic;">Veuillez d'abord sélectionner un secteur d'activité pour voir les services disponibles.</p>
                             </div>
                         </div>
                     </div>
@@ -852,6 +892,51 @@
                 } else {
                     header.style.background = 'rgba(255, 255, 255, 0.95)';
                     header.style.backdropFilter = 'blur(10px)';
+                }
+            });
+
+            // Services filtrant par secteur
+            const secteurSelect = document.getElementById('secteur');
+            const servicesContainer = document.getElementById('services-container');
+            const servicesPlaceholder = document.getElementById('services-placeholder');
+            
+            secteurSelect.addEventListener('change', function() {
+                const selectedSecteur = this.value;
+                
+                // Cacher tous les services
+                const allServices = servicesContainer.querySelectorAll('.checkbox-item');
+                allServices.forEach(service => {
+                    if (!service.id || service.id !== 'services-placeholder') {
+                        service.style.display = 'none';
+                        // Décocher les checkboxes
+                        const checkbox = service.querySelector('input[type="checkbox"]');
+                        if (checkbox) checkbox.checked = false;
+                    }
+                });
+                
+                // Afficher le placeholder par défaut
+                servicesPlaceholder.style.display = 'block';
+                
+                // Afficher les services correspondants au secteur sélectionné
+                if (selectedSecteur) {
+                    servicesPlaceholder.style.display = 'none';
+                    
+                    if (selectedSecteur === 'immobilier') {
+                        const immobilierServices = servicesContainer.querySelectorAll('.service-immobilier');
+                        immobilierServices.forEach(service => service.style.display = 'flex');
+                    }
+                    else if (selectedSecteur === 'logistique') {
+                        const logistiqueServices = servicesContainer.querySelectorAll('.service-logistique');
+                        logistiqueServices.forEach(service => service.style.display = 'flex');
+                    }
+                    else if (selectedSecteur === 'energie-mine') {
+                        const energieMineServices = servicesContainer.querySelectorAll('.service-energie-mine');
+                        energieMineServices.forEach(service => service.style.display = 'flex');
+                    }
+                    else if (selectedSecteur === 'autre') {
+                        const autreServices = servicesContainer.querySelectorAll('.service-autre');
+                        autreServices.forEach(service => service.style.display = 'flex');
+                    }
                 }
             });
 
