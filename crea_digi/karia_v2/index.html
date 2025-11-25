@@ -3,11 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karia Care Services</title>
-    <!-- Font Awesome pour les icônes -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>Karia Care Services - Immobilier, Logistique, Énergie & Mine en Côte d'Ivoire</title>
+    <meta name="description" content="Karia Care Services, leader en immobilier, logistique, énergie et exploitation minière en Côte d'Ivoire. Solutions personnalisées et services haut de gamme à Abidjan.">
+    <meta name="keywords" content="Karia Care Services, immobilier Côte d'Ivoire, logistique Abidjan, énergie, mine, transport routier, gestion immobilière, investissement immobilier, exploitation minière, services pétroliers, énergies renouvelables">
+    <meta name="author" content="Karia Care Services">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="fr-CI">
+    <meta name="google-site-verification" content="o0ZU-2IohErn0xhXFLB_HhDfBkpVx93FCu5brB2Y8-M" />
+    <meta name="geo.region" content="CI-AB">
+    <meta name="geo.placename" content="Abidjan, Côte d'Ivoire">
+    <meta name="geo.position" content="5.348429;-3.955872">
+    <meta name="ICBM" content="5.348429, -3.955872">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.kariacareservices.com/">
+    <meta property="og:title" content="Karia Care Services - Immobilier, Logistique, Énergie & Mine en Côte d'Ivoire">
+    <meta property="og:description" content="Solutions personnalisées en immobilier, logistique et énergie. Excellence et fiabilité depuis notre création en Côte d'Ivoire.">
+    <meta property="og:image" content="https://www.kariacareservices.com/images/logo_kariaservice.jpeg">
+    <meta property="og:image:alt" content="Logo Karia Care Services">
+    <meta property="og:site_name" content="Karia Care Services">
+    <meta property="og:locale" content="fr_CI">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.kariacareservices.com/">
+    <meta property="twitter:title" content="Karia Care Services - Immobilier, Logistique, Énergie & Mine">
+    <meta property="twitter:description" content="Solutions personnalisées en immobilier, logistique et énergie en Côte d'Ivoire.">
+    <meta property="twitter:image" content="https://www.kariacareservices.com/images/logo_kariaservice.jpeg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.kariacareservices.com/">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- CSS Files -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-   
+    
+    <!-- Structured Data Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Karia Care Services",
+      "alternateName": "KARIA SERVICES",
+      "url": "https://www.kariacareservices.com",
+      "logo": "https://www.kariacareservices.com/images/logo_kariaservice.jpeg",
+      "description": "Entreprise multi-sectorielle en immobilier, logistique et énergie en Côte d'Ivoire",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Pharmacie Riviera 3 Est 56",
+        "addressLocality": "Abidjan",
+        "addressCountry": "CI"
+      },
+      "telephone": ["+225 07 18 71 71 71", "+225 07 18 72 72 72", "27 22 36 07 95"],
+      "email": "info@kariacareservices.com",
+      "sameAs": [
+        "https://www.facebook.com/kariacareservices",
+        "https://www.twitter.com/kariacareservices",
+        "https://www.instagram.com/kariacareservices"
+      ],
+      "services": [
+        {
+          "@type": "Service",
+          "name": "Gestion Immobilière",
+          "description": "Services immobiliers complets avec trois gammes : Économique, Confort et Prestige"
+        },
+        {
+          "@type": "Service", 
+          "name": "Logistique & Transport",
+          "description": "Solutions de transport rapides et fiables avec trois gammes de service"
+        },
+        {
+          "@type": "Service",
+          "name": "Mines, Énergie & Pétrole",
+          "description": "Exploitation responsable et durable dans les secteurs minier et pétrolier"
+        }
+      ],
+      "areaServed": {
+        "@type": "Country",
+        "name": "Côte d'Ivoire"
+      },
+      "foundingDate": "2020",
+      "numberOfEmployees": "30+",
+      "slogan": "Bâtir, transporter, alimenter l'avenir"
+    }
+    </script>
 </head>
 <body>
     <!-- Top Bar -->
@@ -569,8 +662,45 @@
     </div>
 
     <script>
+        // Fonction pour ouvrir WhatsApp avec le numéro spécifique
+        function openWhatsAppChat() {
+            const phoneNumber = '2250718717171'; // Numéro sans espaces ni caractères spéciaux
+            const message = encodeURIComponent('Bonjour, je souhaite obtenir des informations sur vos services.');
+            const url = `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(url, '_blank');
+        }
+
         // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', function() {
+            
+            // Gestion du widget WhatsApp
+            const widget = document.querySelector('.whatsapp-widget');
+            const button = document.querySelector('.whatsapp-button');
+            const chatBox = document.querySelector('.whatsapp-chat');
+            const closeBtn = document.querySelector('.chat-close');
+
+            // Toggle chat box on button click
+            if (button && chatBox) {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
+                });
+            }
+
+            // Close chat box
+            if (closeBtn && chatBox) {
+                closeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    chatBox.style.display = 'none';
+                });
+            }
+
+            // Close chat when clicking outside
+            document.addEventListener('click', function(e) {
+                if (widget && !widget.contains(e.target) && chatBox) {
+                    chatBox.style.display = 'none';
+                }
+            });
             
             // Hero animations initialization
             function initHeroAnimations() {

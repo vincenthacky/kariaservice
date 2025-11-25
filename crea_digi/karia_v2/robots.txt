@@ -1,0 +1,39 @@
+User-agent: *
+Allow: /
+
+# Fichiers et dossiers autorisés
+Allow: /css/
+Allow: /images/
+Allow: /img/
+Allow: /*.html
+Allow: /*.css
+Allow: /*.js
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.gif
+Allow: /*.webp
+
+# Fichiers à exclure de l'indexation
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /backup/
+Disallow: /*.pdf$
+Disallow: /xooo.png
+
+# Moteurs de recherche spécifiques
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Crawl-delay pour éviter la surcharge du serveur
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://www.kariacareservices.com/sitemap.xml

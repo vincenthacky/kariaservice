@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+        
+    <!-- Page d'accueil -->
+    <url>
+        <loc>https://www.kariacareservices.com/</loc>
+        <lastmod>2024-11-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://www.kariacareservices.com/images/logo_kariaservice.jpeg</image:loc>
+            <image:title>Logo Karia Care Services</image:title>
+            <image:caption>Logo officiel de Karia Care Services</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.kariacareservices.com/images/imga8.jpg</image:loc>
+            <image:title>Services Karia Care</image:title>
+            <image:caption>Présentation des services de Karia Care Services</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Page Immobilier -->
+    <url>
+        <loc>https://www.kariacareservices.com/immobilier.html</loc>
+        <lastmod>2024-11-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://www.kariacareservices.com/images/service1.jpg</image:loc>
+            <image:title>Services Immobiliers</image:title>
+            <image:caption>Gestion immobilière et solutions personnalisées</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Page Logistique -->
+    <url>
+        <loc>https://www.kariacareservices.com/logistique.html</loc>
+        <lastmod>2024-11-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://www.kariacareservices.com/images/camion_service2.jpg</image:loc>
+            <image:title>Services Logistiques</image:title>
+            <image:caption>Transport et logistique en Côte d'Ivoire</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Page Énergie & Mine -->
+    <url>
+        <loc>https://www.kariacareservices.com/energie-mine.html</loc>
+        <lastmod>2024-11-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://www.kariacareservices.com/images/imga4_service3.jpeg</image:loc>
+            <image:title>Services Énergie et Mine</image:title>
+            <image:caption>Exploitation minière et services énergétiques</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Page Contact -->
+    <url>
+        <loc>https://www.kariacareservices.com/contact.html</loc>
+        <lastmod>2024-11-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Images principales pour l'indexation -->
+    <url>
+        <loc>https://www.kariacareservices.com/images/</loc>
+        <lastmod>2024-11-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+    <!-- CSS pour l'optimisation -->
+    <url>
+        <loc>https://www.kariacareservices.com/css/style.css</loc>
+        <lastmod>2024-11-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+</urlset>
