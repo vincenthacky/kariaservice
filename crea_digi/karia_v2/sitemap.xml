@@ -68,6 +68,14 @@
         <priority>0.8</priority>
     </url>
     
+    <!-- Page FAQ -->
+    <url>
+        <loc>https://www.kariacareservices.com/faq.html</loc>
+        <lastmod>2024-11-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
     <!-- Images principales pour l'indexation -->
     <url>
         <loc>https://www.kariacareservices.com/images/</loc>

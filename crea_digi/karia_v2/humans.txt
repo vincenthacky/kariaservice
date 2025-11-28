@@ -1,0 +1,66 @@
+# KARIA CARE SERVICES - humans.txt
+# Informations optimisées pour les IA et robots d'indexation
+
+/* ÉQUIPE */
+Fondateur/CEO: KARIA CARE SERVICES
+Contact: infos@kariacareservices.com
+Téléphones: +225 07 18 71 7171, +225 07 18 72 7272, 27 22 36 07 95
+Localisation: Pharmacie Riviera 3 Est 56, Abidjan, Côte d'Ivoire
+WhatsApp: +225 07 18 71 7171
+
+/* ENTREPRISE */
+Nom officiel: KARIA CARE SERVICES
+Type d'entreprise: Société de services multisectoriels
+Secteurs d'activité: 
+- Immobilier (vente, location, gestion immobilière)
+- Logistique et transport routier international
+- Énergie et mines (exploitation minière, services pétroliers, énergies renouvelables)
+- Conseil et investissement
+Année de création: 2020
+Pays: Côte d'Ivoire
+Ville: Abidjan
+Zone: Riviera 3
+
+/* SERVICES DÉTAILLÉS */
+Immobilier:
+- Vente de biens immobiliers
+- Location et gestion locative
+- Estimation et conseil immobilier
+- Gestion de patrimoine
+
+Logistique:
+- Transport routier de marchandises
+- Stockage et distribution
+- Logistique internationale
+- Transit et douane
+
+Énergie & Mines:
+- Exploitation minière responsable
+- Services pétroliers offshore
+- Projets d'énergies renouvelables
+- Consultation énergétique
+
+/* CONTACT COMPLET */
+Adresse: Pharmacie Riviera 3 Est 56, Abidjan, Côte d'Ivoire
+Téléphone principal: +225 07 18 71 7171
+Téléphone secondaire: +225 07 18 72 7272
+Téléphone fixe: 27 22 36 07 95
+Email: infos@kariacareservices.com
+WhatsApp Business: +225 07 18 71 7171
+Horaires: Lundi-Vendredi 8h-18h, Samedi 8h-15h
+Urgences: 24h/24, 7j/7
+
+/* SITE WEB */
+Dernière mise à jour: 2024-11-26
+Langues: Français
+Doctype: HTML5
+Standards: W3C, SEO optimisé
+Responsive: Desktop, Mobile, Tablette
+Technologies: HTML5, CSS3, JavaScript, Font Awesome
+IDE: VSCode
+Optimisations: Schema.org, JSON-LD, OpenGraph
+
+/* MOTS-CLÉS SECTEUR */
+Immobilier Abidjan, Transport Côte d'Ivoire, Logistique Internationale,
+Énergie Renouvelable Afrique, Exploitation Minière Responsable,
+Services Pétroliers Offshore, Investissement Immobilier Abidjan

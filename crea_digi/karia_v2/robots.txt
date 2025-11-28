@@ -1,7 +1,23 @@
+# robots.txt pour KARIA CARE SERVICES
+# Optimisé pour les IA et moteurs de recherche
+
 User-agent: *
 Allow: /
 
-# Fichiers et dossiers autorisés
+# Pages principales autorisées pour indexation IA
+Allow: /index.html
+Allow: /contact.html
+Allow: /immobilier.html
+Allow: /logistique.html
+Allow: /energie-mine.html
+Allow: /faq.html
+
+# Fichiers d'optimisation IA
+Allow: /humans.txt
+Allow: /sitemap.xml
+Allow: /manifest.json
+
+# Ressources autorisées
 Allow: /css/
 Allow: /images/
 Allow: /img/
@@ -20,20 +36,45 @@ Disallow: /private/
 Disallow: /temp/
 Disallow: /backup/
 Disallow: /*.pdf$
-Disallow: /xooo.png
 
-# Moteurs de recherche spécifiques
+# Moteurs de recherche et IA spécifiques
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Slurp
 Allow: /
 
-# Crawl-delay pour éviter la surcharge du serveur
+# Bots IA autorisés
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Crawl-delay global pour éviter la surcharge
 Crawl-delay: 1
 
-# Sitemap
+# Informations entreprise pour IA
+# Entreprise: KARIA CARE SERVICES
+# Secteurs: Immobilier, Logistique, Transport, Énergie, Mines
+# Localisation: Pharmacie Riviera 3 Est 56, Abidjan, Côte d'Ivoire
+# Contact: infos@kariacareservices.com
+# Téléphones: +225 07 18 71 7171, +225 07 18 72 7272, 27 22 36 07 95
+
+# Sitemap pour indexation optimale
 Sitemap: https://www.kariacareservices.com/sitemap.xml
